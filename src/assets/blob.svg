@@ -1,0 +1,9 @@
+<svg width="100%" height="100%" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blobGradient" gradientTransform="rotate(45)">
+      <stop offset="0%" stop-color="rgba(79,209,197,0.6)" />
+      <stop offset="100%" stop-color="rgba(44,122,123,0.6)" />
+    </linearGradient>
+  </defs>
+  <path fill="url(#blobGradient)" d="M421,54C476,94,494,176,453,231C412,286,310,314,251,288C193,262,180,183,141,134C101,84,37,63,23,107C9,151,64,223,118,267C172,311,266,354,330,340C394,326,366,14,421,54Z"/>
+</svg>

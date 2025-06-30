@@ -1,0 +1,63 @@
+/* 1) Importa Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@700&display=swap');
+
+/* 2) Directivas Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3) Estilos base */
+@layer base {
+  html {
+    font-family: theme('fontFamily.sans');
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-slate-900 text-white;
+  }
+  a {
+    @apply text-primary hover:underline transition-colors;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-primary;
+  }
+  .prose {
+    @apply prose-indigo prose-lg;
+  }
+}
+
+/* 4) Utilidades personalizadas */
+@layer utilities {
+  /* patrón de código (si lo quieres mantener) */
+  .hero-bg {
+    background-image: url('./assets/code-pattern.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  /* animación de pulso lento para overlay */
+  @keyframes slowPulse {
+    0%, 100% { opacity: 0.05; }
+    50%      { opacity: 0.15; }
+  }
+  .pulse-slow {
+    animation: slowPulse 6s ease-in-out infinite;
+  }
+
+  /* degradado animado (opcional si prefieres esto en lugar de hero-bg) */
+  @keyframes gradientShift {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .bg-animated-gradient {
+    background: linear-gradient(
+      45deg,
+      theme('colors.primary'),
+      theme('colors.secondary'),
+      theme('colors.accent')
+    );
+    background-size: 300% 300%;
+    animation: gradientShift 12s ease infinite;
+  }
+}
