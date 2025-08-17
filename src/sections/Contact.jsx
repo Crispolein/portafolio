@@ -16,7 +16,7 @@ const Contact = () => {
 
         {/* Formulario con Formspree */}
         <form
-          action="https://formspree.io/f/yourFormID"
+          action="https://formspree.io/f/mdkdvdvk"
           method="POST"
           className="space-y-4"
         >
