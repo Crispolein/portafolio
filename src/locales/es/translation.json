@@ -1,0 +1,78 @@
+{
+  "navbar": {
+    "home": "Inicio",
+    "about": "Acerca de mí",
+    "skills": "Habilidades",
+    "experience": "Experiencia",
+    "projects": "Proyectos",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "greeting": "Hola, soy Christian Rangel",
+    "subtitle": "Ingeniero Civil Informático y desarrollador de software.",
+    "cta": "Descargar mi CV",
+    "skills": {
+      "mobileDev": "Desarrollo Móvil",
+      "databases": "Bases de Datos",
+      "webAi": "Desarrollo Web & IA",
+      "cloudOps": "Cloud Ops"
+    }
+  },
+  "about": {
+    "title": "Acerca de mí",
+    "p1": "Soy Christian Rangel, Ingeniero Civil Informático que lideró Astroapp, una aplicación móvil desarrollada desde el diseño hasta el despliegue, satisfaciendo todas las necesidades del cliente.",
+    "p2": "Busco diseñar proyectos robustos que combinen innovación y empatía, ofreciendo soluciones pocket-friendly y aplicando inteligencia artificial para mejorar la experiencia de usuario.",
+    "milestones": {
+      "design": "Diseño & Prototipado",
+      "dev": "Desarrollo Mobile",
+      "deploy": "Despliegue & Feedback"
+    },
+    "passions": {
+      "mobile": "Apps Móviles",
+      "desktop": "Apps de Escritorio",
+      "ai": "Inteligencia Artificial"
+    },
+    "softSkills": {
+      "empathy": "Empatía",
+      "problemSolving": "Resolución",
+      "proactive": "Proactivo"
+    }
+  },
+  "skills": {
+    "title": "Habilidades"
+  },
+  "experience": {
+    "title": "Experiencia",
+    "job1": {
+      "title": "Full-Stack Developer (Proyecto Astroapp)",
+      "company": "Universidad Autónoma de Chile",
+      "date": "Jun 2024 – Mar 2025",
+      "description": "Lideré el desarrollo completo de “Astroapp” —desde el diseño de UX/UI y prototipado hasta la selección de tecnologías (Flutter, Dart, Firebase) y el despliegue final— colaborando mano a mano con el cliente para entender y resolver sus necesidades fundamentales."
+    },
+    "job2": {
+      "title": "Backend Developer",
+      "company": "Migtra",
+      "date": "Feb 2025 – Present",
+      "description": "Implementando un sistema de monitoreo en AWS para gestionar máquinas EC2, realicé validación de datos con Flask y PostgreSQL, y automatización con Docker en entornos Linux. Proporcioné reportes de valor a gestión mediante la identificación de errores en logs y mejoré la visibilidad operativa."
+    }
+  },
+  "projects": {
+    "title": "Proyectos",
+    "project1": {
+      "title": "Monorepo Monitoring",
+      "description": "AWS + Prometheus + Grafana observability stack."
+    },
+    "project2": {
+      "title": "Flask CLI Generator",
+      "description": "Excel-driven command generator CLI tool."
+    }
+  },
+    "contact": {
+      "title": "Contáctame",
+      "intro": "¿Tienes un proyecto interesante o simplemente quieres saludar? Escríbeme un mensaje y te responderé lo antes posible.",
+      "namePlaceholder": "Tu nombre",
+      "emailPlaceholder": "Tu email",
+      "messagePlaceholder": "Tu mensaje...",
+      "cta": "Enviar Mensaje"
+    }
+  }

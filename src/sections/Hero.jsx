@@ -1,66 +1,76 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import Button from '../components/Button'
-import ParticlesBackground from '../components/ParticlesBackground'
+// src/components/Hero.jsx
+import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { motion } from 'framer-motion';
+import Button from '../components/Button';
+import { FaFileDownload } from 'react-icons/fa';
 
-const features = [
-  { title: 'Desarrollo Móvil', subtitle: 'Flutter & Dart', icon: '📱' },
-  { title: 'Bases de Datos', subtitle: 'PostgreSQL, MongoDB, Firebase', icon: '🗄️' },
-  { title: 'Web & AI', subtitle: 'Django, Flask & ML', icon: '🤖' },
-  { title: 'Cloud Ops', subtitle: 'AWS & GCP', icon: '☁️' },
-]
+const skills = [
+  { key: 'mobileDev', subtitle: 'Flutter & Dart', icon: '📱' },
+  { key: 'databases', subtitle: 'PostgreSQL, MongoDB', icon: '🗄️' },
+  { key: 'webAi', subtitle: 'Django, Flask & ML', icon: '🤖' },
+  { key: 'cloudOps', subtitle: 'AWS & GCP', icon: '☁️' },
+];
 
-const Hero = () => (
-  <section
-    id="home"
-    className="
-      relative flex flex-col items-center justify-center min-h-screen
-      px-4 text-center text-white overflow-hidden
-      bg-animated-gradient
-      /* o usa bg-gradient-to-br from-primary to-secondary hero-bg */
-    "
-  >
-    {/* Partículas de fondo */}
-    <ParticlesBackground />
+const Hero = () => {
+  const { t } = useTranslation();
 
-    {/* Overlay sutil animado */}
-    <div className="absolute inset-0 bg-black pulse-slow" />
-
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="relative z-10 max-w-2xl space-y-6"
+  return (
+    <section
+      id="home"
+      className="
+        relative flex flex-col items-center justify-center min-h-screen
+        px-4 text-center text-white overflow-hidden
+        bg-gradient-to-br from-gray-900 to-slate-800
+      "
     >
-      <h1 className="text-5xl sm:text-6xl font-heading">
-        Hola, soy Christian Rangel
-      </h1>
-      <p className="text-xl font-medium">
-        Ingeniero Civil Informático dedicado al aprendizaje constante mediante la práctica.
-      </p>
-      <p className="mt-4 text-lg leading-relaxed">
-        Aporto ideas innovadoras, rescato buenas prácticas y desarrollo soluciones empáticas
-        basadas en las necesidades reales de mis clientes.
-      </p>
+      <div className="absolute inset-0 bg-black/30" />
 
-      <Button href="/Christian_Rangel_CV.pdf" download>
-        Descargar mi CV
-      </Button>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="relative z-10 max-w-3xl space-y-6"
+      >
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+          {t('hero.greeting')}
+        </h1>
+        <p className="text-xl sm:text-2xl font-medium text-slate-300">
+          {t('hero.subtitle')}
+        </p>
 
-      <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6">
-        {features.map(({ title, subtitle, icon }) => (
-          <div
-            key={title}
-            className="flex flex-col items-center p-4 bg-black/25 rounded-lg backdrop-blur-sm"
-          >
-            <span className="text-3xl">{icon}</span>
-            <h3 className="mt-2 font-semibold">{title}</h3>
-            <p className="text-sm text-slate-200">{subtitle}</p>
-          </div>
-        ))}
-      </div>
-    </motion.div>
-  </section>
-)
+        <a
+          href="/Christian_Rangel_CV.pdf"
+          download
+          className="
+            inline-flex items-center space-x-2 px-8 py-3 mt-8
+            text-white font-bold rounded-full
+            bg-primary hover:bg-teal-500 transition-all duration-300
+          "
+        >
+          <FaFileDownload />
+          <span>{t('hero.cta')}</span>
+        </a>
 
-export default Hero
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6">
+          {skills.map(({ key, subtitle, icon }) => (
+            <div
+              key={key}
+              className="
+                flex flex-col items-center p-4 rounded-lg
+                bg-white/5 backdrop-blur-sm border border-white/10
+                transition-transform duration-300 hover:scale-105
+              "
+            >
+              <span className="text-4xl">{icon}</span>
+              <h3 className="mt-3 font-bold text-lg">{t(`hero.skills.${key}`)}</h3>
+              <p className="text-sm text-slate-400">{subtitle}</p>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+    </section>
+  );
+};
+
+export default Hero;

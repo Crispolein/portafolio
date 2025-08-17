@@ -1,0 +1,78 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "experience": "Experience",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "greeting": "Hi, I'm Christian Rangel",
+    "subtitle": "Computer Science Engineer and software developer.",
+    "cta": "Download my CV",
+    "skills": {
+      "mobileDev": "Mobile Development",
+      "databases": "Databases",
+      "webAi": "Web & AI",
+      "cloudOps": "Cloud Ops"
+    }
+  },
+  "about": {
+    "title": "About Me",
+    "p1": "I am Christian Rangel, a Computer Science Engineer who led Astroapp, a mobile application developed from design to deployment, satisfying all of the client's needs.",
+    "p2": "I aim to design robust projects that combine innovation and empathy, offering pocket-friendly solutions and applying artificial intelligence to improve user experience.",
+    "milestones": {
+      "design": "Design & Prototyping",
+      "dev": "Mobile Development",
+      "deploy": "Deployment & Feedback"
+    },
+    "passions": {
+      "mobile": "Mobile Apps",
+      "desktop": "Desktop Apps",
+      "ai": "Artificial Intelligence"
+    },
+    "softSkills": {
+      "empathy": "Empathy",
+      "problemSolving": "Problem-Solving",
+      "proactive": "Proactive"
+    }
+  },
+  "skills": {
+    "title": "Skills"
+  },
+  "experience": {
+    "title": "Experience",
+    "job1": {
+      "title": "Full-Stack Developer (Astroapp Project)",
+      "company": "Universidad Autónoma de Chile",
+      "date": "Jun 2024 – Mar 2025",
+      "description": "I led the full development of “Astroapp” —from UX/UI design and prototyping to technology selection (Flutter, Dart, Firebase) and final deployment— collaborating closely with the client to understand and solve their fundamental needs."
+    },
+    "job2": {
+      "title": "Backend Developer",
+      "company": "Migtra",
+      "date": "Feb 2025 – Present",
+      "description": "Implementing an AWS monitoring system to manage EC2 instances, I performed data validation with Flask and PostgreSQL, and automation with Docker in Linux environments. I provided valuable reports to management by identifying errors in logs and improved operational visibility."
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "project1": {
+      "title": "Monorepo Monitoring",
+      "description": "AWS + Prometheus + Grafana observability stack."
+    },
+    "project2": {
+      "title": "Flask CLI Generator",
+      "description": "Excel-driven command generator CLI tool."
+    }
+  },
+    "contact": {
+      "title": "Get in Touch",
+      "intro": "Do you have an interesting project or just want to say hello? Send me a message and I'll get back to you as soon as possible.",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "Your email",
+      "messagePlaceholder": "Your message...",
+      "cta": "Send Message"
+    }
+  }
