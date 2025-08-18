@@ -42,20 +42,32 @@
     "title": "Habilidades"
   },
   "experience": {
-    "title": "Experiencia",
-    "job1": {
-      "title": "Full-Stack Developer (Proyecto Astroapp)",
-      "company": "Universidad Autónoma de Chile",
-      "date": "Jun 2024 – Mar 2025",
-      "description": "Lideré el desarrollo completo de “Astroapp” —desde el diseño de UX/UI y prototipado hasta la selección de tecnologías (Flutter, Dart, Firebase) y el despliegue final— colaborando mano a mano con el cliente para entender y resolver sus necesidades fundamentales."
+      "title": "Experiencia Profesional",
+      "job1": {
+        "role": "Desarrollador Backend",
+        "company": "Gesitech",
+        "period": "05/2025 - Actualmente",
+        "description": "Responsable del diseño y desarrollo de aplicaciones móviles con Dart/Flutter, gestionando y optimizando bases de datos en Firebase. También desarrollé APIs para la comunicación eficiente entre el frontend y el backend."
+      },
+      "job2": {
+        "role": "Desarrollador Backend Junior",
+        "company": "Migtra",
+        "period": "01/2025 - Actualmente",
+        "description": "Desarrollé funcionalidades backend con Python e implementé la gestión de recursos en AWS para asegurar la continuidad de los procedimientos. Manejé tickets en Jira para el seguimiento de tareas y utilicé Git y Bitbucket para el control de versiones."
+      },
+      "job3": {
+        "role": "Full Stack Developer",
+        "company": "Noche Austral",
+        "period": "07/2024 - 04/2025",
+        "description": "Lideré la optimización y el despliegue de la página web y aplicación móvil. Desarrollé funcionalidades de backend en Python y Flutter, y gestioné la base de datos de la aplicación utilizando PostgreSQL y Firebase."
+      },
+      "job4": {
+        "role": "Data Entry",
+        "company": "PervasiveMind",
+        "period": "12/2023 - 04/2024",
+        "description": "Realicé la limpieza de datos utilizando herramientas de Office y Python, procesando información obtenida a través de técnicas de Web Scraping para asegurar la calidad y precisión de los datos."
+      }
     },
-    "job2": {
-      "title": "Backend Developer",
-      "company": "Migtra",
-      "date": "Feb 2025 – Present",
-      "description": "Implementando un sistema de monitoreo en AWS para gestionar máquinas EC2, realicé validación de datos con Flask y PostgreSQL, y automatización con Docker en entornos Linux. Proporcioné reportes de valor a gestión mediante la identificación de errores en logs y mejoré la visibilidad operativa."
-    }
-  },
   "projects": {
     "title": "Proyectos",
     "project1": {

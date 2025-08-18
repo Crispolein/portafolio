@@ -5,8 +5,8 @@ import SectionWrapper from '../components/SectionWrapper';
 import { FaLaptopCode } from 'react-icons/fa';
 import { GiGears } from 'react-icons/gi';
 
-// Solo necesitamos un array de las claves de los trabajos
-const jobKeys = ['job1', 'job2'];
+// Actualiza este array para que coincida con el número de trabajos en tus traducciones
+const jobKeys = ['job1', 'job2', 'job3', 'job4'];
 
 const container = {
   hidden: {},
@@ -37,7 +37,7 @@ const Experience = () => {
         <h2 className="text-3xl font-bold mb-8 text-center">{t('experience.title')}</h2>
         <div className="space-y-6">
           {jobKeys.map((key, idx) => {
-            const Icon = idx === 0 ? FaLaptopCode : GiGears;
+            const Icon = idx % 2 === 0 ? FaLaptopCode : GiGears; // Alternamos los íconos para variedad
             return (
               <motion.div
                 key={key}
@@ -46,7 +46,7 @@ const Experience = () => {
                 transition={{ type: 'spring', stiffness: 300 }}
                 className="flex items-start p-6 bg-black/20 backdrop-blur-sm rounded-lg cursor-pointer"
               >
-                <div className="text-primary mr-4">
+                <div className="text-primary mr-4 mt-1">
                   <Icon size={32} />
                 </div>
                 <div>
