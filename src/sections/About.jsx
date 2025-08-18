@@ -1,70 +1,97 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { FaMobileAlt, FaDesktop, FaRobot, FaHandsHelping, FaPuzzlePiece, FaBolt } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaMobileAlt, FaDesktop, FaRobot, FaHandsHelping, FaPuzzlePiece, FaBolt, FaMagic } from 'react-icons/fa';
+import { RiRocket2Line } from 'react-icons/ri';
 import SectionWrapper from '../components/SectionWrapper';
+
+// Definición de las animaciones
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 100 } },
+};
 
 const About = () => {
   const { t } = useTranslation();
 
-  // Ahora los arrays de datos usan las claves de traducción
-  const milestones = [
-    { key: 'design', icon: <FaHandsHelping size={24} /> },
-    { key: 'dev', icon: <FaMobileAlt size={24} /> },
-    { key: 'deploy', icon: <FaBolt size={24} /> },
+  const values = [
+    { key: 'design', icon: <FaMagic size={28} />, name: t('about.milestones.design') },
+    { key: 'dev', icon: <FaMobileAlt size={28} />, name: t('about.milestones.dev') },
+    { key: 'deploy', icon: <RiRocket2Line size={28} />, name: t('about.milestones.deploy') },
+    { key: 'empathy', icon: <FaHandsHelping size={28} />, name: t('about.softSkills.empathy') },
+    { key: 'problemSolving', icon: <FaPuzzlePiece size={28} />, name: t('about.softSkills.problemSolving') },
+    { key: 'proactive', icon: <FaBolt size={28} />, name: t('about.softSkills.proactive') },
   ];
 
-  const passions = [
-    { key: 'mobile', icon: <FaMobileAlt size={32} /> },
-    { key: 'desktop', icon: <FaDesktop size={32} /> },
-    { key: 'ai', icon: <FaRobot size={32} /> },
-  ];
-
-  const softSkills = [
-    { key: 'empathy', icon: <FaHandsHelping size={24} /> },
-    { key: 'problemSolving', icon: <FaPuzzlePiece size={24} /> },
-    { key: 'proactive', icon: <FaBolt size={24} /> },
+  const expertise = [
+    { key: 'mobile', icon: <FaMobileAlt size={32} />, name: t('about.passions.mobile') },
+    { key: 'desktop', icon: <FaDesktop size={32} />, name: t('about.passions.desktop') },
+    { key: 'ai', icon: <FaRobot size={32} />, name: t('about.passions.ai') },
   ];
 
   return (
     <SectionWrapper id="about">
-      <div className="max-w-3xl mx-auto text-center space-y-8">
-        <h2 className="text-3xl font-bold">{t('about.title')}</h2>
-        <p className="text-slate-300 leading-relaxed">
-          {t('about.p1')}
-        </p>
-        <p className="text-slate-300 leading-relaxed">
-          {t('about.p2')}
-        </p>
-
-        {/* Timeline */}
-        <div className="flex justify-center items-center space-x-6 overflow-x-auto">
-          {milestones.map(({ key, icon }) => (
-            <div key={key} className="flex flex-col items-center text-slate-200">
-              <div className="p-3 bg-primary/20 rounded-full mb-2">{icon}</div>
-              <span className="text-sm font-medium">{t(`about.milestones.${key}`)}</span>
-            </div>
-          ))}
+      <div className="max-w-4xl mx-auto text-center space-y-12">
+        <div className="space-y-4">
+          <h2 className="text-4xl font-extrabold text-white">{t('about.title')}</h2>
+          <p className="text-slate-300 text-lg leading-relaxed max-w-2xl mx-auto">
+            {t('about.p1')}
+          </p>
+          <p className="text-slate-300 text-lg leading-relaxed max-w-2xl mx-auto">
+            {t('about.p2')}
+          </p>
         </div>
 
-        {/* Passions */}
-        <div className="grid grid-cols-3 gap-6">
-          {passions.map(({ key, icon }) => (
-            <div key={key} className="flex flex-col items-center">
-              <div className="p-2 text-primary">{icon}</div>
-              <span className="text-slate-300 text-sm">{t(`about.passions.${key}`)}</span>
-            </div>
+        {/* Sección de Valores y Proceso de Trabajo */}
+        <motion.div
+          className="grid grid-cols-2 sm:grid-cols-3 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {values.map((item) => (
+            <motion.div
+              key={item.key}
+              variants={itemVariants}
+              className="flex flex-col items-center justify-center p-6 border border-teal-500/30 rounded-lg text-white backdrop-blur-sm
+                         hover:bg-teal-500/10 transition-colors duration-300 cursor-pointer"
+            >
+              <div className="text-teal-400 mb-2">{item.icon}</div>
+              <span className="text-sm font-medium">{item.name}</span>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Soft Skills */}
-        <div className="grid grid-cols-3 gap-6">
-          {softSkills.map(({ key, icon }) => (
-            <div key={key} className="flex flex-col items-center">
-              <div className="p-2 text-primary">{icon}</div>
-              <span className="text-slate-300 text-sm">{t(`about.softSkills.${key}`)}</span>
-            </div>
+        {/* Sección de Áreas de Expertise */}
+        <motion.div
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          {expertise.map((item) => (
+            <motion.div
+              key={item.key}
+              variants={itemVariants}
+              className="flex flex-col items-center p-6 border border-purple-500/30 rounded-lg text-white backdrop-blur-sm
+                         hover:bg-purple-500/10 transition-colors duration-300 cursor-pointer"
+            >
+              <div className="text-purple-400 mb-2">{item.icon}</div>
+              <span className="text-lg font-semibold">{item.name}</span>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </SectionWrapper>
   );

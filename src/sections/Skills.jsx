@@ -3,12 +3,14 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import SectionWrapper from '../components/SectionWrapper';
 import { FaJs, FaReact, FaNodeJs, FaPython, FaAws, FaDocker, FaGitAlt } from 'react-icons/fa';
-import { SiTypescript, SiDjango, SiPostgresql, SiMongodb, SiRedis, SiHtml5, SiCss3, SiBitbucket, SiJira, SiLinux, SiDart, SiFlutter, SiFirebase } from 'react-icons/si';
+import { SiTypescript, SiDjango, SiPostgresql, SiMongodb, SiRedis, SiHtml5, SiCss3, SiBitbucket, SiJira, SiLinux, SiDart, SiFlutter, SiFirebase, SiFlask } from 'react-icons/si';
+import { DiGoogleCloudPlatform } from 'react-icons/di';
 
 const skillsList = [
   // Lenguajes y Frameworks (del CV)
   { name: 'Python', Icon: FaPython },
-  { name: 'Django / Flask', Icon: SiDjango },
+  { name: 'Django', Icon: SiDjango },
+  { name: 'Flask', Icon: SiFlask },
   { name: 'Dart', Icon: SiDart },
   { name: 'Flutter', Icon: SiFlutter },
   { name: 'HTML', Icon: SiHtml5 },
@@ -23,6 +25,7 @@ const skillsList = [
   { name: 'Docker', Icon: FaDocker },
   { name: 'Linux', Icon: SiLinux },
   { name: 'AWS', Icon: FaAws },
+  { name: 'GCP', Icon: DiGoogleCloudPlatform }, 
 ];
 
 const container = {
