@@ -3,7 +3,9 @@ import { Resend } from 'resend'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+// RFC-5321 email, no CR/LF/angle brackets/commas, max 254 chars
+const EMAIL_RE = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/
+const LIMITS = { name: 100, email: 254, message: 4000 }
 
 const esc = (s: string) =>
   String(s)
@@ -12,6 +14,9 @@ const esc = (s: string) =>
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;')
+
+// Strip characters that could be used for email-header injection in the subject
+const stripHeaderChars = (s: string) => s.replace(/[\r\n<>,]/g, ' ').trim()
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
@@ -28,20 +33,25 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(400).json({ error: 'Missing fields' })
   }
 
-  if (!EMAIL_RE.test(email)) {
+  if (name.length > LIMITS.name || email.length > LIMITS.email || message.length > LIMITS.message) {
+    return res.status(400).json({ error: 'Field too long' })
+  }
+
+  if (!EMAIL_RE.test(email) || /[\r\n<>,]/.test(email)) {
     return res.status(400).json({ error: 'Invalid email' })
   }
 
   const safeName = esc(name)
   const safeEmail = esc(email)
   const safeMessage = esc(message).replace(/\n/g, '<br/>')
+  const safeSubjectName = stripHeaderChars(name)
 
   try {
     await resend.emails.send({
       from: 'Portfolio <onboarding@resend.dev>',
       to: 'chris.rangel.intriago@gmail.com',
       replyTo: email,
-      subject: `Contacto portafolio — ${safeName}`,
+      subject: `Contacto portafolio — ${safeSubjectName}`,
       text: `Nombre: ${name}\nEmail: ${email}\n\n${message}`,
       html: `
         <h2>Nuevo mensaje desde el portafolio</h2>
