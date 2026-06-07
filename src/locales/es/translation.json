@@ -12,11 +12,11 @@
     "title1": "Backend engineer",
     "title2": "potenciado por",
     "titleAi": "IA",
-    "subtitle": "Python y AWS como base, inteligencia artificial como multiplicador. Tech lead con impacto cuantificable: <amber>80 tickets/mes eliminados</amber>, 6+ meses sin incidentes en producción, 2 desarrolladores liderados.",
+    "subtitle": "Python y AWS como base, inteligencia artificial como multiplicador. Tech lead con impacto cuantificable: <amber>80 tickets/mes eliminados</amber>, sin incidentes en producción, 2 desarrolladores liderados.",
     "cta": "Ver proyectos",
     "cv": "Descargar CV",
     "stat1": { "value": "80", "label": "tickets/mes elim." },
-    "stat2": { "value": "6+", "label": "meses sin incid." },
+    "stat2": { "value": "0", "label": "incid. producción" },
     "stat3": { "value": "8", "label": "proyectos" }
   },
   "about": {
@@ -103,12 +103,12 @@
     "migtra": {
       "company": "Migtra",
       "role": "Backend Developer → Tech Lead",
-      "desc": "Backend Python (2.7 y 3.10) sobre AWS para plataforma de telemetría GPS. Pasé de desarrollador de soporte a Tech Lead de 2 developers junior — inducción, code review, arquitectura y mentoring activo."
+      "desc": "Backend Python (2.7 y 3.10) sobre AWS para plataforma de telemetría GPS. En menos de un año pasé de desarrollador de soporte a Tech Lead de 2 developers junior — inducción, code review, arquitectura y mentoring activo."
     },
     "gesitech": {
       "company": "Gesitech",
       "role": "Backend Developer",
-      "desc": "Apps móviles Flutter/Dart con Firebase. Empresa de iniciativa personal, pausada para enfocarse en Migtra."
+      "desc": "Proyecto personal de apps móviles Flutter/Dart con Firebase, desarrollado en paralelo a Migtra. Pausado para concentrar el foco en el crecimiento dentro de Migtra."
     },
     "nocheAustral": {
       "company": "Noche Austral · Proyecto Universitario",
