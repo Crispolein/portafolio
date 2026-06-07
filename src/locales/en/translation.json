@@ -1,90 +1,148 @@
 {
-  "navbar": {
-    "home": "Home",
+  "nav": {
     "about": "About",
-    "skills": "Skills",
-    "experience": "Experience",
     "projects": "Projects",
+    "tools": "Tools",
+    "experience": "Experience",
+    "skills": "Skills",
     "contact": "Contact"
   },
   "hero": {
-    "greeting": "Hi, I'm Christian Rangel",
-    "subtitle": "Computer Science Engineer and software developer.",
-    "cta": "Download my CV",
-    "skills": {
-      "mobileDev": "Mobile Development",
-      "databases": "Databases",
-      "webAi": "Web & AI",
-      "cloudOps": "Cloud Ops"
-    }
+    "badge": "Available · Computer Science Engineer · Santiago, Chile",
+    "title1": "Backend engineer",
+    "title2": "powered by",
+    "titleAi": "AI",
+    "subtitle": "Python and AWS as the foundation, artificial intelligence as the multiplier. Tech lead with measurable impact: <amber>80 tickets/month eliminated</amber>, 6+ months in production without incidents, 2 developers mentored.",
+    "cta": "View projects",
+    "cv": "Download CV",
+    "stat1": { "value": "80", "label": "tickets/mo elim." },
+    "stat2": { "value": "6+", "label": "months w/o incidents" },
+    "stat3": { "value": "8", "label": "projects" }
   },
   "about": {
-    "title": "About Me",
-    "p1": "I am Christian Rangel, a Computer Science Engineer who led Astroapp, a mobile application developed from design to deployment, satisfying all of the client's needs.",
-    "p2": "I aim to design robust projects that combine innovation and empathy, offering pocket-friendly solutions and applying artificial intelligence to improve user experience.",
-    "milestones": {
-      "design": "Design & Prototyping",
-      "dev": "Mobile Development",
-      "deploy": "Deployment & Feedback"
+    "label": "About",
+    "title": "Who I am",
+    "bio": "Computer Science Engineer (Universidad Autónoma de Chile, 2025) focused on Python backend development, AWS services and technical leadership. At Migtra, over more than a year, I grew from support developer to Tech Lead of 2 junior developers. My automations eliminated 80 tickets/month and saved 30 hours/month for the team. I use generative AI as part of my workflow from the first commit — not as an occasional tool, but as a real productivity multiplier.",
+    "diploma": "AI Diploma — Universidad Autónoma de Chile (in progress, 2026)",
+    "cards": {
+      "backend": { "title": "Python · Django · FastAPI · Flask", "sub": "Solid backend, REST APIs, async, automations" },
+      "cloud": { "title": "AWS · Docker · PostgreSQL · DynamoDB", "sub": "S3, EC2, Cognito, CloudWatch — real productive use" },
+      "ai": { "title": "Claude API · LLMs · AI Agents", "sub": "Real AI integration in products, not prototypes" },
+      "mobile": { "title": "Flutter · Dart · Firebase", "sub": "Cross-platform mobile apps with cloud backend" }
+    }
+  },
+  "projects": {
+    "label": "Personal projects",
+    "title": "What I build on my own initiative",
+    "sub": "From idea to production — real problems, functional solutions",
+    "problemLabel": "Problem",
+    "solutionLabel": "Solution",
+    "github": "GitHub →",
+    "demo": "View demo",
+    "viewSite": "View site",
+    "cvOptimizer": {
+      "tag": "Django · HTMX · Claude API",
+      "name": "CV Optimizer Pro",
+      "desc": "Multi-agent system with Claude acting as senior recruiter, hiring manager and career coach. Extracts the real profile through conversational interview and generates CVs with verified credibility.",
+      "problem": "CV optimizers inflate achievements with generic phrases that a recruiter detects in seconds.",
+      "solution": "3 Claude agents (recruiter, coach, anti-exaggeration auditor) + semantic job matching + application Kanban."
     },
-    "passions": {
-      "mobile": "Mobile Apps",
-      "desktop": "Desktop Apps",
-      "ai": "Artificial Intelligence"
+    "jobHunter": {
+      "tag": "FastAPI · React · Celery",
+      "name": "Job Hunter Platform",
+      "desc": "Platform with 116+ REST endpoints that scrapes job offers every 6h from 7 sources, applies semantic matching and generates CVs in 4 styles with real-time dashboard.",
+      "problem": "Manual job searching consumes hours and generic CVs have low response rates.",
+      "solution": "Celery + Redis pipeline for async scraping, AI ranking and React dashboard with real-time metrics."
     },
-    "softSkills": {
-      "empathy": "Empathy",
-      "problemSolving": "Problem-Solving",
-      "proactive": "Proactive"
+    "tcg": {
+      "tag": "Python · Streamlit · React Native",
+      "name": "TCG Collection Manager",
+      "desc": "Card collection management with price scraping, computer vision condition analysis, OCR and React Native app to scan physical cards from camera.",
+      "problem": "Inventorying physical card collections is tedious and card prices fluctuate constantly.",
+      "solution": "Streamlit dashboard + TCGPlayer scraping + mobile app with OpenCV and Tesseract OCR for condition analysis."
+    },
+    "financial": {
+      "tag": "Flutter · Firebase · OpenAI",
+      "name": "Family Finance",
+      "desc": "Multi-platform family expense management app with AI financial analysis, voice expense entry via webhooks and family role permissions. 80% complete, 11 screens.",
+      "problem": "Family expense management is fragmented and lacks intelligent analysis.",
+      "solution": "Multi-platform Flutter with Riverpod, GPT-4o-mini for financial insights and Cloud Functions for voice webhooks (Google Assistant/Siri)."
+    },
+    "nocheAustral": {
+      "tag": "Graduation Project · Full Platform",
+      "name": "Noche Austral",
+      "desc": "Complete astronomy outreach platform as graduation project: Flutter app (16,000+ lines) + Django web CMS deployed on Google Cloud.",
+      "problem": "The university needed an astronomy outreach platform with mobile app and web CMS for editorial management.",
+      "solution": "Flutter app with moon phases, ISS tracker, NASA APOD, 3 educational games and Firebase Auth. Django CMS with articles, comments and GCP App Engine deploy.",
+      "mobileLabel": "Mobile app",
+      "webLabel": "Web platform",
+      "appGithub": "App GitHub →",
+      "webGithub": "Web GitHub →"
+    }
+  },
+  "tools": {
+    "label": "Professional tools",
+    "title": "Built in real work context",
+    "sub": "Internal utilities that solve concrete operational problems — from idea to production in days",
+    "dbBackup": {
+      "name": "DB Backup & Restore Tool",
+      "desc": "CLI + GUI for intelligent PostgreSQL database cloning between environments. SSH tunneling, date filtering and workflow presets. Dry-run mode for safe preview before executing."
+    },
+    "kmlValidator": {
+      "name": "KML Validator Suite",
+      "desc": "5 integrated tools to validate, compare and analyze Google Earth KML files. Detects structural errors and generates visual debug files for diagnosis."
+    },
+    "userManager": {
+      "name": "User Manager v2",
+      "desc": "Web platform for centralized user management with AWS Cognito. Angular frontend, FastAPI backend and infrastructure as code with AWS CDK — ECS Fargate + CloudFront."
+    }
+  },
+  "experience": {
+    "label": "Experience",
+    "title": "Career path",
+    "migtra": {
+      "company": "Migtra",
+      "role": "Backend Developer → Tech Lead",
+      "desc": "Python backend (2.7 and 3.10) on AWS for GPS telemetry platform. Grew from support developer to Tech Lead of 2 junior developers — onboarding, code review, architecture and active mentoring."
+    },
+    "gesitech": {
+      "company": "Gesitech",
+      "role": "Backend Developer",
+      "desc": "Flutter/Dart mobile apps with Firebase. Personal company initiative, paused to focus on Migtra."
+    },
+    "nocheAustral": {
+      "company": "Noche Austral · University Project",
+      "role": "Full Stack Developer",
+      "desc": "Complete astronomy outreach platform as graduation project: Flutter app + Firebase and Django web CMS deployed on GCP App Engine."
+    },
+    "pervasivemind": {
+      "company": "PervasiveMind",
+      "role": "Internship — Data & Web Scraping",
+      "desc": "Price data collection and processing via web scraping. Python, BeautifulSoup, data analysis."
     }
   },
   "skills": {
-    "title": "Skills"
-  },
-  "experience": {
-      "title": "Professional Experience",
-      "job1": {
-        "role": "Backend Developer",
-        "company": "Gesitech",
-        "period": "May 2025 - Present",
-        "description": "Responsible for designing and developing mobile applications with Dart/Flutter, managing and optimizing databases in Firebase. I also developed APIs for efficient communication between the frontend and backend."
-      },
-      "job2": {
-        "role": "Junior Backend Developer",
-        "company": "Migtra",
-        "period": "Jan 2025 - Present",
-        "description": "Developed backend functionalities with Python and implemented resource management in AWS to ensure procedural continuity. Managed tickets in Jira for task tracking and used Git and Bitbucket for version control."
-      },
-      "job3": {
-        "role": "Full Stack Developer",
-        "company": "Noche Austral",
-        "period": "Jul 2024 - Apr 2025",
-        "description": "Led the optimization and deployment of the website and mobile application. Developed backend functionalities in Python and Flutter, and managed the application's database using PostgreSQL and Firebase."
-      },
-      "job4": {
-        "role": "Data Entry",
-        "company": "PervasiveMind",
-        "period": "Dec 2023 - Apr 2024",
-        "description": "Performed data cleaning using Office and Python tools, processing information obtained through Web Scraping techniques to ensure data quality and accuracy."
-      }
-    },
-  "projects": {
-    "title": "Projects",
-    "project1": {
-      "title": "Monorepo Monitoring",
-      "description": "AWS + Prometheus + Grafana observability stack."
-    },
-    "project2": {
-      "title": "Flask CLI Generator",
-      "description": "Excel-driven command generator CLI tool."
+    "label": "Skills",
+    "title": "Technologies",
+    "groups": {
+      "backend": "Backend · Databases",
+      "cloud": "Cloud · DevOps",
+      "ai": "AI · Mobile · Frontend"
     }
   },
-    "contact": {
-      "title": "Get in Touch",
-      "intro": "Do you have an interesting project or just want to say hello? Send me a message and I'll get back to you as soon as possible.",
-      "namePlaceholder": "Your name",
-      "emailPlaceholder": "Your email",
-      "messagePlaceholder": "Your message...",
-      "cta": "Send Message"
-    }
+  "contact": {
+    "label": "Contact",
+    "title": "Let's talk?",
+    "sub": "Open to job opportunities and freelance projects. If you have a backend, automation or AI integration problem to solve, reach out.",
+    "name": "Your name",
+    "email": "Your email",
+    "message": "Message...",
+    "send": "Send message",
+    "sending": "Sending...",
+    "success": "Message sent! I'll get back to you soon.",
+    "error": "Error sending. Write me directly at chris.rangel.intriago@gmail.com"
+  },
+  "footer": {
+    "made": "Built with React + Vite"
   }
+}
