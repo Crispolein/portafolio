@@ -22,8 +22,8 @@
   "about": {
     "label": "Sobre mí",
     "title": "Quién soy",
-    "bio": "Ingeniero Civil Informático (Universidad Autónoma de Chile, 2025) con foco en backend Python, servicios AWS y liderazgo técnico. En Migtra, en más de un año, pasé de desarrollador de soporte a Tech Lead de 2 desarrolladores junior. Mis automatizaciones eliminaron 80 tickets/mes y ahorraron 30 horas/mes al equipo. Uso IA generativa como parte del flujo desde el primer commit — no como curiosidad, sino como multiplicador real de productividad.",
-    "diploma": "Diplomado en IA — Universidad Autónoma de Chile (en curso, 2026)",
+    "bio": "Ingeniero Civil Informático (Universidad Autónoma de Chile, 2024) con foco en backend Python, servicios AWS y liderazgo técnico. En Migtra, en más de un año, pasé de desarrollador de soporte a Tech Lead de 2 desarrolladores junior. Mis automatizaciones eliminaron 80 tickets/mes y ahorraron 30 horas/mes al equipo. Uso IA generativa como parte del flujo desde el primer commit — no como curiosidad, sino como multiplicador real de productividad.",
+    "diploma": "Diplomado en IA — Universidad Autónoma de Chile (2026)",
     "cards": {
       "backend": { "title": "Python · Django · FastAPI · Flask", "sub": "Backend sólido, APIs REST, async, automatizaciones" },
       "cloud": { "title": "AWS · Docker · PostgreSQL · DynamoDB", "sub": "S3, EC2, Cognito, CloudWatch — uso productivo real" },

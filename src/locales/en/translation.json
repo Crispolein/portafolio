@@ -22,8 +22,8 @@
   "about": {
     "label": "About",
     "title": "Who I am",
-    "bio": "Computer Science Engineer (Universidad Autónoma de Chile, 2025) focused on Python backend development, AWS services and technical leadership. At Migtra, over more than a year, I grew from support developer to Tech Lead of 2 junior developers. My automations eliminated 80 tickets/month and saved 30 hours/month for the team. I use generative AI as part of my workflow from the first commit — not as an occasional tool, but as a real productivity multiplier.",
-    "diploma": "AI Diploma — Universidad Autónoma de Chile (in progress, 2026)",
+    "bio": "Computer Science Engineer (Universidad Autónoma de Chile, 2024) focused on Python backend development, AWS services and technical leadership. At Migtra, over more than a year, I grew from support developer to Tech Lead of 2 junior developers. My automations eliminated 80 tickets/month and saved 30 hours/month for the team. I use generative AI as part of my workflow from the first commit — not as an occasional tool, but as a real productivity multiplier.",
+    "diploma": "AI Diploma — Universidad Autónoma de Chile (2026)",
     "cards": {
       "backend": { "title": "Python · Django · FastAPI · Flask", "sub": "Solid backend, REST APIs, async, automations" },
       "cloud": { "title": "AWS · Docker · PostgreSQL · DynamoDB", "sub": "S3, EC2, Cognito, CloudWatch — real productive use" },
