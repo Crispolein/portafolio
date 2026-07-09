@@ -17,7 +17,7 @@
     "cv": "Descargar CV",
     "stat1": { "value": "80", "label": "tickets/mes elim." },
     "stat2": { "value": "0", "label": "incid. producción" },
-    "stat3": { "value": "8", "label": "proyectos" }
+    "stat3": { "value": "9", "label": "proyectos" }
   },
   "about": {
     "label": "Sobre mí",
@@ -40,6 +40,7 @@
     "github": "GitHub →",
     "demo": "Ver demo",
     "viewSite": "Ver sitio",
+    "privateRepo": "🔒 Repositorio privado",
     "cvOptimizer": {
       "tag": "Django · HTMX · Claude API",
       "name": "CV Optimizer Pro",
@@ -60,6 +61,13 @@
       "desc": "Gestión de colección de cartas con scraping de precios, análisis de condición por visión computacional, OCR y app React Native para escanear cartas físicas desde cámara.",
       "problem": "Inventariar colecciones físicas es tedioso y los precios de cartas fluctúan constantemente.",
       "solution": "Dashboard Streamlit + scraping TCGPlayer + app móvil con OpenCV y Tesseract OCR para análisis de condición."
+    },
+    "pokemontcgai": {
+      "tag": "PyTorch · Reinforcement Learning · Kaggle",
+      "name": "Pokémon TCG AI Battle Agent",
+      "desc": "Agente de IA para el simulador de batallas del Pokémon TCG, desarrollado para la competencia Kaggle 2026. Entrena políticas de decisión mediante refuerzo multi-agente sobre el motor oficial de la competencia.",
+      "problem": "Elegir la jugada óptima en un juego de cartas con información oculta e interacciones combinatorias masivas es intratable con reglas fijas.",
+      "solution": "Pipeline de entrenamiento con Stable-Baselines3 y PettingZoo sobre kaggle-environments, con iteración medida en corridas de n≥1000 partidas para validar cada mejora de política."
     },
     "financial": {
       "tag": "Flutter · Firebase · OpenAI",

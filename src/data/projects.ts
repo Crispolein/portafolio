@@ -11,6 +11,7 @@ export interface Project {
   stack: { label: string; color: 'amber' | 'sky' | 'gray' | 'purple' }[]
   github?: string
   demo?: string
+  privateRepo?: boolean
   featured?: boolean
   featuredData?: {
     mobileScreens: string[]
@@ -46,7 +47,7 @@ export const projects: Project[] = [
       { label: 'Multi-agent', color: 'sky' },
       { label: 'WeasyPrint', color: 'gray' },
     ],
-    github: 'https://github.com/Crispolein/cv_optimizer',
+    privateRepo: true,
   },
   {
     id: 'job-hunter',
@@ -66,7 +67,7 @@ export const projects: Project[] = [
       { label: 'Redis', color: 'gray' },
       { label: 'PostgreSQL', color: 'gray' },
     ],
-    github: 'https://github.com/Crispolein/BusquedaLaboral',
+    privateRepo: true,
   },
   {
     id: 'tcg',
@@ -86,7 +87,26 @@ export const projects: Project[] = [
       { label: 'OCR', color: 'sky' },
       { label: 'React Native', color: 'gray' },
     ],
-    github: 'https://github.com/Crispolein/scrapingpokemon',
+    privateRepo: true,
+  },
+  {
+    id: 'pokemontcgai',
+    emoji: '🤖',
+    badge: 'IA · RL',
+    badgeColor: 'ai',
+    tagKey: 'projects.pokemontcgai.tag',
+    nameKey: 'projects.pokemontcgai.name',
+    descKey: 'projects.pokemontcgai.desc',
+    problemKey: 'projects.pokemontcgai.problem',
+    solutionKey: 'projects.pokemontcgai.solution',
+    stack: [
+      { label: 'PyTorch', color: 'sky' },
+      { label: 'Stable-Baselines3', color: 'sky' },
+      { label: 'Gymnasium', color: 'sky' },
+      { label: 'PettingZoo', color: 'gray' },
+      { label: 'Kaggle', color: 'gray' },
+    ],
+    privateRepo: true,
   },
   {
     id: 'financial',
@@ -105,7 +125,7 @@ export const projects: Project[] = [
       { label: 'Firebase', color: 'gray' },
       { label: 'Cloud Functions', color: 'gray' },
     ],
-    github: 'https://github.com/Crispolein/financial',
+    privateRepo: true,
   },
   {
     id: 'noche-austral',

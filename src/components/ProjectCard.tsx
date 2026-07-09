@@ -74,6 +74,12 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               {t('projects.demo')}
             </a>
           )}
+          {project.privateRepo && !project.github && (
+            <span className="px-3.5 py-1.5 rounded-md text-[12px] font-semibold
+                             border border-white/[0.1] text-[#4b5563]">
+              {t('projects.privateRepo')}
+            </span>
+          )}
         </div>
       </div>
     </motion.div>
