@@ -111,7 +111,7 @@ Herramientas profesionales
 
 Experiencia
   Timeline vertical:
-  - Migtra: Enero 2024 → Presente (Tech Lead, metric chips)
+  - Migtra: Enero 2025 → Presente (Tech Lead, metric chips)
   - Gesitech: Mayo 2025 → Febrero 2025 (empresa personal, pausada)
   - Noche Austral: Julio 2024 → Abril 2025 (proyecto titulación)
   - PervasiveMind: Noviembre 2023 → Febrero 2024 (práctica)
@@ -161,7 +161,7 @@ Footer
 
 | Empresa | Rol | Período |
 |---------|-----|---------|
-| Migtra | Backend Developer → Tech Lead | Enero 2024 — Presente |
+| Migtra | Backend Developer → Tech Lead | Enero 2025 — Presente |
 | Gesitech | Backend Developer | Mayo 2025 — Febrero 2026 (empresa personal, pausada) |
 | Noche Austral | Full Stack Developer | Julio 2024 — Abril 2025 |
 | PervasiveMind | Práctica — Data & Scraping | Noviembre 2023 — Febrero 2024 |
