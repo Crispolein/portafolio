@@ -16,7 +16,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "@types/react": "^18.3.31",
     "@types/react-dom": "^18.3.7",
-    "@vercel/node": "^5.8.12",
+    "@vercel/node": "^5.8.23",
     "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.4.0",
