@@ -15,7 +15,7 @@ export default function StatCard({ value, label, variant }: StatCardProps) {
       <div className={`text-3xl font-black leading-none ${isAmber ? 'text-amber' : 'text-sky-accent'}`}>
         {value}
       </div>
-      <div className="text-[10px] uppercase tracking-widest mt-1 text-[#6b7280]">
+      <div className="text-[10px] uppercase tracking-widest mt-1 text-muted">
         {label}
       </div>
     </div>

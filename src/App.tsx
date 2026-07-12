@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import Navbar from './components/Navbar'
 import Hero from './sections/Hero'
 import About from './sections/About'
@@ -8,8 +9,10 @@ import Skills from './sections/Skills'
 import Contact from './sections/Contact'
 
 export default function App() {
+  const { t } = useTranslation()
+
   return (
-    <div className="min-h-screen" style={{ background: '#060810', color: '#e5e7eb' }}>
+    <div className="min-h-screen bg-surface-deep text-[#e7e5e4]">
       <Navbar />
       <main>
         <Hero />
@@ -20,10 +23,17 @@ export default function App() {
         <Skills />
         <Contact />
       </main>
-      <footer className="px-8 py-6 border-t border-white/[0.07] flex flex-wrap justify-between items-center gap-3 text-[12px] text-[#6b7280]">
-        <span className="font-black text-amber">Christian Rangel</span>
-        <span>Ing. Civil Informático · Backend Python · AWS · IA — 2025</span>
-        <span>Hecho con React + Vite</span>
+      <footer className="px-8 py-6 border-t border-white/[0.07] flex flex-wrap justify-between items-center gap-3 text-[12px] text-muted">
+        <span className="font-display font-bold text-amber">Christian Rangel</span>
+        <span>{t('footer.updated')}</span>
+        <a
+          href="https://github.com/Crispolein/portafolio"
+          target="_blank"
+          rel="noreferrer"
+          className="hover:text-white transition-colors"
+        >
+          {t('footer.source')} →
+        </a>
       </footer>
     </div>
   )

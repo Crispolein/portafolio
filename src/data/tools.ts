@@ -1,6 +1,8 @@
+import type { IconName } from '../components/Icons'
+
 export interface Tool {
   id: string
-  icon: string
+  icon: IconName
   nameKey: string
   descKey: string
   stack: { label: string; color: 'amber' | 'sky' | 'gray' }[]
@@ -9,7 +11,7 @@ export interface Tool {
 export const tools: Tool[] = [
   {
     id: 'db-backup',
-    icon: '🗄️',
+    icon: 'database',
     nameKey: 'tools.dbBackup.name',
     descKey: 'tools.dbBackup.desc',
     stack: [
@@ -22,7 +24,7 @@ export const tools: Tool[] = [
   },
   {
     id: 'kml-validator',
-    icon: '🗺️',
+    icon: 'map',
     nameKey: 'tools.kmlValidator.name',
     descKey: 'tools.kmlValidator.desc',
     stack: [
@@ -34,7 +36,7 @@ export const tools: Tool[] = [
   },
   {
     id: 'user-manager',
-    icon: '👥',
+    icon: 'users',
     nameKey: 'tools.userManager.name',
     descKey: 'tools.userManager.desc',
     stack: [

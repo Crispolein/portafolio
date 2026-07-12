@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,13 +11,15 @@
   }
 
   body {
-    background-color: #060810;
-    color: #e5e7eb;
+    background-color: #0a0908;
+    color: #e7e5e4;
   }
 
   ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: #060810; }
+  ::-webkit-scrollbar-track { background: #0a0908; }
   ::-webkit-scrollbar-thumb { background: rgba(240,165,0,0.3); border-radius: 3px; }
+
+  ::selection { background: rgba(240,165,0,0.25); }
 }
 
 @layer utilities {

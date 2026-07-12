@@ -1,46 +1,48 @@
 import { useTranslation } from 'react-i18next'
-import { motion } from 'framer-motion'
-import { skillGroups } from '../data/skills'
+import { skillGroups, type SkillTier } from '../data/skills'
+
+const TIER_ORDER: SkillTier[] = ['daily', 'solid', 'learning']
 
 export default function Skills() {
   const { t } = useTranslation()
 
   return (
-    <section id="skills" className="px-8 py-16 border-b border-white/[0.07] bg-[#0d1117]">
+    <section id="skills" className="px-8 py-16 border-b border-white/[0.07] bg-surface">
       <div className="max-w-6xl mx-auto">
-        <p className="text-[10px] text-amber uppercase tracking-[3px] mb-2">{t('skills.label')}</p>
-        <h2 className="text-3xl font-black text-white mb-10">{t('skills.title')}</h2>
+        <h2 className="font-display text-3xl font-bold text-white mb-10">{t('skills.title')}</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {skillGroups.map((group, gi) => (
+          {skillGroups.map(group => (
             <div key={group.labelKey}>
               <p className={`text-[10px] uppercase tracking-[2px] mb-4 ${
                 group.color === 'sky' ? 'text-sky-accent' : 'text-amber'
               }`}>
                 {t(group.labelKey)}
               </p>
-              <div className="flex flex-col gap-3">
-                {group.skills.map((skill, si) => (
-                  <motion.div
-                    key={skill.name}
-                    className="flex items-center gap-3"
-                    initial={{ opacity: 0, x: -12 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: gi * 0.1 + si * 0.04 }}
-                  >
-                    <span className="text-[13px] text-white min-w-[90px]">{skill.name}</span>
-                    <div className="flex-1 h-1 bg-white/[0.06] rounded-full overflow-hidden">
-                      <motion.div
-                        className={`h-full rounded-full ${skill.color === 'sky' ? 'bg-[#38bdf8]' : 'bg-[#f0a500]'}`}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: gi * 0.1 + si * 0.04 }}
-                      />
+              <div className="flex flex-col gap-4">
+                {TIER_ORDER.map(tier => {
+                  const inTier = group.skills.filter(s => s.tier === tier)
+                  if (!inTier.length) return null
+                  return (
+                    <div key={tier}>
+                      <p className="text-[11px] text-muted mb-1.5">{t(`skills.tiers.${tier}`)}</p>
+                      <div className="flex gap-1.5 flex-wrap">
+                        {inTier.map(skill => (
+                          <span
+                            key={skill.name}
+                            className={`px-2.5 py-1 rounded text-[12px] font-mono ${
+                              skill.color === 'sky'
+                                ? 'bg-sky-dim border border-sky text-sky-accent'
+                                : 'bg-amber-dim border border-amber text-amber'
+                            } ${tier === 'learning' ? 'opacity-60' : ''}`}
+                          >
+                            {skill.name}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </motion.div>
-                ))}
+                  )
+                })}
               </div>
             </div>
           ))}

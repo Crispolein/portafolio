@@ -1,22 +1,20 @@
 export interface Project {
   id: string
-  emoji: string
-  badge: string
+  badgeKey: string
   badgeColor: 'ai' | 'automation' | 'vision' | 'mobile' | 'graduation'
   tagKey: string
   nameKey: string
   descKey: string
-  problemKey: string
-  solutionKey: string
-  stack: { label: string; color: 'amber' | 'sky' | 'gray' | 'purple' }[]
+  stack: { label: string; color: 'amber' | 'sky' | 'gray' }[]
   github?: string
   demo?: string
   privateRepo?: boolean
   featured?: boolean
+  image?: string
+  video?: string
   featuredData?: {
-    mobileScreens: string[]
-    webPreview: string
-    chips: string[]
+    screens?: { src: string; labelKey: string }[]
+    chipKeys: string[]
   }
 }
 
@@ -25,20 +23,17 @@ export const BADGE_STYLES: Record<Project['badgeColor'], string> = {
   automation: 'bg-sky-dim border border-sky text-sky-accent',
   vision: 'bg-emerald-500/10 border border-emerald-500/25 text-emerald-400',
   mobile: 'bg-sky-dim border border-sky text-sky-accent',
-  graduation: 'bg-purple-500/10 border border-purple-500/25 text-purple-400',
+  graduation: 'bg-amber-dim border border-amber text-amber',
 }
 
 export const projects: Project[] = [
   {
     id: 'cv-optimizer',
-    emoji: '🧠',
-    badge: 'IA · Agentes',
+    badgeKey: 'projects.cvOptimizer.badge',
     badgeColor: 'ai',
     tagKey: 'projects.cvOptimizer.tag',
     nameKey: 'projects.cvOptimizer.name',
     descKey: 'projects.cvOptimizer.desc',
-    problemKey: 'projects.cvOptimizer.problem',
-    solutionKey: 'projects.cvOptimizer.solution',
     stack: [
       { label: 'Django 5', color: 'amber' },
       { label: 'HTMX', color: 'amber' },
@@ -51,14 +46,11 @@ export const projects: Project[] = [
   },
   {
     id: 'job-hunter',
-    emoji: '🔍',
-    badge: 'Automatización',
+    badgeKey: 'projects.jobHunter.badge',
     badgeColor: 'automation',
     tagKey: 'projects.jobHunter.tag',
     nameKey: 'projects.jobHunter.name',
     descKey: 'projects.jobHunter.desc',
-    problemKey: 'projects.jobHunter.problem',
-    solutionKey: 'projects.jobHunter.solution',
     stack: [
       { label: 'FastAPI', color: 'amber' },
       { label: 'Celery', color: 'amber' },
@@ -71,14 +63,11 @@ export const projects: Project[] = [
   },
   {
     id: 'tcg',
-    emoji: '🃏',
-    badge: 'Visión Comp.',
+    badgeKey: 'projects.tcg.badge',
     badgeColor: 'vision',
     tagKey: 'projects.tcg.tag',
     nameKey: 'projects.tcg.name',
     descKey: 'projects.tcg.desc',
-    problemKey: 'projects.tcg.problem',
-    solutionKey: 'projects.tcg.solution',
     stack: [
       { label: 'Python', color: 'amber' },
       { label: 'Streamlit', color: 'amber' },
@@ -91,14 +80,11 @@ export const projects: Project[] = [
   },
   {
     id: 'pokemontcgai',
-    emoji: '🤖',
-    badge: 'IA · RL',
+    badgeKey: 'projects.pokemontcgai.badge',
     badgeColor: 'ai',
     tagKey: 'projects.pokemontcgai.tag',
     nameKey: 'projects.pokemontcgai.name',
     descKey: 'projects.pokemontcgai.desc',
-    problemKey: 'projects.pokemontcgai.problem',
-    solutionKey: 'projects.pokemontcgai.solution',
     stack: [
       { label: 'PyTorch', color: 'sky' },
       { label: 'Stable-Baselines3', color: 'sky' },
@@ -110,17 +96,14 @@ export const projects: Project[] = [
   },
   {
     id: 'financial',
-    emoji: '💸',
-    badge: 'IA · Mobile',
+    badgeKey: 'projects.financial.badge',
     badgeColor: 'mobile',
     tagKey: 'projects.financial.tag',
     nameKey: 'projects.financial.name',
     descKey: 'projects.financial.desc',
-    problemKey: 'projects.financial.problem',
-    solutionKey: 'projects.financial.solution',
     stack: [
-      { label: 'Flutter', color: 'purple' },
-      { label: 'Riverpod', color: 'purple' },
+      { label: 'Flutter', color: 'amber' },
+      { label: 'Riverpod', color: 'amber' },
       { label: 'OpenAI', color: 'sky' },
       { label: 'Firebase', color: 'gray' },
       { label: 'Cloud Functions', color: 'gray' },
@@ -129,18 +112,15 @@ export const projects: Project[] = [
   },
   {
     id: 'noche-austral',
-    emoji: '🌌',
-    badge: 'Titulación',
+    badgeKey: 'projects.nocheAustral.badge',
     badgeColor: 'graduation',
     tagKey: 'projects.nocheAustral.tag',
     nameKey: 'projects.nocheAustral.name',
     descKey: 'projects.nocheAustral.desc',
-    problemKey: 'projects.nocheAustral.problem',
-    solutionKey: 'projects.nocheAustral.solution',
     stack: [
-      { label: 'Flutter', color: 'purple' },
-      { label: 'Dart', color: 'purple' },
-      { label: 'Firebase', color: 'purple' },
+      { label: 'Flutter', color: 'amber' },
+      { label: 'Dart', color: 'amber' },
+      { label: 'Firebase', color: 'gray' },
       { label: 'Django', color: 'amber' },
       { label: 'PostgreSQL', color: 'amber' },
       { label: 'GCP App Engine', color: 'gray' },
@@ -149,9 +129,7 @@ export const projects: Project[] = [
     demo: 'https://github.com/Crispolein/Astroweb',
     featured: true,
     featuredData: {
-      mobileScreens: ['🌙', '🛸', '🎮'],
-      webPreview: '🌌',
-      chips: ['16.000+ líneas Dart', 'Deploy GCP', 'Tesis titulación'],
+      chipKeys: ['projects.nocheAustral.chip1', 'projects.nocheAustral.chip2', 'projects.nocheAustral.chip3', 'projects.nocheAustral.chip4'],
     },
   },
 ]

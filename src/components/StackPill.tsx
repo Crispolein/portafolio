@@ -1,13 +1,12 @@
 interface StackPillProps {
   label: string
-  color: 'amber' | 'sky' | 'gray' | 'purple'
+  color: 'amber' | 'sky' | 'gray'
 }
 
 const colorMap = {
   amber: 'bg-amber-dim border border-amber text-amber',
   sky: 'bg-sky-dim border border-sky text-sky-accent',
-  gray: 'bg-white/[0.04] border border-white/[0.07] text-[#6b7280]',
-  purple: 'bg-purple-500/[0.08] border border-purple-500/20 text-purple-400',
+  gray: 'bg-white/[0.04] border border-white/[0.07] text-muted',
 }
 
 export default function StackPill({ label, color }: StackPillProps) {

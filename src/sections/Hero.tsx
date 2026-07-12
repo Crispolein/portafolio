@@ -35,7 +35,7 @@ export default function Hero() {
         className="px-8 py-20 border-b border-white/[0.07]"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 50% -10%, rgba(240,165,0,0.07) 0%, transparent 70%), linear-gradient(180deg, #0d1117 0%, #060810 100%)',
+            'radial-gradient(ellipse 70% 50% at 50% -10%, rgba(240,165,0,0.04) 0%, transparent 70%), linear-gradient(180deg, #121110 0%, #0a0908 100%)',
         }}
       >
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 items-center">
@@ -49,7 +49,7 @@ export default function Hero() {
               {t('hero.badge')}
             </div>
 
-            <h1 className="text-5xl font-black leading-[1.1] mb-4 text-white">
+            <h1 className="font-display text-5xl font-bold leading-[1.08] tracking-tight mb-4 text-white">
               {t('hero.title1')}
               <br />
               <span className="text-amber">
@@ -58,7 +58,7 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className="text-[15px] text-[#9ca3af] max-w-[460px] leading-[1.75] mb-7">
+            <p className="text-[15px] text-[#a8a29e] max-w-[460px] leading-[1.75] mb-7">
               {renderSubtitle(t('hero.subtitle'))}
             </p>
 
@@ -95,8 +95,8 @@ export default function Hero() {
       </section>
 
       {/* Stack strip */}
-      <div className="px-8 py-3.5 border-b border-white/[0.07] bg-[#0d1117] flex items-center gap-3 flex-wrap">
-        <span className="text-[10px] text-[#6b7280] uppercase tracking-[2px] whitespace-nowrap">Stack</span>
+      <div className="px-8 py-3.5 border-b border-white/[0.07] bg-surface flex items-center gap-3 flex-wrap">
+        <span className="text-[10px] text-muted uppercase tracking-[2px] whitespace-nowrap">Stack</span>
         <div className="w-px h-4 bg-white/[0.07]" />
         <div className="flex gap-1.5 flex-wrap">
           {STACK_PILLS.map(p => (

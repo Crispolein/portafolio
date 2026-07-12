@@ -16,13 +16,15 @@ export default {
           border: 'rgba(56,189,248,0.22)',
         },
         surface: {
-          DEFAULT: '#0d1117',
-          2: '#161b22',
-          deep: '#060810',
+          DEFAULT: '#121110',
+          2: '#1a1816',
+          deep: '#0a0908',
         },
+        muted: '#78716c',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
+        display: ['"Bricolage Grotesque"', 'Inter', 'sans-serif'],
       },
     },
   },

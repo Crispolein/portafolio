@@ -17,10 +17,10 @@ export const experiences: Experience[] = [
     active: true,
     descKey: 'experience.migtra.desc',
     metrics: [
-      '80 tickets/mes eliminados',
-      '30 hrs/mes ahorradas',
-      '0 incidentes producción',
-      '2 devs liderados',
+      'experience.migtra.m1',
+      'experience.migtra.m2',
+      'experience.migtra.m3',
+      'experience.migtra.m4',
     ],
   },
   {

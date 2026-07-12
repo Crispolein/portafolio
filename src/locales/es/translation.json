@@ -12,80 +12,99 @@
     "title1": "Backend engineer",
     "title2": "potenciado por",
     "titleAi": "IA",
-    "subtitle": "Python y AWS como base, inteligencia artificial como multiplicador. Tech lead con impacto cuantificable: <amber>80 tickets/mes eliminados</amber>, sin incidentes en producción, 2 desarrolladores liderados.",
+    "subtitle": "Python y AWS como base, inteligencia artificial como multiplicador. Backend developer con impacto verificable: <amber>solicitudes de documentos que tardaban días ahora se auto-sirven en horas</amber>, 0 incidentes en 6+ meses de producción, 2 desarrolladores liderados.",
     "cta": "Ver proyectos",
     "cv": "Descargar CV",
-    "stat1": { "value": "80", "label": "tickets/mes elim." },
-    "stat2": { "value": "0", "label": "incid. producción" },
-    "stat3": { "value": "9", "label": "proyectos" }
+    "stat1": {
+      "value": "~0",
+      "label": "tickets de docs"
+    },
+    "stat2": {
+      "value": "0",
+      "label": "incid. en 6+ meses"
+    },
+    "stat3": {
+      "value": "9",
+      "label": "proyectos"
+    }
   },
   "about": {
     "label": "Sobre mí",
     "title": "Quién soy",
-    "bio": "Ingeniero Civil Informático (Universidad Autónoma de Chile, 2024) con foco en backend Python, servicios AWS y liderazgo técnico. En Migtra, en más de un año, pasé de desarrollador de soporte a Tech Lead de 2 desarrolladores junior. Mis automatizaciones eliminaron 80 tickets/mes y ahorraron 30 horas/mes al equipo. Uso IA generativa como parte del flujo desde el primer commit — no como curiosidad, sino como multiplicador real de productividad.",
+    "bio": "Ingeniero Civil Informático (Universidad Autónoma de Chile, 2024) con foco en backend Python, servicios AWS y liderazgo técnico. En Migtra lidero técnicamente a 2 desarrolladores junior — inducción, code review y mentoring — y mis automatizaciones redujeron a casi cero los tickets de solicitud de documentos: lo que tardaba días hoy se auto-sirve en horas. En menos de 6 meses me convertí en referente del sistema GPS más crítico de la empresa. Uso IA generativa como parte del flujo desde el primer commit — no como curiosidad, sino como multiplicador real de productividad.",
     "diploma": "Diplomado en IA — Universidad Autónoma de Chile (2026)",
     "cards": {
-      "backend": { "title": "Python · Django · FastAPI · Flask", "sub": "Backend sólido, APIs REST, async, automatizaciones" },
-      "cloud": { "title": "AWS · Docker · PostgreSQL · DynamoDB", "sub": "S3, EC2, Cognito, CloudWatch — uso productivo real" },
-      "ai": { "title": "Claude API · LLMs · Agentes IA", "sub": "Integración real de IA en productos, no prototipos" },
-      "mobile": { "title": "Flutter · Dart · Firebase", "sub": "Apps móviles cross-platform con backend cloud" }
+      "backend": {
+        "title": "Python · Django · FastAPI · Flask",
+        "sub": "Backend sólido, APIs REST, async, automatizaciones"
+      },
+      "cloud": {
+        "title": "AWS · Docker · PostgreSQL · DynamoDB",
+        "sub": "S3, EC2, Cognito, CloudWatch — uso productivo real"
+      },
+      "ai": {
+        "title": "Claude API · LLMs · Agentes IA",
+        "sub": "Integración real de IA en productos, no prototipos"
+      },
+      "mobile": {
+        "title": "Flutter · Dart · Firebase",
+        "sub": "Apps móviles cross-platform con backend cloud"
+      }
     }
   },
   "projects": {
     "label": "Proyectos personales",
     "title": "Lo que construyo por iniciativa propia",
     "sub": "De la idea a producción — problemas reales, soluciones funcionales",
-    "problemLabel": "Problema",
-    "solutionLabel": "Solución",
     "github": "GitHub →",
-    "demo": "Ver demo",
-    "viewSite": "Ver sitio",
-    "privateRepo": "🔒 Repositorio privado",
+    "privateRepo": "Repositorio privado",
     "cvOptimizer": {
       "tag": "Django · HTMX · Claude API",
       "name": "CV Optimizer Pro",
-      "desc": "Sistema multi-agente con Claude que actúa como reclutador senior, hiring manager y career coach. Extrae el perfil real mediante entrevista conversacional y genera CVs con credibilidad verificada.",
-      "problem": "Los optimizadores de CV inflan logros con frases genéricas que un reclutador detecta en segundos.",
-      "solution": "3 agentes Claude (reclutador, coach, auditor anti-exageración) + matching semántico de vacantes + Kanban de postulaciones."
+      "desc": "Los optimizadores de CV inflan logros con frases que un reclutador detecta en segundos. Este hace lo contrario: 3 agentes Claude — reclutador, career coach y auditor anti-exageración — extraen el perfil real en una entrevista conversacional y generan CVs con credibilidad verificada, matching semántico de vacantes y Kanban de postulaciones.",
+      "badge": "IA · Agentes"
     },
     "jobHunter": {
       "tag": "FastAPI · React · Celery",
       "name": "Job Hunter Platform",
-      "desc": "Plataforma con 116+ endpoints REST que scrapea ofertas en ciclos de 6h desde 7 fuentes, aplica matching semántico y genera CVs en 4 estilos con dashboard en tiempo real.",
-      "problem": "Buscar trabajo manualmente consume horas y los CVs genéricos tienen baja tasa de respuesta.",
-      "solution": "Pipeline Celery + Redis para scraping asíncrono, ranking IA y dashboard React con métricas en tiempo real."
+      "desc": "116+ endpoints REST, scraping de 7 fuentes cada 6 horas y CVs generados en 4 estilos. Un pipeline Celery + Redis convierte la búsqueda de trabajo manual en un dashboard React con ranking por IA y métricas en tiempo real.",
+      "badge": "Automatización"
     },
     "tcg": {
       "tag": "Python · Streamlit · React Native",
       "name": "TCG Collection Manager",
-      "desc": "Gestión de colección de cartas con scraping de precios, análisis de condición por visión computacional, OCR y app React Native para escanear cartas físicas desde cámara.",
-      "problem": "Inventariar colecciones físicas es tedioso y los precios de cartas fluctúan constantemente.",
-      "solution": "Dashboard Streamlit + scraping TCGPlayer + app móvil con OpenCV y Tesseract OCR para análisis de condición."
+      "desc": "Nació de una colección física imposible de inventariar a mano: la cámara escanea la carta desde una app React Native, OpenCV y Tesseract analizan su condición, y el scraping de TCGPlayer mantiene los precios al día en un dashboard Streamlit.",
+      "badge": "Visión Comp."
     },
     "pokemontcgai": {
       "tag": "PyTorch · Reinforcement Learning · Kaggle",
       "name": "Pokémon TCG AI Battle Agent",
-      "desc": "Agente de IA para el simulador de batallas del Pokémon TCG, desarrollado para la competencia Kaggle 2026. Entrena políticas de decisión mediante refuerzo multi-agente sobre el motor oficial de la competencia.",
-      "problem": "Elegir la jugada óptima en un juego de cartas con información oculta e interacciones combinatorias masivas es intratable con reglas fijas.",
-      "solution": "Pipeline de entrenamiento con Stable-Baselines3 y PettingZoo sobre kaggle-environments, con iteración medida en corridas de n≥1000 partidas para validar cada mejora de política."
+      "desc": "Elegir la jugada óptima con información oculta e interacciones combinatorias masivas es intratable con reglas fijas. Este agente de refuerzo multi-agente (competencia Kaggle 2026) entrena políticas con Stable-Baselines3 y PettingZoo, validando cada mejora en corridas de n≥1000 partidas.",
+      "badge": "IA · RL"
     },
     "financial": {
       "tag": "Flutter · Firebase · OpenAI",
       "name": "Family Finance",
-      "desc": "App multi-plataforma de gestión de gastos familiares con análisis financiero por IA, entrada de gastos por voz vía webhooks y permisos por rol de familia. 80% completo, 11 pantallas.",
-      "problem": "La gestión de gastos familiares está fragmentada y carece de análisis inteligente.",
-      "solution": "Flutter multiplataforma con Riverpod, GPT-4o-mini para insights financieros y Cloud Functions para webhooks de voz (Google Assistant/Siri)."
+      "desc": "11 pantallas Flutter para ordenar los gastos de una familia: análisis financiero con GPT-4o-mini, entrada de gastos por voz vía webhooks (Google Assistant/Siri) y permisos por rol familiar. Multi-plataforma con Riverpod y Cloud Functions.",
+      "badge": "IA · Mobile"
     },
     "nocheAustral": {
       "tag": "Proyecto de Titulación · Plataforma completa",
       "name": "Noche Austral",
-      "desc": "Plataforma completa de divulgación astronómica como proyecto de titulación: app Flutter (16.000+ líneas) + web CMS Django deployado en Google Cloud.",
-      "problem": "La universidad necesitaba una plataforma de divulgación astronómica con app móvil y CMS web para gestión editorial.",
-      "solution": "App Flutter con fases lunares, ISS tracker, APOD NASA, 3 juegos educativos y Firebase Auth. Web CMS Django con publicaciones, comentarios y deploy en GCP App Engine.",
+      "desc": "Plataforma completa de divulgación astronómica como proyecto de titulación: app Flutter de 16.000+ líneas construida con Clean Architecture, pruebas unitarias y CI/CD, más web CMS Django desplegada en GCP App Engine con autenticación Firebase por roles.",
+      "mobile": "Fases lunares, ISS tracker, APOD de NASA y 3 juegos educativos, con capas de presentación, dominio e infraestructura separadas.",
+      "web": "CMS Django con publicaciones, comentarios y panel de administración, servido desde GCP App Engine.",
       "mobileLabel": "App móvil",
       "webLabel": "Plataforma web",
+      "adminLabel": "Panel de administración",
+      "darkLabel": "Tema nocturno",
       "appGithub": "App GitHub →",
-      "webGithub": "Web GitHub →"
+      "webGithub": "Web GitHub →",
+      "badge": "Titulación",
+      "chip1": "16.000+ líneas Dart",
+      "chip2": "Clean Architecture",
+      "chip3": "CI/CD + tests",
+      "chip4": "Deploy GCP"
     }
   },
   "tools": {
@@ -110,8 +129,12 @@
     "title": "Trayectoria profesional",
     "migtra": {
       "company": "Migtra",
-      "role": "Backend Developer → Tech Lead",
-      "desc": "Backend Python (2.7 y 3.10) sobre AWS para plataforma de telemetría GPS. En menos de un año pasé de desarrollador de soporte a Tech Lead de 2 developers junior — inducción, code review, arquitectura y mentoring activo."
+      "role": "Backend Developer",
+      "desc": "Backend Python (2.7 y 3.10) sobre AWS para plataforma de telemetría GPS. Lidero técnicamente a 2 desarrolladores junior — inducción, code review, asignación de trabajo y mentoring — y en menos de 6 meses me convertí en una de las 2 personas del equipo que dominan el sistema GPS más crítico de la empresa.",
+      "m1": "Tickets de documentos: de días a ~0",
+      "m2": "0 incidentes en 6+ meses",
+      "m3": "2 devs liderados",
+      "m4": "Sistema GPS crítico dominado en <6 meses"
     },
     "gesitech": {
       "company": "Gesitech",
@@ -136,6 +159,11 @@
       "backend": "Backend · Bases de datos",
       "cloud": "Cloud · DevOps",
       "ai": "IA · Mobile · Frontend"
+    },
+    "tiers": {
+      "daily": "Uso diario",
+      "solid": "Cómodo",
+      "learning": "Aprendiendo"
     }
   },
   "contact": {
@@ -151,6 +179,7 @@
     "error": "Error al enviar. Escribime directamente a chris.rangel.intriago@gmail.com"
   },
   "footer": {
-    "made": "Hecho con React + Vite"
+    "updated": "Actualizado julio 2026",
+    "source": "Código de este sitio"
   }
 }
