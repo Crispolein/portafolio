@@ -16,12 +16,12 @@
     "cta": "View projects",
     "cv": "Download CV",
     "stat1": {
-      "value": "~0",
-      "label": "doc tickets"
+      "value": "2+",
+      "label": "years of experience"
     },
     "stat2": {
-      "value": "0",
-      "label": "incidents in 6+ mo"
+      "value": "2",
+      "label": "devs mentored"
     },
     "stat3": {
       "value": "9",
