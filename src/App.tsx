@@ -1,49 +1,55 @@
+import type { MouseEvent } from 'react'
 import { useTranslation } from 'react-i18next'
-import { MotionConfig } from 'framer-motion'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import Hero from './sections/Hero'
-import About from './sections/About'
+import Story from './sections/Story'
 import Projects from './sections/Projects'
 import Tools from './sections/Tools'
 import Experience from './sections/Experience'
-import Skills from './sections/Skills'
 import Contact from './sections/Contact'
+import CasePage from './pages/CasePage'
+import { isCaseSlug } from './data/cases'
+import { linkClickHandler, useRoute } from './lib/route'
+
+const CASE_PREFIX = '/proyectos/'
+
+// Featured cards render a plain href; route plain clicks on case links through the router.
+function onCaseLinkClick(e: MouseEvent<HTMLElement>) {
+  const a = (e.target as HTMLElement).closest?.('a')
+  const href = a?.getAttribute('href')
+  if (href?.startsWith(CASE_PREFIX)) linkClickHandler(href)(e)
+}
 
 export default function App() {
   const { t } = useTranslation()
+  const route = useRoute()
+  const slug = route.startsWith(CASE_PREFIX) ? route.slice(CASE_PREFIX.length).replace(/\/$/, '') : ''
 
   return (
-    <MotionConfig reducedMotion="user">
-    <div className="min-h-screen bg-surface-deep text-[#e7e5e4]">
+    <div onClick={onCaseLinkClick}>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-amber focus:text-black focus:px-4 focus:py-2 focus:rounded-md focus:font-bold"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-[100] focus:rounded focus:bg-amb focus:px-4 focus:py-2 focus:font-bold focus:text-term"
       >
         {t('nav.skip')}
       </a>
       <Navbar />
-      <main id="main">
-        <Hero />
-        <About />
-        <Projects />
-        <Tools />
-        <Experience />
-        <Skills />
-        <Contact />
+      <main id="main" className="mx-auto max-w-[1168px] px-4 sm:px-14">
+        {isCaseSlug(slug) ? (
+          <CasePage slug={slug} />
+        ) : (
+          <>
+            <Hero />
+            <Story />
+            <Projects />
+            <Tools />
+            <Experience />
+            <Contact />
+            <Footer />
+          </>
+        )}
       </main>
-      <footer className="px-8 py-6 border-t border-white/[0.07] flex flex-wrap justify-between items-center gap-3 text-[12px] text-muted">
-        <span className="font-display font-bold text-amber">Christian Rangel</span>
-        <span>{t('footer.updated')}</span>
-        <a
-          href="https://github.com/Crispolein/portafolio"
-          target="_blank"
-          rel="noreferrer"
-          className="hover:text-white transition-colors"
-        >
-          {t('footer.source')} →
-        </a>
-      </footer>
     </div>
-    </MotionConfig>
   )
 }

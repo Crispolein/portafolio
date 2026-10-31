@@ -1,20 +1,45 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type MouseEvent } from 'react'
 import { useTranslation } from 'react-i18next'
-import Icon from './Icons'
+import { navigate, useRoute } from '../lib/route'
 
-const NAV_KEYS = ['about', 'projects', 'tools', 'experience', 'skills'] as const
+const SECTIONS = ['projects', 'experience', 'contact'] as const
 
-const press = 'transition duration-150 active:scale-[0.97]'
+const link =
+  'rounded-sm px-3 py-3 text-[15px] text-mut transition-colors duration-[160ms] ease-out hover:text-txt'
+const control =
+  'min-h-[44px] min-w-[44px] rounded border border-line bg-transparent font-mono text-xs font-medium text-txt ' +
+  'transition-[color,border-color] duration-[160ms] ease-out hover:border-mut'
 
 export default function Navbar() {
   const { t, i18n } = useTranslation()
+  const route = useRoute()
+  const onHome = route === '/'
   const [menuOpen, setMenuOpen] = useState(false)
   const toggleRef = useRef<HTMLButtonElement>(null)
 
-  const toggleLang = () =>
-    i18n.changeLanguage(i18n.language === 'es' ? 'en' : 'es')
+  const toggleLang = () => {
+    const next = i18n.language === 'es' ? 'en' : 'es'
+    document.documentElement.lang = next
+    void i18n.changeLanguage(next)
+  }
 
   const closeMenu = () => setMenuOpen(false)
+
+  // From a case page a section link goes home first, then to the anchor.
+  const goTo = (id: string) => (e: MouseEvent<HTMLAnchorElement>) => {
+    closeMenu()
+    if (onHome || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return
+    e.preventDefault()
+    navigate('/')
+    setTimeout(() => document.getElementById(id)?.scrollIntoView?.(), 50)
+  }
+
+  const goHome = (e: MouseEvent<HTMLAnchorElement>) => {
+    closeMenu()
+    if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return
+    e.preventDefault()
+    navigate('/')
+  }
 
   useEffect(() => {
     if (!menuOpen) return
@@ -28,80 +53,61 @@ export default function Navbar() {
     return () => document.removeEventListener('keydown', onKey)
   }, [menuOpen])
 
+  const langButton = (className: string) => (
+    <button type="button" onClick={toggleLang} aria-label={t('nav.switchLang')} className={className}>
+      {t('nav.lang')}
+    </button>
+  )
+
   return (
-    <nav className="sticky top-0 z-50 flex justify-between items-center px-8 py-4
-                    bg-[rgba(10,9,8,0.96)] border-b border-white/[0.07]">
-      <a href="#hero" className="font-display font-bold text-base text-amber tracking-wide rounded-sm">
-        Christian Rangel
-      </a>
-
-      {/* Desktop links */}
-      <div className="hidden md:flex gap-6 items-center text-[13px] text-muted">
-        {NAV_KEYS.map(key => (
-          <a key={key} href={`#${key}`} className="py-2 hover:text-white transition-colors rounded-sm">
-            {t(`nav.${key}`)}
-          </a>
-        ))}
+    <header className="sticky top-0 z-50 border-b border-line bg-bg">
+      <div className="mx-auto flex h-[60px] max-w-[1168px] items-center justify-between px-4 sm:h-[76px] sm:px-14">
         <a
-          href="#contact"
-          className={`border border-amber text-amber px-4 py-2 rounded-md text-[13px]
-                      hover:bg-amber-dim ${press}`}
+          href="/"
+          onClick={goHome}
+          className="text-[17px] font-extrabold text-txt no-underline sm:text-xl"
         >
-          {t('nav.contact')}
+          christian<span className="text-amb">.</span>rangel
         </a>
-        <button
-          type="button"
-          onClick={toggleLang}
-          aria-label={t('nav.switchLang')}
-          className={`border border-white/[0.1] text-muted px-3 py-1.5 rounded text-[12px]
-                      hover:text-white ${press}`}
-        >
-          {i18n.language === 'es' ? 'EN' : 'ES'}
-        </button>
-      </div>
 
-      {/* Mobile hamburger */}
-      <button
-        ref={toggleRef}
-        type="button"
-        className="md:hidden -m-2 p-2 text-muted hover:text-white rounded"
-        onClick={() => setMenuOpen(v => !v)}
-        aria-expanded={menuOpen}
-        aria-controls="mobile-menu"
-        aria-label={menuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
-      >
-        <Icon name={menuOpen ? 'close' : 'menu'} size={22} />
-      </button>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div
-          id="mobile-menu"
-          className="absolute top-full left-0 right-0 bg-surface border-b border-white/[0.07]
-                     flex flex-col gap-1 px-8 py-4 md:hidden"
-        >
-          {NAV_KEYS.map(key => (
-            <a
-              key={key}
-              href={`#${key}`}
-              onClick={closeMenu}
-              className="py-2.5 text-[15px] text-muted hover:text-white"
-            >
-              {t(`nav.${key}`)}
+        <nav aria-label={t('nav.label')} className="hidden items-center sm:flex">
+          {SECTIONS.map((id) => (
+            <a key={id} href={onHome ? `#${id}` : `/#${id}`} onClick={goTo(id)} className={link}>
+              {t(`nav.${id}`)}
             </a>
           ))}
-          <a href="#contact" onClick={closeMenu} className="py-2.5 text-amber text-[15px]">
-            {t('nav.contact')}
-          </a>
+          {langButton(`${control} ml-2.5`)}
+        </nav>
+
+        <div className="flex items-center gap-2 sm:hidden">
+          {langButton(control)}
           <button
+            ref={toggleRef}
             type="button"
-            onClick={toggleLang}
-            className="py-2.5 text-left text-[14px] text-muted hover:text-white"
+            className={control}
+            onClick={() => setMenuOpen((v) => !v)}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
+            aria-label={menuOpen ? t('nav.closeMenu') : t('nav.openMenu')}
           >
-            {i18n.language === 'es' ? 'Switch to EN' : 'Cambiar a ES'}
+            <span aria-hidden="true">{menuOpen ? '×' : '≡'}</span>
           </button>
         </div>
+      </div>
+
+      {menuOpen && (
+        <nav
+          id="mobile-menu"
+          aria-label={t('nav.label')}
+          className="flex flex-col border-t border-line bg-bg px-4 py-2 sm:hidden"
+        >
+          {SECTIONS.map((id) => (
+            <a key={id} href={onHome ? `#${id}` : `/#${id}`} onClick={goTo(id)} className={`${link} px-0`}>
+              {t(`nav.${id}`)}
+            </a>
+          ))}
+        </nav>
       )}
-    </nav>
+    </header>
   )
 }
