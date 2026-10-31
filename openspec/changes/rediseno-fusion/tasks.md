@@ -90,7 +90,7 @@ Mientras el loop avanza, los componentes viejos siguen en el árbol hasta que la
   - Antes de borrar cada archivo, `grep -rn` de su nombre en `src` y cita la salida en el commit o en el reporte. Borra solo lo que no tiene callers. `Icons.tsx` se queda si Navbar, Contact o Footer lo siguen usando.
   - `framer-motion`: si `grep -rn framer-motion src` sale vacío, `npm uninstall framer-motion`. Si tiene usos, se queda.
 
-- [ ] T12 — E2E de home, caso y accesibilidad · owner: claude · files: e2e/home.spec.ts, e2e/case.spec.ts, e2e/a11y.spec.ts · verification: `npm run test:e2e` · bloqueada: src/locales/es/translation.json:10 and src/locales/en/translation.json:10: the diff goes outside T12's exclusive files (e2e/home.spec.ts, e2e/case.spec.ts, e2e/a11y.spec.ts). It edits product copy that belongs to T3 (tasks.md:24). T3 says the copy is copied as is from openspec/changes/rediseno-fusio
+- [x] T12 — E2E de home, caso y accesibilidad · owner: claude · files: e2e/home.spec.ts, e2e/case.spec.ts, e2e/a11y.spec.ts · verification: `npm run test:e2e`
   - dep T11.
   - Viewports 1280x800 y 390x844. En ambos, `document.documentElement.scrollWidth <= innerWidth` en `/` y en los 2 casos.
   - `a11y.spec.ts`: axe sin violaciones `serious` ni `critical` en `/`, `/proyectos/cv-optimizer` y `/proyectos/job-hunter`.
