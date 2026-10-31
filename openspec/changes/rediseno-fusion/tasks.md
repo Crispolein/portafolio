@@ -85,7 +85,7 @@ Mientras el loop avanza, los componentes viejos siguen en el árbol hasta que la
   - Conecta el router en las cards destacadas si T7 no pudo.
   - Tests: home tiene un solo h1, el toggle cambia `lang` a `en` y el texto del h1, `/proyectos/job-hunter` muestra el caso, el skip link apunta a `#main`.
 
-- [ ] T11 — Limpieza de lo que quedó sin callers · owner: claude · files: src/sections/About.tsx, src/sections/Skills.tsx, src/components/StatCard.tsx, src/components/StackPill.tsx, src/components/Icons.tsx, src/data/skills.ts, package.json, package-lock.json · verification: `npm run test && npm run build && ! grep -rE "StatCard|FeaturedProjectCard|sections/About|sections/Skills" src`
+- [x] T11 — Limpieza de lo que quedó sin callers · owner: claude · files: src/sections/About.tsx, src/sections/Skills.tsx, src/components/StatCard.tsx, src/components/StackPill.tsx, src/components/Icons.tsx, src/data/skills.ts, package.json, package-lock.json · verification: `npm run test && npm run build && ! grep -rE "StatCard|FeaturedProjectCard|sections/About|sections/Skills" src`
   - dep T10.
   - Antes de borrar cada archivo, `grep -rn` de su nombre en `src` y cita la salida en el commit o en el reporte. Borra solo lo que no tiene callers. `Icons.tsx` se queda si Navbar, Contact o Footer lo siguen usando.
   - `framer-motion`: si `grep -rn framer-motion src` sale vacío, `npm uninstall framer-motion`. Si tiene usos, se queda.
