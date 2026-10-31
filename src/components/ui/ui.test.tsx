@@ -1,5 +1,8 @@
 import { cleanup, render, screen, fireEvent } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
+import postcss from 'postcss'
+import tailwind from 'tailwindcss'
+import baseConfig from '../../../tailwind.config'
 import Button from './Button'
 import CardLink from './CardLink'
 
@@ -109,5 +112,33 @@ describe('CardLink', () => {
   it('marks the trailing arrow aria-hidden', () => {
     const { container } = render(<CardLink href="/x">X</CardLink>)
     expect(container.querySelector('[aria-hidden="true"]')).not.toBeNull()
+  })
+})
+
+// Class names alone prove nothing: run Tailwind over the rendered classes and
+// assert on the CSS it actually emits.
+async function cssFor(html: string): Promise<string> {
+  const result = await postcss([
+    tailwind({
+      ...baseConfig,
+      content: [{ raw: html }],
+    }),
+  ]).process('@tailwind utilities;', { from: undefined })
+  return result.css.replace(/\s+/g, '')
+}
+
+describe('Button generated CSS', () => {
+  it('ghost hover emits the translucent background', async () => {
+    render(<Button variant="ghost">B</Button>)
+    const css = await cssFor(`<div class="${screen.getByRole('button', { name: 'B' }).className}">`)
+    expect(css).toContain('background-color:rgba(216,225,240,.04)')
+  })
+
+  it('hover and active effects are excluded for disabled buttons', async () => {
+    render(<Button disabled>D</Button>)
+    const css = await cssFor(`<div class="${screen.getByRole('button', { name: 'D' }).className}">`)
+    const rules = css.split('}').filter((r) => r.includes(':hover') || r.includes(':active'))
+    expect(rules.length).toBeGreaterThan(0)
+    for (const rule of rules) expect(rule).toContain(':not(:disabled)')
   })
 })

@@ -20,12 +20,12 @@ export type ButtonProps = AnchorProps | NativeButtonProps
 const base =
   'group inline-flex min-h-[50px] items-center justify-center gap-2 rounded px-[22px] text-base font-bold ' +
   'border transition-[color,background-color,border-color] duration-[160ms] ease-out ' +
-  'active:scale-[.97] disabled:cursor-not-allowed disabled:opacity-50 aria-busy:cursor-progress ' +
+  '[&:not(:disabled)]:active:scale-[.97] disabled:cursor-not-allowed disabled:opacity-50 aria-busy:cursor-progress ' +
   'max-sm:w-full'
 
 const variants: Record<Variant, string> = {
-  solid: 'bg-amb border-amb text-term hover:bg-amb-hi hover:border-amb-hi',
-  ghost: 'bg-transparent border-line text-txt hover:border-mut hover:bg-txt/[.04]',
+  solid: 'bg-amb border-amb text-term [&:not(:disabled)]:hover:bg-amb-hi [&:not(:disabled)]:hover:border-amb-hi',
+  ghost: 'bg-transparent border-line text-txt [&:not(:disabled)]:hover:border-mut [&:not(:disabled)]:hover:bg-[rgba(216,225,240,.04)]',
 }
 
 const arrowClass =
