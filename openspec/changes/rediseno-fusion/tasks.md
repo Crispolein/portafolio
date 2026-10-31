@@ -53,7 +53,7 @@ Mientras el loop avanza, los componentes viejos siguen en el árbol hasta que la
   - Borra `ProjectCard.tsx` y `FeaturedProjectCard.tsx`: quedan sin callers.
   - Tests: 2 links a `/proyectos/...`, la fila de noche-austral es link externo con `rel` correcto, las demás no son links.
 
-- [ ] T8 — Tools y Experience · owner: claude · files: src/sections/Tools.tsx, src/sections/Experience.tsx, src/data/tools.ts, src/data/experience.ts, src/sections/ToolsExperience.test.tsx, src/components/ToolCard.tsx · verification: `npx vitest run src/sections/ToolsExperience`
+- [x] T8 — Tools y Experience · owner: claude · files: src/sections/Tools.tsx, src/sections/Experience.tsx, src/data/tools.ts, src/data/experience.ts, src/sections/ToolsExperience.test.tsx, src/components/ToolCard.tsx · verification: `npx vitest run src/sections/ToolsExperience`
   - dep T4, T3.
   - Referencia: secciones "Herramientas internas" y "Experiencia" de `ref/DirDefinitivo.html`.
   - `tools.ts`: ids dbCopy, kml, userManager con key `tools.items.<id>`; sin import de `Icons`. Genéricas, sin datos de clientes.
