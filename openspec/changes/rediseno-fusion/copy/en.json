@@ -1,0 +1,315 @@
+{
+  "nav": {
+    "label": "Main",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "lang": "ES",
+    "switchLang": "Switch language to Spanish",
+    "skip": "Skip to content"
+  },
+  "hero": {
+    "status": "Available · Santiago, Chile",
+    "titleA": "Production Python backend, with",
+    "titleAi": "AI",
+    "titleB": "at every stage.",
+    "subA": "I'm Christian,",
+    "subStrong": "Backend Developer at Migtra",
+    "subB": "since January 2025, a startup that measures driving risk from GPS data. I keep its products running in production, fix incidents and lead 2 junior devs. I use AI every day, and because I know the system and how to test locally, I can steer it well.",
+    "roles": {
+      "dev": "Python, Django and FastAPI on AWS",
+      "ops": "tools so the team doesn't depend on support",
+      "ia": "agents with the Claude API · AI Diploma 2026"
+    },
+    "ctaProjects": "See projects",
+    "ctaCv": "Download CV"
+  },
+  "console": {
+    "label": "Console: pick a system to see how it works",
+    "path": "~/christian/systems",
+    "count": "4 systems",
+    "tabs": "Systems",
+    "hint": "pick a system above",
+    "systems": {
+      "telemetria": {
+        "what": "Production backend · Migtra",
+        "aria": "Vehicle GPS data is ingested on AWS, classified, processed and fed into reports.",
+        "nodes": [
+          ["GPS", "vehicles"],
+          ["ingest", "AWS"],
+          ["classify", "per client"],
+          ["process", "events"],
+          ["reports", "BI"]
+        ],
+        "log": [
+          ["role", "Backend Developer · since Jan 2025"],
+          ["prod.incidents", "0 in 6+ months"],
+          ["team.lead", "2 junior devs"]
+        ]
+      },
+      "automatizacion": {
+        "what": "Internal tool · Migtra",
+        "aria": "A document request is validated, generated and delivered with no manual step.",
+        "nodes": [
+          ["request", "comes in"],
+          ["validate", "rules"],
+          ["generate", "document"],
+          ["deliver", "requester"],
+          ["closed", "hands-free"]
+        ],
+        "log": [
+          ["docs.tickets", "almost 0"],
+          ["docs.time", "days → hours"],
+          ["stack", "Python · AWS"]
+        ]
+      },
+      "cvOptimizer": {
+        "what": "Personal project · AI agents",
+        "aria": "A conversational interview goes through three Claude agents, recruiter, career coach and anti-exaggeration auditor, and a verified CV comes out.",
+        "nodes": [
+          ["interview", "real profile"],
+          ["recruiter", "agent"],
+          ["coach", "agent"],
+          ["auditor", "no fluff"],
+          ["CV", "verified"]
+        ],
+        "log": [
+          ["stack", "Django · HTMX · Claude API"],
+          ["agents", "3, each with its own role"]
+        ]
+      },
+      "jobHunter": {
+        "what": "Personal project · automation",
+        "aria": "Three job boards are checked every two hours with Celery, stored in PostgreSQL, ranked by OpenAI and shown on a dashboard.",
+        "nodes": [
+          ["3 boards", "listings"],
+          ["Celery", "every 2 h"],
+          ["PostgreSQL", "normalize"],
+          ["OpenAI", "ranking"],
+          ["dashboard", "React"]
+        ],
+        "log": [
+          ["api", "FastAPI · 116+ endpoints"],
+          ["sources", "RemoteOK · WWR · GetOnBoard"]
+        ]
+      }
+    }
+  },
+  "story": {
+    "title": "A case from Migtra",
+    "side": "how I work",
+    "p1": "The operations team requested documents through tickets, and an answer could take days. I built an internal tool so they can request them from a page without going through support. Now they get them in a couple of hours.",
+    "p2": "As volume grew, large downloads exhausted the EC2 machine's memory and took it down. A teammate suggested I look into streaming. I implemented it with async downloads, a streamed ZIP and automatic disk cleanup.",
+    "log": [
+      ["tickets", "almost 0"],
+      ["wait", "days → hours"],
+      ["download", "200+ vehicles"],
+      ["outages", "0 in 6+ months"]
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "side": "on my own initiative",
+    "seeCase": "See case",
+    "privateRepo": "private repo",
+    "featured": {
+      "cvOptimizer": {
+        "tag": "Django · HTMX · Claude API",
+        "name": "CV Optimizer Pro",
+        "desc": "CV optimizers tend to inflate achievements. This one does the opposite. An AI coach interviews you, an auditor flags what you overstate or undersell, and the CV ends up with what you can defend in an interview.",
+        "shot": "Screenshot of the interview flow"
+      },
+      "jobHunter": {
+        "tag": "FastAPI · Celery · React",
+        "name": "Job Hunter Platform",
+        "desc": "Checks 3 job boards every 2 hours, ranks listings against my profile with AI and builds a tailored CV. Behind it run 116+ endpoints and a React dashboard.",
+        "shot": "Screenshot of the listings dashboard"
+      }
+    },
+    "list": {
+      "pokemontcgai": {
+        "name": "Pokémon TCG AI Battle Agent",
+        "desc": "Multi-agent reinforcement learning agent for the 2026 Kaggle competition. Every improvement is validated over n≥1000 games.",
+        "stack": "PyTorch · SB3 · PettingZoo"
+      },
+      "nocheAustral": {
+        "name": "Noche Austral",
+        "desc": "Capstone project: a 16,000+ line Flutter app with Clean Architecture and CI/CD, plus a Django CMS on GCP.",
+        "stack": "Flutter · Django · GCP"
+      },
+      "tcg": {
+        "name": "TCG Collection Manager",
+        "desc": "The camera scans the card, OpenCV and Tesseract grade its condition and prices update on their own.",
+        "stack": "OpenCV · Streamlit · RN"
+      },
+      "financial": {
+        "name": "Family Finance",
+        "desc": "Family expenses by voice through Google Assistant and Siri, with GPT-4o-mini analysis and role-based permissions.",
+        "stack": "Flutter · Firebase · OpenAI"
+      }
+    }
+  },
+  "tools": {
+    "title": "Internal tools",
+    "side": "built at Migtra · described without client data",
+    "items": {
+      "dbCopy": {
+        "name": "Database cloning",
+        "desc": "CLI and GUI to copy PostgreSQL between environments over an SSH tunnel, with date filtering and a dry-run mode.",
+        "stack": "Python · PostgreSQL"
+      },
+      "kml": {
+        "name": "KML route validator",
+        "desc": "5 tools to validate, compare and debug KML files with visual diagnostic output.",
+        "stack": "Python"
+      },
+      "userManager": {
+        "name": "User manager",
+        "desc": "Centralized management on top of Cognito, with infrastructure as code in CDK on ECS Fargate and CloudFront.",
+        "stack": "FastAPI · Angular · CDK"
+      }
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "side": "track record",
+    "items": {
+      "migtra": {
+        "when": "Jan 2025 to now",
+        "org": "Migtra",
+        "role": "Backend Developer",
+        "desc": "Operational support, product maintenance and incident resolution on Python 2.7 and 3.10, PostgreSQL and AWS. I lead 2 junior devs with onboarding, PR reviews and technical guidance. I build internal tools so the team stops depending on support."
+      },
+      "nocheAustral": {
+        "when": "Jul 2024 to Apr 2025",
+        "org": "Noche Austral · U. Autónoma",
+        "role": "Full Stack Developer",
+        "desc": "It started as my capstone project. Then my professor hired me as a freelancer to keep maintaining it. A 16,000+ line Flutter app with Clean Architecture, tests and CI/CD, plus a Django CMS on GCP."
+      },
+      "pervasive": {
+        "when": "Nov 2023 to Feb 2024",
+        "org": "PervasiveMind",
+        "role": "Data & Web Scraping",
+        "desc": "Price collection and analysis with Python and BeautifulSoup."
+      },
+      "edu": {
+        "when": "Aug 2025",
+        "org": "Universidad Autónoma de Chile",
+        "role": "Computer Engineering degree",
+        "desc": "I graduated with Noche Austral as my capstone project."
+      }
+    }
+  },
+  "contact": {
+    "label": "contact",
+    "side": "I reply in Spanish or English",
+    "title": "Let's talk?",
+    "sub": "I'm open to job offers and freelance projects. If you have a backend, automation or AI problem, tell me what it's about.",
+    "name": "Your name",
+    "email": "Your email",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending...",
+    "success": "Message sent! I'll get back to you soon.",
+    "error": "Couldn't send it. Write to me directly at chris.rangel.intriago@gmail.com",
+    "links": "Other channels"
+  },
+  "footer": {
+    "updated": "Updated October 2026",
+    "source": "this site's source on GitHub"
+  },
+  "case": {
+    "back": "Projects",
+    "next": "next case",
+    "factsLabel": "Facts",
+    "sections": {
+      "problem": "The problem",
+      "how": "How it works",
+      "decisions": "Decisions",
+      "result": "Result"
+    },
+    "cvOptimizer": {
+      "tag": "Personal project · private repo",
+      "title": "CV Optimizer Pro",
+      "sub": "An agent system that interviews you and builds a CV you can defend in a real interview.",
+      "facts": [
+        ["role", "full design and development"],
+        ["stack", "Django · HTMX · Claude API"],
+        ["agents", "coach, recruiter, auditor"],
+        ["output", "CV in 3 templates, one ATS"]
+      ],
+      "shot": "Screenshot of the coach interview and the feedback card",
+      "problem": [
+        "When I wrote my CV I didn't know what to tell. There were things I did every day and didn't value. Leading 2 people was one of them.",
+        "The tools I tried did the opposite. They inflated everything, and that falls apart at the first interview question."
+      ],
+      "pipelineAria": "The interview with the AI coach builds the profile, the auditor reviews what has no backing, it is matched against the job posting and an ATS CV comes out.",
+      "nodes": [
+        ["interview", "AI coach"],
+        ["profile", "skills and wins"],
+        ["auditor", "anti-exaggeration"],
+        ["posting", "match"],
+        ["CV", "ATS"]
+      ],
+      "aiNodes": [2],
+      "steps": [
+        ["Interview", "An AI coach asks about your experience. Every answer leads to a new question and it never repeats itself. If you already have a CV, you upload the PDF or DOCX and it pre-fills the profile."],
+        ["Audit", "An agent reviews what you said and flags what you can't back up or what you're underselling."],
+        ["Match and CV", "You paste a job posting, see the fit and generate the tailored CV with its keyword report."]
+      ],
+      "decisions": [
+        ["Credibility before impact", "The auditor has the last word. An achievement with no backing doesn't make it into the CV.", "system principle"],
+        ["A template for machines", "One column, Arial and no graphics, so ATS systems read all of it.", "classic · modern · ats"],
+        ["Caps per phase", "Each interview phase has a turn limit and shows progress, so it never drags on.", "interview UX"]
+      ],
+      "result": "I use it with my own profile. The CV I apply with today came out of it, and the interview is what made me see that leading 2 devs was an achievement.",
+      "resultLog": [
+        ["interview", "193 messages"],
+        ["auditor", "15 flags in 2 reviews"]
+      ]
+    },
+    "jobHunter": {
+      "tag": "Personal project · private repo",
+      "title": "Job Hunter Platform",
+      "sub": "A platform that checks job boards for me, ranks listings against my profile and builds the CV for each one.",
+      "facts": [
+        ["role", "full design and development"],
+        ["stack", "FastAPI · Celery · React"],
+        ["data", "PostgreSQL · Redis"],
+        ["sources", "3 boards every 2 hours"]
+      ],
+      "shot": "Screenshot of the dashboard with the listings ranking",
+      "problem": [
+        "Job hunting meant checking the same boards every day and reading listings that didn't fit me.",
+        "I wanted a system to do that first pass and leave me only the ones worth reading."
+      ],
+      "pipelineAria": "Three job boards are checked every two hours with Celery, listings are stored in PostgreSQL, OpenAI scores the fit and the result goes to a dashboard.",
+      "nodes": [
+        ["boards", "3 sources"],
+        ["Celery", "every 2 h"],
+        ["PostgreSQL", "normalize"],
+        ["OpenAI", "fit score"],
+        ["dashboard", "React"]
+      ],
+      "aiNodes": [3],
+      "steps": [
+        ["Collection", "Three scrapers check RemoteOK, WeWorkRemotely and GetOnBoard every 2 hours with Celery Beat and store listings in a common format."],
+        ["Ranking", "OpenAI compares each listing with my profile and assigns a fit score."],
+        ["Applying", "From the dashboard I pick a listing and generate a tailored CV, with a version built for ATS."]
+      ],
+      "decisions": [
+        ["Scraping never blocks the API", "It runs on Celery with Redis, so no slow board holds up the dashboard.", "Celery · Redis"],
+        ["One model for every listing", "Each scraper maps its board to the same PostgreSQL model. Adding a board means writing one new class.", "BaseScraper"],
+        ["An API split by domain", "Listings, profile, CV, applications and notifications each have their own FastAPI router.", "116+ endpoints"]
+      ],
+      "result": "It runs fully on local Docker Compose: API, worker, database and dashboard.",
+      "resultLog": [
+        ["endpoints", "116+"],
+        ["scraping", "every 2 h"],
+        ["boards", "3"]
+      ]
+    }
+  }
+}
