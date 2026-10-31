@@ -4,7 +4,7 @@ Contexto obligatorio antes de cada tarea: `DESIGN.md`, `PRODUCT.md`, `design.md`
 
 Mientras el loop avanza, los componentes viejos siguen en el árbol hasta que la tarea que los reemplaza los borra. Si un cambio de tipos rompe un componente viejo, la tarea que lo deja sin callers lo borra; está en sus files.
 
-- [ ] T1 — Harness de tests: Vitest + Testing Library + Playwright · owner: claude · files: package.json, package-lock.json, tsconfig.json, .gitignore, vitest.config.ts, src/test/setup.ts, src/test/smoke.test.tsx, playwright.config.ts, e2e/smoke.spec.ts · verification: `npm run test && npx playwright test e2e/smoke.spec.ts`
+- [x] T1 — Harness de tests: Vitest + Testing Library + Playwright · owner: claude · files: package.json, package-lock.json, tsconfig.json, .gitignore, vitest.config.ts, src/test/setup.ts, src/test/smoke.test.tsx, playwright.config.ts, e2e/smoke.spec.ts · verification: `npm run test && npx playwright test e2e/smoke.spec.ts`
   - Dev deps exactas: vitest, jsdom, @testing-library/react, @testing-library/jest-dom, @testing-library/user-event, @playwright/test, @axe-core/playwright. Ninguna otra.
   - Scripts: `"test": "vitest run"`, `"test:e2e": "playwright test"`.
   - `vitest.config.ts`: environment jsdom, setupFiles `src/test/setup.ts`, include `src/**/*.test.{ts,tsx}`, sin globals. `setup.ts` importa `@testing-library/jest-dom/vitest` y el `src/i18n.ts` real.
