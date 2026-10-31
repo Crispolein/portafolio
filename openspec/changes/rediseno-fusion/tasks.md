@@ -61,7 +61,7 @@ Mientras el loop avanza, los componentes viejos siguen en el árbol hasta que la
   - Borra `ToolCard.tsx`: queda sin callers.
   - Tests: 3 herramientas y 4 entradas de experiencia con sus textos es; con `i18n.changeLanguage('en')` aparece el texto en.
 
-- [ ] T9 — Contact con estados y Footer · owner: claude · files: src/sections/Contact.tsx, src/components/Footer.tsx, src/sections/Contact.test.tsx · verification: `npx vitest run src/sections/Contact`
+- [x] T9 — Contact con estados y Footer · owner: claude · files: src/sections/Contact.tsx, src/components/Footer.tsx, src/sections/Contact.test.tsx · verification: `npx vitest run src/sections/Contact`
   - dep T4, T3.
   - Referencia: contacto de `ref/DirDefinitivo.html` y estados de `ref/DirEstados.html`.
   - Form con `<label>` visible por campo, `required`, `type="email"`, honeypot intacto con el mismo nombre de campo que hoy y oculto a lectores y teclado. POST a `/api/contact` con el mismo payload que hoy.
