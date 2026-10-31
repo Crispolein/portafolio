@@ -28,6 +28,13 @@ describe('route', () => {
     expect(window.scrollTo).toHaveBeenCalledWith(0, 0)
   })
 
+  it('navigate to the current path does not add a history entry', () => {
+    const push = vi.spyOn(window.history, 'pushState')
+    act(() => navigate('/'))
+    expect(push).not.toHaveBeenCalled()
+    expect(window.scrollTo).toHaveBeenCalledWith(0, 0)
+  })
+
   it('popstate updates useRoute', () => {
     const { result } = renderHook(() => useRoute())
     act(() => {

@@ -19,8 +19,10 @@ export function useRoute(): string {
 }
 
 export function navigate(path: string) {
-  window.history.pushState(null, '', path)
-  emit()
+  if (path !== window.location.pathname) {
+    window.history.pushState(null, '', path)
+    emit()
+  }
   window.scrollTo(0, 0)
   // Wait for the new view to render so the announced h1 exists.
   setTimeout(() => document.querySelector<HTMLElement>('h1')?.focus(), 0)

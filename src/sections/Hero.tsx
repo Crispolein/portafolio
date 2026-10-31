@@ -17,7 +17,7 @@ export default function Hero() {
           />
           {t('hero.status')}
         </p>
-        <h1 className="m-0 text-[40px] font-extrabold leading-[.98] tracking-[-.03em] [font-variation-settings:'wdth'_80] sm:text-[62px] sm:leading-[.94]">
+        <h1 tabIndex={-1} className="m-0 text-[40px] focus:outline-none font-extrabold leading-[.98] tracking-[-.03em] [font-variation-settings:'wdth'_80] sm:text-[62px] sm:leading-[.94]">
           {t('hero.titleA')} <span className="text-amb">{t('hero.titleAi')}</span> {t('hero.titleB')}
         </h1>
         <p className="mb-0 mt-[22px] text-base leading-[1.6] text-mut sm:text-[17px]">

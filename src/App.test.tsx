@@ -1,6 +1,7 @@
-import { act, cleanup, fireEvent, render, screen } from '@testing-library/react'
+import { act, cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
-import App from './App'
+import App, { HOME_TITLE } from './App'
+import { navigate } from './lib/route'
 import i18n from './i18n'
 import es from './locales/es/translation.json'
 import en from './locales/en/translation.json'
@@ -18,6 +19,24 @@ beforeEach(async () => {
 afterEach(cleanup)
 
 describe('App', () => {
+  it('returning home from a case focuses the home h1', async () => {
+    window.scrollTo = (() => {}) as typeof window.scrollTo
+    go('/proyectos/cv-optimizer')
+    render(<App />)
+    act(() => navigate('/'))
+    await waitFor(() => expect(screen.getByRole('heading', { level: 1 })).toHaveFocus())
+  })
+
+  it('document title follows the route and the language', async () => {
+    go('/proyectos/cv-optimizer')
+    render(<App />)
+    expect(document.title).toBe(`${es.case.cvOptimizer.title} · Christian Rangel`)
+    await act(() => i18n.changeLanguage('en'))
+    expect(document.title).toBe(`${en.case.cvOptimizer.title} · Christian Rangel`)
+    act(() => navigate('/'))
+    expect(document.title).toBe(HOME_TITLE)
+  })
+
   it('home has a single h1 inside main#main and no old sections', () => {
     render(<App />)
     expect(screen.getAllByRole('heading', { level: 1 })).toHaveLength(1)
