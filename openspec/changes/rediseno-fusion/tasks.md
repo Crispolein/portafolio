@@ -13,7 +13,7 @@ Mientras el loop avanza, los componentes viejos siguen en el árbol hasta que la
   - `playwright.config.ts`: solo chromium, `testDir: 'e2e'`, webServer `npm run build && npx vite preview --port 4173 --strictPort`, baseURL `http://localhost:4173`. Si falta el navegador, `npx playwright install chromium`.
   - `smoke.test.tsx` renderiza `<App />` y espera un heading de nivel 1. `smoke.spec.ts` abre `/` y espera un `h1` visible.
 
-- [ ] T2 — Tokens, tipografías, reveal y reduced motion · owner: claude · files: tailwind.config.ts, src/index.css, index.html, src/styles/tokens.test.ts · verification: `npx vitest run src/styles && npm run build`
+- [x] T2 — Tokens, tipografías, reveal y reduced motion · owner: claude · files: tailwind.config.ts, src/index.css, index.html, src/styles/tokens.test.ts · verification: `npx vitest run src/styles && npm run build`
   - dep T1.
   - Tokens de `DESIGN.md` como CSS vars en `:root` de `src/index.css` y mapeados en `tailwind.config.ts` con los mismos nombres: bg, term, line, txt, mut, amb, amb-hi, cy, ok. Reemplaza la paleta vieja.
   - `fontFamily.sans` Archivo, `fontFamily.mono` JetBrains Mono. En `index.html` preconnect y link de Google Fonts con Archivo `wdth,wght@80,400..800` y JetBrains Mono 400 y 500. Quita Inter y Bricolage. `<meta name="theme-color" content="#101a2b">`.
