@@ -34,7 +34,7 @@ Mientras el loop avanza, los componentes viejos siguen en el árbol hasta que la
   - `CardLink`: `<a>` de bloque con borde `--line` que pasa a `--amb` en hover y foco, flecha final que se desplaza, sin sombras ni glow. Acepta `onNavigate` para que el router intercepte el click sin modificadores.
   - Tests: rol y nombre accesible correctos, `<a>` vs `<button>`, `download` presente, flecha `aria-hidden`, click con y sin ctrl o meta sobre `CardLink` llama o no a `onNavigate`.
 
-- [ ] T5 — Consola de 4 sistemas y Pipeline SVG · owner: claude · files: src/components/Console.tsx, src/components/Pipeline.tsx, src/data/systems.ts, src/components/Console.test.tsx · verification: `npx vitest run src/components/Console`
+- [x] T5 — Consola de 4 sistemas y Pipeline SVG · owner: claude · files: src/components/Console.tsx, src/components/Pipeline.tsx, src/data/systems.ts, src/components/Console.test.tsx · verification: `npx vitest run src/components/Console`
   - dep T2, T3.
   - Referencia visual: consola de `ref/DirDefinitivo.html` y pipeline vertical de `ref/DirMovil.html`.
   - `systems.ts`: orden telemetria, automatizacion, cvOptimizer, jobHunter; cada uno con `id`, prefijo de key `console.systems.<id>` y `aiNodes` (índices de nodos IA).
