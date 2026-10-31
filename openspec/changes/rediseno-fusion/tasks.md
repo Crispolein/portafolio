@@ -69,7 +69,7 @@ Mientras el loop avanza, los componentes viejos siguen en el árbol hasta que la
   - `Footer`: `footer.updated`, link al repo del sitio y los canales de `contact.links`. Sin teléfono.
   - Tests con `fetch` mockeado: sending deshabilita el botón, 200 muestra success, 500 y rechazo de red muestran error, honeypot lleno no llama a `fetch`.
 
-- [ ] T6 — Router mínimo y página de caso · owner: claude · files: src/lib/route.ts, src/lib/route.test.ts, src/pages/CasePage.tsx, src/pages/CasePage.test.tsx, src/data/cases.ts · verification: `npx vitest run src/lib src/pages`
+- [x] T6 — Router mínimo y página de caso · owner: claude · files: src/lib/route.ts, src/lib/route.test.ts, src/pages/CasePage.tsx, src/pages/CasePage.test.tsx, src/data/cases.ts · verification: `npx vitest run src/lib src/pages`
   - dep T4, T5, T3.
   - Router según las filas "Router" y "Links internos" de `design.md`: `useRoute()`, `navigate(path)`, `popstate`; tras navegar, `scrollTo(0,0)` y foco al `h1` con `tabIndex={-1}`.
   - `cases.ts`: `cv-optimizer` → `case.cvOptimizer` con `aiNodes` [2]; `job-hunter` → `case.jobHunter` con `aiNodes` [3]; `next` apunta al otro caso.
