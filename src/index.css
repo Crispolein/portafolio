@@ -90,6 +90,15 @@
   }
 }
 
+/* Cambio entre vistas: la vista vieja se apaga y la nueva barre de derecha a izquierda sobre ámbar. 320 ms. */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition { background: var(--amb); }
+  ::view-transition-old(root) { animation: vt-out 160ms ease-in both; }
+  ::view-transition-new(root) { animation: vt-in 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both; }
+  @keyframes vt-out { to { opacity: 0; } }
+  @keyframes vt-in { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0); } }
+}
+
 /* Pipeline packet, final node and caret */
 @keyframes pipe-packet {
   from { offset-distance: 0%; }
@@ -122,3 +131,8 @@
   .pipe-end { fill: var(--ok); stroke: var(--ok); }
   .caret { opacity: 1; }
 }
+
+/* Un acento por proyecto: el contenedor lo fija con data-ac y los hijos usan text-ac / border-ac. */
+:root { --ac: var(--amb); }
+[data-ac='amb'] { --ac: var(--amb); }
+[data-ac='cy'] { --ac: var(--cy); }

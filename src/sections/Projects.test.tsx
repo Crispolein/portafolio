@@ -5,6 +5,18 @@ import es from '../locales/es/translation.json'
 
 afterEach(cleanup)
 
+describe('Projects numbering', () => {
+  it('numera las destacadas 01 y 02 con su acento', () => {
+    render(<Projects />)
+    const cards = screen.getAllByRole('link').filter((a) => a.getAttribute('href')?.startsWith('/proyectos/'))
+    expect(cards).toHaveLength(2)
+    expect(cards[0]).toHaveTextContent('01')
+    expect(cards[0]).toHaveAttribute('data-ac', 'amb')
+    expect(cards[1]).toHaveTextContent('02')
+    expect(cards[1]).toHaveAttribute('data-ac', 'cy')
+  })
+})
+
 describe('Projects', () => {
   it('links the two featured projects to their case pages', () => {
     render(<Projects />)
@@ -33,5 +45,14 @@ describe('Projects', () => {
       expect(within(row).getByText(es.projects.privateRepo)).toBeInTheDocument()
     }
     expect(screen.getAllByRole('link')).toHaveLength(3)
+  })
+})
+
+describe('Projects screenshots', () => {
+  it('cada destacada muestra la primera captura de su caso y ningún placeholder', () => {
+    const { container } = render(<Projects />)
+    const srcs = [...container.querySelectorAll('a[href^="/proyectos/"] img')].map((i) => i.getAttribute('src'))
+    expect(srcs).toEqual(['/shots/cv-optimizer-1.webp', '/shots/job-hunter-1.webp'])
+    expect(container.querySelector('.border-dashed')).toBeNull()
   })
 })

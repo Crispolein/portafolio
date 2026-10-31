@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type MouseEvent } from 'react'
 import { useTranslation } from 'react-i18next'
+import { WRAP } from '../lib/layout'
 import { navigate, useRoute } from '../lib/route'
 
 const SECTIONS = ['projects', 'experience', 'contact'] as const
@@ -61,7 +62,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-bg">
-      <div className="mx-auto flex h-[60px] max-w-[1168px] items-center justify-between px-4 sm:h-[76px] sm:px-14">
+      <div className={`${WRAP} flex h-[60px] items-center justify-between sm:h-[76px]`}>
         <a
           href="/"
           onClick={goHome}

@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Pipeline, { type Orientation } from '../components/Pipeline'
 import CardLink from '../components/ui/CardLink'
-import { cases, isCaseSlug } from '../data/cases'
+import Carousel from '../components/Carousel'
+import { cases, isCaseSlug, shotSrc, type CaseSlug } from '../data/cases'
 import { linkClickHandler, navigate } from '../lib/route'
 
 const MOBILE_QUERY = '(max-width: 640px)'
@@ -51,7 +52,7 @@ export default function CasePage({ slug }: { slug: string }) {
   const orientation = useOrientation()
   if (!isCaseSlug(slug)) return null
 
-  const { keyPrefix, aiNodes, next } = cases[slug]
+  const { keyPrefix, aiNodes, next, accent, shots } = cases[slug]
   const list = <T,>(key: string) => t(`${keyPrefix}.${key}`, { returnObjects: true }) as T
   const facts = list<Pair[]>('facts')
   const problem = list<string[]>('problem')
@@ -59,12 +60,34 @@ export default function CasePage({ slug }: { slug: string }) {
   const steps = list<Pair[]>('steps')
   const decisions = list<Triple[]>('decisions')
   const resultLog = list<Pair[]>('resultLog')
+  const shotAlts = list<string[]>('shots')
+  const slides = Array.from({ length: shots }, (_, i) => ({ src: shotSrc(slug, i + 1), alt: shotAlts[i] ?? '' }))
   const nextDef = cases[next]
   const nextPath = `/proyectos/${next}`
 
   return (
-    <div className="mx-auto max-w-[1168px] px-4 pb-20 sm:px-14">
-      <p className="mt-10 font-mono text-[13px] text-mut">
+    <div className="pb-20" data-ac={accent}>
+      <nav aria-label={t('case.railLabel')} className="mt-8 flex gap-2 font-mono text-[13px]">
+        {(Object.keys(cases) as CaseSlug[]).map((s) => {
+          const c = cases[s]
+          const here = s === slug
+          return (
+            <a
+              key={s}
+              href={`/proyectos/${s}`}
+              onClick={linkClickHandler(`/proyectos/${s}`)}
+              aria-current={here ? 'page' : undefined}
+              data-ac={c.accent}
+              className={`rounded-md border px-3 py-1.5 transition-colors duration-[160ms] ease-out ${
+                here ? 'border-ac bg-term text-ac' : 'border-line text-mut hover:border-ac hover:text-ac'
+              }`}
+            >
+              {c.num} {s}
+            </a>
+          )
+        })}
+      </nav>
+      <p className="mt-6 font-mono text-[13px] text-mut">
         <a
           href="/"
           onClick={linkClickHandler('/')}
@@ -77,7 +100,7 @@ export default function CasePage({ slug }: { slug: string }) {
 
       <div className="mt-5 grid items-end gap-8 lg:grid-cols-[1fr_360px] lg:gap-12">
         <div>
-          <p className="font-mono text-xs text-amb">{t(`${keyPrefix}.tag`)}</p>
+          <p className="font-mono text-xs text-ac">{t(`${keyPrefix}.tag`)}</p>
           <h1
             tabIndex={-1}
             className="mt-3.5 text-[44px] font-extrabold leading-[.98] tracking-[-.03em] [font-variation-settings:'wdth'_80] focus:outline-none sm:text-[72px]"
@@ -96,9 +119,7 @@ export default function CasePage({ slug }: { slug: string }) {
         </dl>
       </div>
 
-      <div className="mt-12 flex h-[260px] items-center justify-center rounded-md border border-dashed border-line px-4 text-center font-mono text-xs text-mut sm:h-[420px]">
-        {t(`${keyPrefix}.shot`)}
-      </div>
+      <Carousel label={t(`${keyPrefix}.shotsLabel`)} slides={slides} />
 
       <section className="rv mt-[72px] sm:mt-[120px]">
         <SectionHead title={t('case.sections.problem')} n="01" />
@@ -160,9 +181,13 @@ export default function CasePage({ slug }: { slug: string }) {
         <CardLink
           href={nextPath}
           onNavigate={() => navigate(nextPath)}
-          className="mt-10 border-0 py-10 hover:text-amb"
+          data-ac={nextDef.accent}
+          className="mt-10 border-0 py-10 hover:text-ac"
         >
-          <span className="block font-mono text-xs text-amb">{t('case.next')}</span>
+          <span className="flex items-baseline gap-4 font-mono text-xs text-ac">
+            <b className="text-[56px] font-medium leading-none sm:text-[88px]">{nextDef.num}</b>
+            {t('case.next')}
+          </span>
           <span className="mt-2.5 block text-[28px] font-extrabold sm:text-[40px]">{t(`${nextDef.keyPrefix}.title`)}</span>
         </CardLink>
       </div>

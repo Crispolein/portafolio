@@ -1,7 +1,9 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, render, screen, within } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import CasePage from './CasePage'
-import { cases } from '../data/cases'
+import { existsSync } from 'node:fs'
+import { resolve } from 'node:path'
+import { cases, shotSrc, type CaseSlug } from '../data/cases'
 import i18n from '../i18n'
 
 afterEach(cleanup)
@@ -10,6 +12,35 @@ describe('cases data', () => {
   it('maps slugs to keys, AI nodes and the other case', () => {
     expect(cases['cv-optimizer']).toMatchObject({ keyPrefix: 'case.cvOptimizer', aiNodes: [2], next: 'job-hunter' })
     expect(cases['job-hunter']).toMatchObject({ keyPrefix: 'case.jobHunter', aiNodes: [3], next: 'cv-optimizer' })
+  })
+})
+
+describe('cases numbering and accent', () => {
+  it('numera 01/02 y asigna un acento por proyecto', () => {
+    expect(cases['cv-optimizer']).toMatchObject({ num: '01', accent: 'amb' })
+    expect(cases['job-hunter']).toMatchObject({ num: '02', accent: 'cy' })
+  })
+})
+
+describe('CasePage project rail', () => {
+  it('marca el caso actual con aria-current y enlaza al otro', () => {
+    render(<CasePage slug="job-hunter" />)
+    const rail = screen.getByRole('navigation', { name: i18n.t('case.railLabel') })
+    const current = within(rail).getByRole('link', { current: 'page' })
+    expect(current).toHaveTextContent('02')
+    expect(within(rail).getByRole('link', { name: /01/ })).toHaveAttribute('href', '/proyectos/cv-optimizer')
+  })
+
+  it('el panel de siguiente caso muestra el número del siguiente', () => {
+    render(<CasePage slug="cv-optimizer" />)
+    const next = screen.getByRole('link', { name: /Job Hunter Platform/ })
+    expect(next).toHaveTextContent('02')
+    expect(next).toHaveAttribute('data-ac', 'cy')
+  })
+
+  it('el contenedor del caso lleva el acento del proyecto', () => {
+    const { container } = render(<CasePage slug="job-hunter" />)
+    expect(container.firstElementChild).toHaveAttribute('data-ac', 'cy')
   })
 })
 
@@ -31,5 +62,27 @@ describe('CasePage', () => {
   it('returns null for an unknown slug', () => {
     const { container } = render(<CasePage slug="nope" />)
     expect(container).toBeEmptyDOMElement()
+  })
+})
+
+describe('CasePage screenshots', () => {
+  const slugs: CaseSlug[] = ['cv-optimizer', 'job-hunter']
+
+  it.each(slugs)('%s: los 4 archivos de captura existen en public/shots', (slug) => {
+    for (let n = 1; n <= cases[slug].shots; n++) {
+      expect(existsSync(resolve(__dirname, '../../public', '.' + shotSrc(slug, n)))).toBe(true)
+    }
+  })
+
+  it.each(slugs)('%s: monta un carrusel de 4 capturas con alt propio', (slug) => {
+    const { container } = render(<CasePage slug={slug} />)
+    const carousel = screen.getByRole('region', { name: i18n.t(`${cases[slug].keyPrefix}.shotsLabel`) })
+    const imgs = carousel.querySelectorAll('figure img')
+    expect(imgs).toHaveLength(4)
+    imgs.forEach((img, i) => {
+      expect(img.getAttribute('src')).toBe(shotSrc(slug, i + 1))
+      expect(img.getAttribute('alt')).toBeTruthy()
+    })
+    expect(container.querySelector('.border-dashed')).toBeNull()
   })
 })

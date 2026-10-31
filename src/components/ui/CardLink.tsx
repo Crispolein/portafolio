@@ -37,12 +37,12 @@ export default function CardLink({
       {...rest}
       href={href}
       onClick={handleClick}
-      className={`group flex items-end justify-between gap-4 border border-line transition-[color,border-color] duration-[160ms] ease-out hover:border-amb focus-visible:border-amb ${className}`.trim()}
+      className={`group flex items-end justify-between gap-4 border border-line transition-[color,border-color] duration-[160ms] ease-out hover:border-ac focus-visible:border-ac ${className}`.trim()}
     >
       <span className="block min-w-0 flex-1">{children}</span>
       <span
         aria-hidden="true"
-        className="inline-block text-amb transition-transform duration-200 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:translate-x-1 group-focus-visible:translate-x-1"
+        className="inline-block text-ac transition-transform duration-200 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:translate-x-1 group-focus-visible:translate-x-1"
       >
         →
       </span>

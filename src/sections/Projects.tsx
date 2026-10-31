@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import CardLink from '../components/ui/CardLink'
+import { cases, shotSrc } from '../data/cases'
 import { featuredProjects, listProjects } from '../data/projects'
 
 const rowBase =
@@ -26,17 +27,25 @@ export default function Projects() {
           <CardLink
             key={p.id}
             href={p.href}
-            className="border-0 py-8 md:pr-8 md:[&:nth-child(2)]:border-l md:[&:nth-child(2)]:border-line md:[&:nth-child(2)]:pl-8 md:[&:nth-child(2)]:pr-0"
+            data-ac={cases[p.id].accent}
+            className="border-0 border-t-2 border-t-ac py-8 md:pr-8 md:[&:nth-child(2)]:border-l md:[&:nth-child(2)]:border-line md:[&:nth-child(2)]:pl-8 md:[&:nth-child(2)]:pr-0"
           >
-            <span className="block font-mono text-xs text-amb">{t(`projects.featured.${p.key}.tag`)}</span>
-            <h3 className="mb-2 mt-3 text-2xl font-extrabold group-hover:text-amb group-focus-visible:text-amb sm:text-[28px]">
+            <span className="flex items-baseline gap-3 font-mono text-xs text-ac">
+              <b className="text-[32px] font-medium leading-none">{cases[p.id].num}</b>
+              {t(`projects.featured.${p.key}.tag`)}
+            </span>
+            <h3 className="mb-2 mt-3 text-2xl font-extrabold group-hover:text-ac group-focus-visible:text-ac sm:text-[28px]">
               {t(`projects.featured.${p.key}.name`)}
             </h3>
             <span className="block text-base leading-[1.6] text-mut">{t(`projects.featured.${p.key}.desc`)}</span>
-            <span className="mt-5 flex h-[200px] items-center justify-center rounded-md border border-dashed border-line font-mono text-xs text-mut transition-colors duration-200 group-hover:border-solid group-hover:border-amb group-hover:text-txt">
-              [{t(`projects.featured.${p.key}.shot`)}]
-            </span>
-            <span className="mt-[18px] block font-mono text-[13px] text-mut group-hover:text-amb group-focus-visible:text-amb">
+            <img
+              src={shotSrc(p.id, 1)}
+              alt=""
+              loading="lazy"
+              decoding="async"
+              className="mt-5 block aspect-[16/10] w-full rounded-md border border-line object-cover object-top transition-colors duration-200 group-hover:border-ac"
+            />
+            <span className="mt-[18px] block font-mono text-[13px] text-mut group-hover:text-ac group-focus-visible:text-ac">
               {t('projects.seeCase')}
             </span>
           </CardLink>

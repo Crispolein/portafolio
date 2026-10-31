@@ -10,6 +10,7 @@ import Experience from './sections/Experience'
 import Contact from './sections/Contact'
 import CasePage from './pages/CasePage'
 import { cases, isCaseSlug } from './data/cases'
+import { WRAP } from './lib/layout'
 import { linkClickHandler, useRoute } from './lib/route'
 
 const CASE_PREFIX = '/proyectos/'
@@ -43,7 +44,7 @@ export default function App() {
         {t('nav.skip')}
       </a>
       <Navbar />
-      <main id="main" className="mx-auto max-w-[1168px] px-4 sm:px-14">
+      <main id="main" className={WRAP}>
         {isCaseSlug(slug) ? (
           <CasePage slug={slug} />
         ) : (

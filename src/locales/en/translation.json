@@ -118,14 +118,12 @@
       "cvOptimizer": {
         "tag": "Django · HTMX · Claude API",
         "name": "CV Optimizer Pro",
-        "desc": "CV optimizers tend to inflate achievements. This one does the opposite. An AI coach interviews you, an auditor flags what you overstate or undersell, and the CV ends up with what you can defend in an interview.",
-        "shot": "Screenshot of the interview flow"
+        "desc": "CV optimizers tend to inflate achievements. This one does the opposite. An AI coach interviews you, an auditor flags what you overstate or undersell, and the CV ends up with what you can defend in an interview."
       },
       "jobHunter": {
         "tag": "FastAPI · Celery · React",
         "name": "Job Hunter Platform",
-        "desc": "Checks 3 job boards every 2 hours, ranks listings against my profile with AI and builds a tailored CV. Behind it run 116+ endpoints and a React dashboard.",
-        "shot": "Screenshot of the listings dashboard"
+        "desc": "Checks 3 job boards every 2 hours, ranks listings against my profile with AI and builds a tailored CV. Behind it run 116+ endpoints and a React dashboard."
       }
     },
     "list": {
@@ -223,6 +221,7 @@
   "case": {
     "back": "Projects",
     "next": "next case",
+    "railLabel": "Projects",
     "factsLabel": "Facts",
     "sections": {
       "problem": "The problem",
@@ -240,7 +239,13 @@
         ["agents", "coach, recruiter, auditor"],
         ["output", "CV in 3 templates, one ATS"]
       ],
-      "shot": "Screenshot of the coach interview and the feedback card",
+      "shotsLabel": "CV Optimizer screenshots",
+      "shots": [
+        "CV Optimizer coach interview and its feedback card. Fictional data.",
+        "Credibility auditor report with two flags. Fictional data.",
+        "Optimized CV already generated. Fictional data.",
+        "Job listing analysis with the matching percentage. Fictional data."
+      ],
       "problem": [
         "When I wrote my CV I didn't know what to tell. There were things I did every day and didn't value. Leading 2 people was one of them.",
         "The tools I tried did the opposite. They inflated everything, and that falls apart at the first interview question."
@@ -280,7 +285,13 @@
         ["data", "PostgreSQL · Redis"],
         ["sources", "3 boards every 2 hours"]
       ],
-      "shot": "Screenshot of the dashboard with the listings ranking",
+      "shotsLabel": "Job Hunter screenshots",
+      "shots": [
+        "Job Hunter dashboard with the listings ranking. Fictional data.",
+        "Expanded listing with requirements and matching skills. Fictional data.",
+        "Application preview with the CV in several formats. Fictional data.",
+        "AI token usage panel and monthly cost. Fictional data."
+      ],
       "problem": [
         "Job hunting meant checking the same boards every day and reading listings that didn't fit me.",
         "I wanted a system to do that first pass and leave me only the ones worth reading."
@@ -311,5 +322,12 @@
         ["boards", "3"]
       ]
     }
+  },
+  "carousel": {
+    "prev": "Previous screenshot",
+    "next": "Next screenshot",
+    "demo": "Fictional data",
+    "thumbs": "Screenshots",
+    "slide": "Screenshot {{n}} of {{total}}"
   }
 }

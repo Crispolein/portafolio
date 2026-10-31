@@ -12,6 +12,7 @@ export default {
         'mut': 'var(--mut)',
         'amb': 'var(--amb)',
         'amb-hi': 'var(--amb-hi)',
+        'ac': 'var(--ac)',
         'cy': 'var(--cy)',
         'ok': 'var(--ok)',
       },

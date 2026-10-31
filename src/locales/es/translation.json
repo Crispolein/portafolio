@@ -220,14 +220,12 @@
       "cvOptimizer": {
         "tag": "Django · HTMX · Claude API",
         "name": "CV Optimizer Pro",
-        "desc": "Los optimizadores de CV suelen inflar logros. Este hace lo contrario. Un coach IA te entrevista, un auditor marca lo que exageras o te quedas corto y el CV sale con lo que puedes defender en una entrevista.",
-        "shot": "Captura del flujo de entrevista"
+        "desc": "Los optimizadores de CV suelen inflar logros. Este hace lo contrario. Un coach IA te entrevista, un auditor marca lo que exageras o te quedas corto y el CV sale con lo que puedes defender en una entrevista."
       },
       "jobHunter": {
         "tag": "FastAPI · Celery · React",
         "name": "Job Hunter Platform",
-        "desc": "Revisa 3 portales de empleo cada 2 horas, ordena las ofertas según mi perfil con IA y arma el CV adaptado. Por detrás corren 116+ endpoints y un dashboard en React.",
-        "shot": "Captura del dashboard de ofertas"
+        "desc": "Revisa 3 portales de empleo cada 2 horas, ordena las ofertas según mi perfil con IA y arma el CV adaptado. Por detrás corren 116+ endpoints y un dashboard en React."
       }
     },
     "list": {
@@ -325,6 +323,7 @@
   "case": {
     "back": "Proyectos",
     "next": "siguiente caso",
+    "railLabel": "Proyectos",
     "factsLabel": "Ficha",
     "sections": {
       "problem": "El problema",
@@ -354,7 +353,13 @@
           "CV en 3 plantillas, una ATS"
         ]
       ],
-      "shot": "Captura de la entrevista con el coach y la tarjeta de feedback",
+      "shotsLabel": "Capturas de CV Optimizer",
+      "shots": [
+        "Entrevista con el coach de CV Optimizer y su tarjeta de feedback. Datos ficticios.",
+        "Informe del auditor de credibilidad con dos observaciones. Datos ficticios.",
+        "CV optimizado ya generado. Datos ficticios.",
+        "Análisis de una oferta con el porcentaje de matching. Datos ficticios."
+      ],
       "problem": [
         "Cuando armé mi CV no sabía qué contar. Había cosas que hacía todos los días y no les daba valor. Liderar a 2 personas era una de ellas.",
         "Las herramientas que probé hacían lo contrario. Inflaban todo, y eso se cae en la primera pregunta de una entrevista."
@@ -450,7 +455,13 @@
           "3 portales cada 2 horas"
         ]
       ],
-      "shot": "Captura del dashboard con el ranking de ofertas",
+      "shotsLabel": "Capturas de Job Hunter",
+      "shots": [
+        "Dashboard de Job Hunter con el ranking de ofertas. Datos ficticios.",
+        "Oferta expandida con requisitos y skills que coinciden. Datos ficticios.",
+        "Vista previa de la postulación con el CV en varios formatos. Datos ficticios.",
+        "Panel de uso de tokens de IA y costo mensual. Datos ficticios."
+      ],
       "problem": [
         "Buscar trabajo era revisar los mismos portales todos los días y leer ofertas que no calzaban conmigo.",
         "Quería que un sistema hiciera esa primera pasada y me dejara solo las que valía la pena leer."
@@ -528,5 +539,12 @@
         ]
       ]
     }
+  },
+  "carousel": {
+    "prev": "Captura anterior",
+    "next": "Captura siguiente",
+    "demo": "Datos ficticios",
+    "thumbs": "Capturas",
+    "slide": "Captura {{n}} de {{total}}"
   }
 }

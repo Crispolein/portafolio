@@ -28,7 +28,7 @@ Texto sobre ámbar: `#101a2b`. No hay modo claro.
 
 - **Archivo** variable (`wdth 62..125`, `wght 400..900`): todo el texto. Títulos con `font-variation-settings:"wdth" 80` y peso 800.
 - **JetBrains Mono** 400/500/700: solo datos (estado, roles, consola, tags de stack, fechas, breadcrumbs).
-- Google Fonts con `preconnect`; URL: `https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;500;700&display=swap`.
+- Self-hosted en `public/fonts` (woff2, `font-display: swap`); la CSP exige `font-src 'self'`, sin Google Fonts.
 
 | Elemento | Desktop | Móvil (≤ 640 px) |
 |---|---|---|
@@ -43,7 +43,8 @@ Texto sobre ámbar: `#101a2b`. No hay modo claro.
 
 ## Espacio y layout
 
-- `.wrap`: max-width 1168px, padding lateral 56px (16px en móvil).
+- Contenedor `WRAP` (`src/lib/layout.ts`), compartido por navbar, home y casos: max-width 1560px y gutter fluido `clamp(16px, 5vw, 88px)`. Los casos viven dentro de `<main>`, que ya lo aplica: no se repite.
+- **Un acento por proyecto**: `data-ac="amb|cy"` en el contenedor fija `--ac`; los hijos usan `text-ac` y `border-ac`. 01 cv-optimizer es ámbar, 02 job-hunter es cian. El número 01/02 sale de `src/data/cases.ts` y se repite en las cards, el riel de proyectos y el panel de siguiente caso.
 - Header 76px (60px móvil, sticky con borde inferior).
 - Hero: grid `380px 1fr`, gap 56px, margin-top 52px. En móvil apilado: texto, CTAs, consola.
 - Secciones: margin-top 120px (72px móvil). Encabezado `.sh` en flex con baseline, h2 a la izquierda y nota mono a la derecha, borde inferior `--line`.
@@ -83,6 +84,8 @@ Transiciones: color, fondo y borde en `.16s ease-out`; transform en `.1s`; flech
   Sin soporte de `animation-timeline` el contenido simplemente está visible.
 - **Pipeline**: el paquete ámbar recorre la línea en 4.6s `cubic-bezier(.55,0,.25,1)` en bucle; el nodo final pasa a `--ok` al 71%. Al cambiar de pestaña la animación reinicia.
 - **Caret**: parpadeo 1.1s `steps(1)`.
+- **Cambio entre vistas**: `navigate()` usa `document.startViewTransition` (la vieja se apaga en 160ms y la nueva barre de derecha a izquierda sobre ámbar, 320ms total). Sin soporte o con reduced motion, el cambio es inmediato. El foco va al h1 nuevo.
+- **Carrusel de capturas** (`Carousel`): una captura visible, flechas, miniaturas con `aria-current`, contador `01 / 04` en región polite y flechas del teclado. Insignia fija "Datos ficticios": todas las capturas salen de datos inventados.
 - **Reduced motion**: paquete quieto en el final, nodo final encendido, caret fijo, sin reveal y sin transiciones de botones ni cards.
 
 ## Breakpoints

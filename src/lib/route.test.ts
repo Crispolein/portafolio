@@ -74,3 +74,63 @@ describe('linkClickHandler', () => {
     },
   )
 })
+
+describe('navigate con View Transitions', () => {
+  const setReduced = (reduced: boolean) => {
+    window.matchMedia = vi.fn((q: string) => ({ matches: reduced && q.includes('reduce'), media: q })) as unknown as typeof window.matchMedia
+  }
+  const setVT = () => {
+    const fn = vi.fn((cb: () => void) => {
+      cb()
+      return { finished: Promise.resolve() }
+    })
+    ;(document as unknown as { startViewTransition: unknown }).startViewTransition = fn
+    return fn
+  }
+  afterEach(() => {
+    delete (document as unknown as { startViewTransition?: unknown }).startViewTransition
+    window.matchMedia = undefined as unknown as typeof window.matchMedia
+  })
+
+  it('envuelve el cambio de ruta en startViewTransition cuando hay soporte', () => {
+    setReduced(false)
+    const vt = setVT()
+    const { result } = renderHook(() => useRoute())
+    act(() => navigate('/proyectos/job-hunter'))
+    expect(vt).toHaveBeenCalledTimes(1)
+    expect(result.current).toBe('/proyectos/job-hunter')
+    expect(window.scrollTo).toHaveBeenCalledWith(0, 0)
+  })
+
+  it('con reduced motion cambia directo, sin transición', () => {
+    setReduced(true)
+    const vt = setVT()
+    const { result } = renderHook(() => useRoute())
+    act(() => navigate('/proyectos/job-hunter'))
+    expect(vt).not.toHaveBeenCalled()
+    expect(result.current).toBe('/proyectos/job-hunter')
+  })
+
+  it('sin soporte cambia directo', () => {
+    setReduced(false)
+    const { result } = renderHook(() => useRoute())
+    act(() => navigate('/proyectos/job-hunter'))
+    expect(result.current).toBe('/proyectos/job-hunter')
+  })
+
+  it('a la misma ruta no abre transición', () => {
+    setReduced(false)
+    const vt = setVT()
+    act(() => navigate('/'))
+    expect(vt).not.toHaveBeenCalled()
+  })
+
+  it('el foco llega al h1 nuevo dentro de la transición', async () => {
+    setReduced(false)
+    setVT()
+    render(createElement('h1', { tabIndex: -1 }, 'Título'))
+    act(() => navigate('/proyectos/cv-optimizer'))
+    await waitFor(() => expect(screen.getByRole('heading', { level: 1 })).toHaveFocus())
+  })
+})
+

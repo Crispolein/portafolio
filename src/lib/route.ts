@@ -1,4 +1,5 @@
 import { useSyncExternalStore, type MouseEvent } from 'react'
+import { flushSync } from 'react-dom'
 
 const listeners = new Set<() => void>()
 const emit = () => listeners.forEach((l) => l())
@@ -18,14 +19,27 @@ export function useRoute(): string {
   return useSyncExternalStore(subscribe, getPath, () => '/')
 }
 
-export function navigate(path: string) {
+function apply(path: string) {
   if (path !== window.location.pathname) {
     window.history.pushState(null, '', path)
-    emit()
+    // Render now: a view transition snapshots the DOM right after this callback.
+    flushSync(emit)
   }
   window.scrollTo(0, 0)
   // Wait for the new view to render so the announced h1 exists.
   setTimeout(() => document.querySelector<HTMLElement>('h1')?.focus(), 0)
+}
+
+const canTransition = () =>
+  typeof document.startViewTransition === 'function' &&
+  !window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
+
+export function navigate(path: string) {
+  if (path !== window.location.pathname && canTransition()) {
+    document.startViewTransition(() => apply(path))
+  } else {
+    apply(path)
+  }
 }
 
 /** onClick for an internal <a href>: plain clicks navigate, modified clicks keep native behavior. */

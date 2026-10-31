@@ -8,7 +8,7 @@ export default function Hero() {
   const { t } = useTranslation()
 
   return (
-    <section id="hero" className="mt-8 grid gap-10 sm:mt-[52px] lg:grid-cols-[380px_1fr] lg:items-start lg:gap-14">
+    <section id="hero" className="mt-8 grid gap-10 sm:mt-[52px] lg:grid-cols-[minmax(420px,.78fr)_1.22fr] lg:items-start lg:gap-14">
       <div>
         <p className="mb-[22px] mt-0 font-mono text-xs text-mut">
           <span
