@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portafolio-roan-phi.vercel.app/sitemap.xml

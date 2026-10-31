@@ -30,9 +30,9 @@ describe('design tokens', () => {
   it('declara fuentes Archivo y JetBrains Mono', () => {
     expect(tailwind).toMatch(/sans:\s*\[\s*'Archivo'/)
     expect(tailwind).toMatch(/mono:\s*\[\s*'"JetBrains Mono"'/)
-    expect(html).toContain('family=Archivo:wdth,wght@80,400..800')
-    expect(html).toContain('JetBrains+Mono')
-    expect(html).toContain('rel="preconnect"')
+    // Faces come from /fonts (see src/head.test.ts); Archivo keeps the 80 width axis.
+    expect(css).toMatch(/font-family: 'Archivo';[^}]*font-weight: 400 800;[^}]*font-stretch: 80%/)
+    expect(css).toMatch(/font-family: 'JetBrains Mono';[^}]*font-weight: 400 500;/)
     expect(html).toContain('<meta name="theme-color" content="#101a2b"')
     expect(html).not.toMatch(/Inter|Bricolage/)
   })
