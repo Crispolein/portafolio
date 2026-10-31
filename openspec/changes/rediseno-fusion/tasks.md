@@ -21,7 +21,7 @@ Mientras el loop avanza, los componentes viejos siguen en el árbol hasta que la
   - Clase `.rv` de reveal con `animation-timeline: view()` dentro de `@supports`, keyframes y animación del pipeline como en `DESIGN.md`. Bajo `prefers-reduced-motion: reduce` nada se anima y `.rv` queda visible.
   - `tokens.test.ts` lee `src/index.css` y `tailwind.config.ts` como texto o import y comprueba los 9 tokens con su hex exacto y el bloque de reduced motion.
 
-- [ ] T3 — Copy es/en del rediseño · owner: claude · files: src/locales/es/translation.json, src/locales/en/translation.json, src/locales/locales.test.ts, scripts/extract-es.mjs · verification: `npx vitest run src/locales && node scripts/extract-es.mjs | python3 ~/.claude/skills/voz-christian/scripts/overlap_check.py`
+- [x] T3 — Copy es/en del rediseño · owner: claude · files: src/locales/es/translation.json, src/locales/en/translation.json, src/locales/locales.test.ts, scripts/extract-es.mjs · verification: `npx vitest run src/locales && node scripts/extract-es.mjs | python3 ~/.claude/skills/voz-christian/scripts/overlap_check.py`
   - dep T1.
   - Copia tal cual `openspec/changes/rediseno-fusion/copy/es.json` y `copy/en.json` a los dos `translation.json`. No reescribas textos: el copy está validado.
   - `locales.test.ts`: paridad exacta de keys y de largo de arrays entre es y en; en es ningún string contiene "—", ";", "(", ")" ni "90 %"; ningún string en ningún idioma contiene un teléfono, regex `\+?56\s?9|\b9\s?\d{4}\s?\d{4}\b`.
