@@ -27,7 +27,7 @@ Mientras el loop avanza, los componentes viejos siguen en el árbol hasta que la
   - `locales.test.ts`: paridad exacta de keys y de largo de arrays entre es y en; en es ningún string contiene "—", ";", "(", ")" ni "90 %"; ningún string en ningún idioma contiene un teléfono, regex `\+?56\s?9|\b9\s?\d{4}\s?\d{4}\b`.
   - `scripts/extract-es.mjs` recorre el JSON es e imprime una línea por string con 6 palabras o más.
 
-- [ ] T4 — Primitivas Button y CardLink · owner: claude · files: src/components/ui/Button.tsx, src/components/ui/CardLink.tsx, src/components/ui/ui.test.tsx · verification: `npx vitest run src/components/ui`
+- [ ] T4 — Primitivas Button y CardLink · owner: claude · files: src/components/ui/Button.tsx, src/components/ui/CardLink.tsx, src/components/ui/ui.test.tsx · verification: `npx vitest run src/components/ui` · bloqueada: src/components/ui/Button.tsx:29-30 — el fix 74771c8 excluye hover y active en disabled con '[&:not(:disabled)]', pero 'arrowClass' sigue usando 'group-hover:translate-x-[3px]'. Un '<Button disabled arrow>' mueve la flecha 3px al pasar el cursor, porque :hover sí aplica a botones disabled. Es el mism
   - dep T2.
   - Estados según `ref/DirEstados.html` y `DESIGN.md`: reposo, hover, focus-visible, active con scale .97, disabled.
   - `Button`: variantes `solid` (fondo `--amb`, texto `--term`) y `ghost` (borde `--line`, texto `--txt`); prop `arrow` con flecha que se desplaza 3px en hover y se marca `aria-hidden`. Polimórfico: con `href` renderiza `<a>`, sin `href` renderiza `<button type="button">` salvo `type` explícito. Soporta `download`, `target`, `rel`, `disabled`, `aria-busy`.
