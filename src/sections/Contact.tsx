@@ -27,8 +27,9 @@ export default function Contact() {
   }
 
   const inputCls = `w-full bg-surface-2 border border-white/[0.07] text-white
-                    px-4 py-3 rounded-lg text-[14px] outline-none
-                    focus:border-[rgba(240,165,0,0.4)] transition-colors placeholder:text-[#57534e]`
+                    px-4 py-3 rounded-lg text-[15px]
+                    focus:border-[rgba(240,165,0,0.4)] transition-colors`
+  const labelCls = 'text-[13px] font-medium text-[#d6d3d1]'
 
   const LINKS: { icon: IconName; text: string; href: string; variant: 'amber' | 'sky' }[] = [
     { icon: 'mail', text: 'chris.rangel.intriago@gmail.com', href: 'mailto:chris.rangel.intriago@gmail.com', variant: 'amber' },
@@ -50,7 +51,7 @@ export default function Contact() {
 
             <div className="flex flex-col gap-3">
               {LINKS.map(({ icon, text, href, variant }) => (
-                <a key={href} href={href} target="_blank" rel="noreferrer"
+                <a key={href} href={href} {...(href.startsWith('http') ? { target: '_blank', rel: 'noreferrer' } : {})}
                    className="flex items-center gap-3 text-[14px] text-muted hover:text-white transition-colors">
                   <span className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 ${
                     variant === 'amber'
@@ -65,7 +66,7 @@ export default function Contact() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-3 relative">
+          <form onSubmit={handleSubmit} aria-busy={state === 'sending'} className="flex flex-col gap-4 relative">
             {/* Honeypot anti-bots: invisible para usuarios, los bots lo llenan */}
             <input
               type="text"
@@ -77,44 +78,63 @@ export default function Contact() {
               aria-hidden="true"
               className="absolute -left-[9999px] h-0 w-0 opacity-0"
             />
-            <input
-              className={inputCls}
-              placeholder={t('contact.name')}
-              value={form.name}
-              onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-              required
-            />
-            <input
-              type="email"
-              className={inputCls}
-              placeholder={t('contact.email')}
-              value={form.email}
-              onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-              required
-            />
-            <textarea
-              className={`${inputCls} min-h-[110px] resize-y`}
-              placeholder={t('contact.message')}
-              value={form.message}
-              onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-              required
-            />
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="contact-name" className={labelCls}>{t('contact.name')}</label>
+              <input
+                id="contact-name"
+                name="name"
+                autoComplete="name"
+                className={inputCls}
+                value={form.name}
+                onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                required
+              />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="contact-email" className={labelCls}>{t('contact.email')}</label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                className={inputCls}
+                value={form.email}
+                onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                required
+              />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="contact-message" className={labelCls}>{t('contact.message')}</label>
+              <textarea
+                id="contact-message"
+                name="message"
+                className={`${inputCls} min-h-[110px] resize-y`}
+                value={form.message}
+                onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
+                required
+              />
+            </div>
 
             <button
               type="submit"
               disabled={state === 'sending'}
               className="w-full bg-amber text-black py-3 rounded-lg font-bold text-[14px]
-                         hover:bg-[rgba(240,165,0,0.9)] disabled:opacity-60 transition-colors"
+                         hover:bg-[rgba(240,165,0,0.9)] disabled:opacity-60 transition duration-150
+                         active:scale-[0.98] disabled:active:scale-100"
             >
               {state === 'sending' ? t('contact.sending') : t('contact.send')}
             </button>
 
-            {state === 'success' && (
-              <p className="text-green-400 text-[13px] text-center">{t('contact.success')}</p>
-            )}
-            {state === 'error' && (
-              <p className="text-red-400 text-[13px] text-center">{t('contact.error')}</p>
-            )}
+            <p
+              role="status"
+              aria-live="polite"
+              className={`text-[13px] text-center min-h-[1.25rem] ${
+                state === 'error' ? 'text-red-400' : 'text-green-400'
+              }`}
+            >
+              {state === 'success' && t('contact.success')}
+              {state === 'error' && t('contact.error')}
+            </p>
           </form>
         </div>
       </div>

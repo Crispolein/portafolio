@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next'
+import { MotionConfig } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './sections/Hero'
 import About from './sections/About'
@@ -12,9 +13,16 @@ export default function App() {
   const { t } = useTranslation()
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className="min-h-screen bg-surface-deep text-[#e7e5e4]">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-amber focus:text-black focus:px-4 focus:py-2 focus:rounded-md focus:font-bold"
+      >
+        {t('nav.skip')}
+      </a>
       <Navbar />
-      <main>
+      <main id="main">
         <Hero />
         <About />
         <Projects />
@@ -36,5 +44,6 @@ export default function App() {
         </a>
       </footer>
     </div>
+    </MotionConfig>
   )
 }

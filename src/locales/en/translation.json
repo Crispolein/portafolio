@@ -5,7 +5,11 @@
     "tools": "Tools",
     "experience": "Experience",
     "skills": "Skills",
-    "contact": "Contact"
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "switchLang": "Switch language to Spanish",
+    "skip": "Skip to content"
   },
   "hero": {
     "badge": "Available · Computer Science Engineer · Santiago, Chile",
@@ -172,7 +176,7 @@
     "sub": "Open to job opportunities and freelance projects. If you have a backend, automation or AI integration problem to solve, reach out.",
     "name": "Your name",
     "email": "Your email",
-    "message": "Message...",
+    "message": "Message",
     "send": "Send message",
     "sending": "Sending...",
     "success": "Message sent! I'll get back to you soon.",

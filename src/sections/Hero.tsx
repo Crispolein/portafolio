@@ -63,18 +63,18 @@ export default function Hero() {
             </p>
 
             <div className="flex gap-3 flex-wrap">
-              <button
-                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-amber text-black px-5 py-2.5 rounded-lg text-[13px] font-bold
-                           hover:bg-amber/90 transition-colors"
+              <a
+                href="#projects"
+                className="bg-amber text-black px-5 py-3 rounded-lg text-[14px] font-bold
+                           hover:bg-amber/90 transition duration-150 active:scale-[0.97]"
               >
                 {t('hero.cta')}
-              </button>
+              </a>
               <a
                 href="/Christian_Rangel_CV.pdf"
                 download
-                className="border border-sky text-sky-accent px-5 py-2.5 rounded-lg text-[13px]
-                           hover:bg-sky-dim transition-colors"
+                className="border border-sky text-sky-accent px-5 py-3 rounded-lg text-[14px]
+                           hover:bg-sky-dim transition duration-150 active:scale-[0.97]"
               >
                 {t('hero.cv')}
               </a>

@@ -5,7 +5,11 @@
     "tools": "Herramientas",
     "experience": "Experiencia",
     "skills": "Skills",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "switchLang": "Cambiar idioma a inglés",
+    "skip": "Saltar al contenido"
   },
   "hero": {
     "badge": "Disponible · Ing. Civil Informático · Santiago, Chile",
@@ -172,7 +176,7 @@
     "sub": "Abierto a oportunidades de empleo y proyectos freelance. Si tienes un problema de backend, automatización o integración de IA que resolver, escríbeme.",
     "name": "Tu nombre",
     "email": "Tu email",
-    "message": "Mensaje...",
+    "message": "Mensaje",
     "send": "Enviar mensaje",
     "sending": "Enviando...",
     "success": "¡Mensaje enviado! Te respondo pronto.",

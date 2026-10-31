@@ -20,7 +20,7 @@ export default {
           2: '#1a1816',
           deep: '#0a0908',
         },
-        muted: '#78716c',
+        muted: '#8a837d',
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

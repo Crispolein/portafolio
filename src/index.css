@@ -6,8 +6,17 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
     font-family: 'Inter', sans-serif;
+    scroll-padding-top: 72px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+
+  :focus-visible {
+    outline: 2px solid #f0a500;
+    outline-offset: 2px;
   }
 
   body {
