@@ -6,7 +6,7 @@ export default function Experience() {
 
   return (
     <section id="experience" aria-labelledby="experience-title" className="rv mt-[72px] sm:mt-[120px]">
-      <div className="flex items-baseline justify-between gap-4 border-b border-line pb-3.5">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line pb-3.5">
         <h2
           id="experience-title"
           className="m-0 text-[30px] font-extrabold tracking-[-.02em] sm:text-[40px] [font-variation-settings:'wdth'_80]"
