@@ -13,8 +13,11 @@ npm install
 npm run dev        # desarrollo
 npm run build      # build de producción en dist/
 npm test           # vitest
-npm run test:e2e   # playwright
+npm run test:e2e   # playwright con axe, contra vite preview en :4173
 ```
+
+La primera vez, `npx playwright install chromium`. Si ya hay un preview en el puerto 4173,
+Playwright lo reutiliza: ciérralo antes para no probar un build viejo.
 
 ## Documentos
 
