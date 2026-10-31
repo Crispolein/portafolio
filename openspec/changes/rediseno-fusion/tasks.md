@@ -43,7 +43,7 @@ Mientras el loop avanza, los componentes viejos siguen en el árbol hasta que la
   - Orientación: vertical bajo `matchMedia('(max-width: 640px)')`, con listener.
   - Tests: 4 radios con el primero marcado, ArrowRight marca el segundo y le da foco, End marca el último, el `aria-label` del pipeline cambia con el sistema.
 
-- [ ] T7 — Story y Projects · owner: claude · files: src/sections/Story.tsx, src/sections/Projects.tsx, src/data/projects.ts, src/sections/Projects.test.tsx, src/components/ProjectCard.tsx, src/components/FeaturedProjectCard.tsx · verification: `npx vitest run src/sections/Projects`
+- [x] T7 — Story y Projects · owner: claude · files: src/sections/Story.tsx, src/sections/Projects.tsx, src/data/projects.ts, src/sections/Projects.test.tsx, src/components/ProjectCard.tsx, src/components/FeaturedProjectCard.tsx · verification: `npx vitest run src/sections/Projects`
   - dep T4, T3.
   - Referencia: secciones "Un caso de Migtra" y "Proyectos" de `ref/DirDefinitivo.html`.
   - `Story`: `story.*` con log mono.
