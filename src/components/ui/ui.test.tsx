@@ -141,4 +141,17 @@ describe('Button generated CSS', () => {
     expect(rules.length).toBeGreaterThan(0)
     for (const rule of rules) expect(rule).toContain(':not(:disabled)')
   })
+
+  it('arrow does not slide when the button is disabled', async () => {
+    const { container } = render(
+      <Button disabled arrow>
+        A
+      </Button>,
+    )
+    const arrow = container.querySelector('span[aria-hidden="true"]') as HTMLElement
+    const css = await cssFor(`<div class="${arrow.className}">`)
+    const rules = css.split('}').filter((r) => r.includes(':hover'))
+    expect(rules.length).toBeGreaterThan(0)
+    for (const rule of rules) expect(rule).toContain(':not(:disabled)')
+  })
 })

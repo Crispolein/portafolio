@@ -29,7 +29,7 @@ const variants: Record<Variant, string> = {
 }
 
 const arrowClass =
-  'inline-block transition-transform duration-200 ease-[cubic-bezier(.2,.8,.2,1)] group-hover:translate-x-[3px]'
+  'inline-block transition-transform duration-200 ease-[cubic-bezier(.2,.8,.2,1)] group-[&:not(:disabled):hover]:translate-x-[3px]'
 
 export default function Button(props: ButtonProps) {
   const { variant = 'solid', arrow = false, className = '', children, ...rest } = props
