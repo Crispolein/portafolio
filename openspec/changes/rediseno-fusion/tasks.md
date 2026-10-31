@@ -76,7 +76,7 @@ Mientras el loop avanza, los componentes viejos siguen en el árbol hasta que la
   - `CasePage` según `ref/DirCaso.html`: volver, tag, h1, sub, facts, placeholder de captura con borde punteado, secciones problema, cómo funciona con `Pipeline`, decisiones, resultado con log, y link al siguiente caso.
   - Tests: `navigate` cambia `useRoute` y llama `pushState`; `popstate` actualiza; click con meta no navega; `CasePage` de cada slug muestra su h1 y su pipeline con el `aria-label` correcto; slug desconocido devuelve null.
 
-- [ ] T10 — Hero, Navbar y wiring de App · owner: claude · files: src/sections/Hero.tsx, src/components/Navbar.tsx, src/App.tsx, src/App.test.tsx · verification: `npx vitest run src/App && npm run build`
+- [x] T10 — Hero, Navbar y wiring de App · owner: claude · files: src/sections/Hero.tsx, src/components/Navbar.tsx, src/App.tsx, src/App.test.tsx · verification: `npx vitest run src/App && npm run build`
   - dep T5, T6, T7, T8, T9.
   - Referencia: header y hero de `ref/DirDefinitivo.html`, móvil de `ref/DirMovil.html`.
   - `Hero`: estado, h1 con `hero.titleAi` en `--amb`, sub con `hero.subStrong`, 3 roles mono, CTA solid a `#proyectos` y CTA ghost de CV a `/Christian_Rangel_CV.pdf` con `download`, y `Console` debajo.
