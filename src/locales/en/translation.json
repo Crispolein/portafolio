@@ -124,30 +124,88 @@
         "tag": "FastAPI · Celery · React",
         "name": "Job Hunter Platform",
         "desc": "Checks 3 job boards every 2 hours, ranks listings against my profile with AI and builds a tailored CV. Behind it run 116+ endpoints and a React dashboard."
+      },
+      "gpsAnalyzer": {
+        "tag": "FastAPI · Angular · Postgres",
+        "name": "GPS Analyzer",
+        "desc": "A GPS transmission health analyzer, now retired. It showed which providers and vehicles were failing, with the evidence one click away, so an operator could answer in under 1 minute."
+      },
+      "pokemonTcgai": {
+        "tag": "Python · pytest · web GUI",
+        "name": "pokemontcgai",
+        "desc": "An agent that plays Pokémon TCG for the Kaggle Pokémon TCG AI Battle Challenge. It ships a rules engine, a deck lab and an interface so I can play against it myself."
+      },
+      "projectHub": {
+        "tag": "FastAPI · Angular · Postgres",
+        "name": "Project Hub",
+        "desc": "A local dashboard that gathers the progress of all my projects, reads their repos and tells me what comes next."
       }
     },
     "list": {
-      "pokemontcgai": {
-        "name": "Pokémon TCG AI Battle Agent",
-        "desc": "Multi-agent reinforcement learning agent for the 2026 Kaggle competition. Every improvement is validated over n≥1000 games.",
-        "stack": "PyTorch · SB3 · PettingZoo"
-      },
       "nocheAustral": {
         "name": "Noche Austral",
         "desc": "Capstone project: a 16,000+ line Flutter app with Clean Architecture and CI/CD, plus a Django CMS on GCP.",
-        "stack": "Flutter · Django · GCP"
+        "stack": "Flutter · Django · GCP",
+        "shots": [
+          "App home screen with the picture of the day and the news.",
+          "Picture of the day detail with its description.",
+          "Moon phase of the day with the illumination percentage."
+        ]
+      },
+      "astroweb": {
+        "name": "Astroweb",
+        "desc": "Astronomy outreach site in Django with news, articles and a gallery, plus a content editor on the same site.",
+        "stack": "Django · PostgreSQL · GCP",
+        "shots": [
+          "Article list with a title search.",
+          "Article with recommended gear, tags and comments.",
+          "Article list with the latest posts."
+        ]
       },
       "tcg": {
         "name": "TCG Collection Manager",
         "desc": "The camera scans the card, OpenCV and Tesseract grade its condition and prices update on their own.",
-        "stack": "OpenCV · Streamlit · RN"
+        "stack": "OpenCV · Streamlit · RN",
+        "shots": [
+          "Dashboard with the collection's total value and its moves.",
+          "Card page with prices per source and history.",
+          "Value by expansion and breakdown by condition.",
+          "Collection grid with cards by rarity."
+        ]
       },
       "financial": {
         "name": "Family Finance",
         "desc": "Family expenses by voice through Google Assistant and Siri, with GPT-4o-mini analysis and role-based permissions.",
-        "stack": "Flutter · Firebase · OpenAI"
+        "stack": "Flutter · Firebase · OpenAI",
+        "shots": [
+          "Home and monthly budget with the available flow.",
+          "Transactions list and spend per person in the household.",
+          "Budget for one category and a month comparison."
+        ]
+      },
+      "patriotsweek": {
+        "name": "PatriotsWeek",
+        "desc": "Flutter app for Patriots Week visitors in Trenton, with nearby attractions, an events calendar and QR scanning, in English and Spanish.",
+        "stack": "Flutter · Firebase",
+        "shots": [
+          "Welcome, language picker and login.",
+          "Nearby attractions with their description.",
+          "QR scanner, the week's calendar and spotlight places."
+        ]
+      },
+      "vitrina": {
+        "name": "vitrina-local",
+        "desc": "Static sites for neighborhood shops, built so people find them on Google and message them on WhatsApp. Includes demos and a prospecting dashboard.",
+        "stack": "Astro · FastAPI · Angular",
+        "shots": [
+          "Florist demo with its menu and prices.",
+          "Mechanic shop demo with services and prices.",
+          "Bakery demo with its product list.",
+          "vitrina-local landing page."
+        ]
       }
-    }
+    },
+    "repoLink": "View repo on GitHub"
   },
   "tools": {
     "title": "Internal tools",
@@ -460,6 +518,10 @@
         ["e2e", "19 files"]
       ]
     }
+  },
+  "lightbox": {
+    "demoBadge": "Demo with fictional data",
+    "close": "Close viewer"
   },
   "carousel": {
     "prev": "Previous screenshot",

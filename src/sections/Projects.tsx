@@ -1,11 +1,65 @@
+import { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import Lightbox from '../components/Lightbox'
 import CardLink from '../components/ui/CardLink'
 import { cases, shotSrc } from '../data/cases'
-import { featuredProjects, listProjects } from '../data/projects'
+import { featuredProjects, listProjects, type ListProject } from '../data/projects'
 
 const rowBase =
   'grid gap-1 px-3 py-[22px] -mx-3 items-baseline md:grid-cols-[280px_1fr_220px] md:gap-6 ' +
   'border-b border-line transition-colors duration-[180ms] ease-out'
+
+const thumbCol = 'md:grid-cols-[96px_240px_1fr_220px]'
+
+function ShotRow({ project }: { project: ListProject }) {
+  const { t } = useTranslation()
+  const [open, setOpen] = useState(false)
+  const buttonRef = useRef<HTMLButtonElement>(null)
+  const { id, url, privateRepo, shots } = project
+  const name = t(`projects.list.${id}.name`)
+  const alts = t(`projects.list.${id}.shots`, { returnObjects: true }) as string[]
+  const slides = Array.from({ length: shots!.count }, (_, i) => ({
+    src: `/shots/${shots!.slug}-${i + 1}.webp`,
+    alt: alts[i] ?? '',
+  }))
+
+  return (
+    <li className="relative">
+      <button
+        ref={buttonRef}
+        type="button"
+        onClick={() => setOpen(true)}
+        className={`group ${rowBase} ${thumbCol} w-full cursor-pointer bg-transparent text-left font-[inherit] text-inherit hover:bg-term focus-visible:bg-term focus-visible:outline-offset-[-2px]`}
+      >
+        <img
+          src={`/shots/${shots!.slug}-1.webp`}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="aspect-[16/10] w-24 rounded border border-line object-cover object-top transition-colors duration-200 group-hover:border-amb"
+        />
+        <b className="text-[19px] group-hover:text-amb group-focus-visible:text-amb">{name}</b>
+        <p className="m-0 text-[15px] leading-[1.55] text-mut">{t(`projects.list.${id}.desc`)}</p>
+        <span className="font-mono text-xs text-cy md:text-right">
+          {t(`projects.list.${id}.stack`)}
+          {!url && privateRepo && <span className="block text-mut">{t('projects.privateRepo')}</span>}
+        </span>
+      </button>
+      {url && (
+        <a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`${name}: ${t('projects.repoLink')}`}
+          className="absolute bottom-2 right-0 font-mono text-xs text-mut hover:text-amb focus-visible:text-amb"
+        >
+          {t('projects.repoLink')} →
+        </a>
+      )}
+      <Lightbox open={open} onClose={() => setOpen(false)} label={name} slides={slides} returnFocus={buttonRef} />
+    </li>
+  )
+}
 
 export default function Projects() {
   const { t } = useTranslation()
@@ -28,7 +82,7 @@ export default function Projects() {
             key={p.id}
             href={p.href}
             data-ac={cases[p.id].accent}
-            className="border-0 border-t-2 border-t-ac py-8 md:pr-8 md:[&:nth-child(2)]:border-l md:[&:nth-child(2)]:border-line md:[&:nth-child(2)]:pl-8 md:[&:nth-child(2)]:pr-0"
+            className="border-0 border-t-2 border-t-ac py-8 md:odd:pr-8 md:even:border-l md:even:border-line md:even:pl-8"
           >
             <span className="flex items-baseline gap-3 font-mono text-xs text-ac">
               <b className="text-[32px] font-medium leading-none">{cases[p.id].num}</b>
@@ -54,6 +108,7 @@ export default function Projects() {
 
       <ul className="m-0 list-none p-0">
         {listProjects.map((p) => {
+          if (p.shots) return <ShotRow key={p.id} project={p} />
           const name = t(`projects.list.${p.id}.name`)
           const body = (
             <>

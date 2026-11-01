@@ -226,30 +226,88 @@
         "tag": "FastAPI · Celery · React",
         "name": "Job Hunter Platform",
         "desc": "Revisa 3 portales de empleo cada 2 horas, ordena las ofertas según mi perfil con IA y arma el CV adaptado. Por detrás corren 116+ endpoints y un dashboard en React."
+      },
+      "gpsAnalyzer": {
+        "tag": "FastAPI · Angular · Postgres",
+        "name": "GPS Analyzer",
+        "desc": "Un analizador de salud de transmisión GPS, hoy retirado. Mostraba qué proveedores y qué móviles fallaban, con la evidencia a un clic, para que un operador respondiera en menos de 1 minuto."
+      },
+      "pokemonTcgai": {
+        "tag": "Python · pytest · GUI web",
+        "name": "pokemontcgai",
+        "desc": "Un agente que juega Pokémon TCG para el Kaggle Pokémon TCG AI Battle Challenge. Trae motor de reglas, laboratorio de mazos y una interfaz para jugarle yo mismo."
+      },
+      "projectHub": {
+        "tag": "FastAPI · Angular · Postgres",
+        "name": "Project Hub",
+        "desc": "Un tablero local que junta el avance de todos mis proyectos, lee sus repos y me dice qué sigue."
       }
     },
     "list": {
-      "pokemontcgai": {
-        "name": "Pokémon TCG AI Battle Agent",
-        "desc": "Agente de refuerzo multi agente para la competencia Kaggle 2026. Cada mejora se valida en n≥1000 partidas.",
-        "stack": "PyTorch · SB3 · PettingZoo"
-      },
       "nocheAustral": {
         "name": "Noche Austral",
         "desc": "Proyecto de titulación: app Flutter de 16.000+ líneas con Clean Architecture y CI/CD, más CMS Django en GCP.",
-        "stack": "Flutter · Django · GCP"
+        "stack": "Flutter · Django · GCP",
+        "shots": [
+          "Pantalla de inicio de la app con la imagen del día y las noticias.",
+          "Detalle de la imagen del día con su descripción.",
+          "Fase lunar del día con el porcentaje de iluminación."
+        ]
+      },
+      "astroweb": {
+        "name": "Astroweb",
+        "desc": "Sitio de divulgación astronómica en Django con noticias, artículos y galería, y un editor de contenido en el mismo sitio.",
+        "stack": "Django · PostgreSQL · GCP",
+        "shots": [
+          "Listado de artículos con buscador por título.",
+          "Artículo con equipo recomendado, etiquetas y comentarios.",
+          "Listado de artículos con las publicaciones más recientes."
+        ]
       },
       "tcg": {
         "name": "TCG Collection Manager",
         "desc": "La cámara escanea la carta, OpenCV y Tesseract evalúan su condición y los precios se actualizan solos.",
-        "stack": "OpenCV · Streamlit · RN"
+        "stack": "OpenCV · Streamlit · RN",
+        "shots": [
+          "Dashboard con el valor total de la colección y sus movimientos.",
+          "Ficha de una carta con precios por fuente e historial.",
+          "Análisis del valor por expansión y la distribución por condición.",
+          "Colección en cuadrícula con las cartas por rareza."
+        ]
       },
       "financial": {
         "name": "Family Finance",
         "desc": "Gastos familiares por voz vía Google Assistant y Siri, con análisis de GPT-4o-mini y permisos por rol.",
-        "stack": "Flutter · Firebase · OpenAI"
+        "stack": "Flutter · Firebase · OpenAI",
+        "shots": [
+          "Inicio y presupuesto del mes con el flujo disponible.",
+          "Lista de movimientos y gasto por persona de la casa.",
+          "Presupuesto de una categoría y comparación de meses."
+        ]
+      },
+      "patriotsweek": {
+        "name": "PatriotsWeek",
+        "desc": "App Flutter para turistas de la semana de los Patriots en Trenton, con atracciones cercanas, calendario de eventos y escaneo de QR, en inglés y español.",
+        "stack": "Flutter · Firebase",
+        "shots": [
+          "Bienvenida, selección de idioma e inicio de sesión.",
+          "Atracciones cercanas con su descripción.",
+          "Escáner de QR, calendario de la semana y lugares destacados."
+        ]
+      },
+      "vitrina": {
+        "name": "vitrina-local",
+        "desc": "Sitios estáticos para comercios de barrio, hechos para que los encuentren en Google y les escriban por WhatsApp. Incluye demos y un tablero de prospección.",
+        "stack": "Astro · FastAPI · Angular",
+        "shots": [
+          "Demo de una florería con su carta y precios.",
+          "Demo de un taller mecánico con servicios y precios.",
+          "Demo de una panadería con su lista de productos.",
+          "Página de presentación de vitrina-local."
+        ]
       }
-    }
+    },
+    "repoLink": "Ver repo en GitHub"
   },
   "tools": {
     "title": "Herramientas internas",
@@ -841,6 +899,10 @@
         ]
       ]
     }
+  },
+  "lightbox": {
+    "demoBadge": "Demo con datos ficticios",
+    "close": "Cerrar visor"
   },
   "carousel": {
     "prev": "Captura anterior",
