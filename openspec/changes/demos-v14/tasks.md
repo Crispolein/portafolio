@@ -2,7 +2,7 @@
 
 Contexto obligatorio antes de cada tarea: `DESIGN.md`, `PRODUCT.md`, `design.md` de este change y la lámina DirCatalogo del canvas (ver design.md). Todo texto visible sale de `t()` en es y en. TDD: el test se escribe primero y se ve fallar. Commits en español, sin atribución de IA, sin push. Tras cada tarea corre `npm run test`.
 
-- [ ] T1 — Capturas en public y su test · owner: claude · files: public/shots, src/data/shots.test.ts · verification: `npx vitest run src/data/shots.test.ts`
+- [x] T1 — Capturas en public y su test · owner: claude · files: public/shots, src/data/shots.test.ts · verification: `npx vitest run src/data/shots.test.ts`
   - Los .webp ya están copiados en `public/shots` (sin commitear). El test lee `public/shots` y comprueba el conteo exacto por slug de la lista de design.md. Commitea los webp.
 
 - [ ] T2 — Tres casos nuevos en el modelo y el rail · owner: claude · files: src/data/cases.ts, src/data/cases.test.ts, public/sitemap.xml, src/lib/route.ts, src/lib/route.test.ts · verification: `npx vitest run src/data src/lib`
