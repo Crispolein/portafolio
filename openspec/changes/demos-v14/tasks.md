@@ -20,5 +20,5 @@ Contexto obligatorio antes de cada tarea: `DESIGN.md`, `PRODUCT.md`, `design.md`
 - [x] T6 — Herramientas: miniaturas, visor y filas nuevas · owner: claude · files: src/sections/Tools.tsx, src/sections/ToolsExperience.test.tsx, src/data/tools.ts, src/locales/es/translation.json, src/locales/en/translation.json · verification: `npx vitest run src/sections src/locales`
   - dep T4, T5. `Tool.id` suma `assetCompare` y `supportSkills`. Las 4 primeras con capturas y visor (user-manager, kml-tools, db-copy, asset-compare). `supportSkills` es fila de texto con la cifra de skills contada con `ls` y citada en design.md. Genérico, sin cliente.
 
-- [ ] T7 — E2E y gate completo · owner: claude · files: e2e/demos.spec.ts · verification: `npm run test && npm run build && npm run test:e2e`
+- [x] T7 — E2E y gate completo · owner: claude · files: e2e/demos.spec.ts · verification: `npm run test && npm run build && npm run test:e2e`
   - dep T6. Un caso nuevo navegable desde el rail, visor abre con Enter y cierra con Esc devolviendo el foco, axe sin violaciones serias, sin scroll horizontal a 390 px, y cada `src` de `/shots/` responde 200 en preview.
