@@ -1,4 +1,4 @@
-import { cleanup, render, screen } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import i18n from '../i18n'
 import Tools from './Tools'
@@ -15,20 +15,54 @@ afterEach(async () => {
 
 describe('data', () => {
   it('lists the tools and experience in order', () => {
-    expect(tools.map((t) => t.id)).toEqual(['dbCopy', 'kml', 'userManager'])
+    expect(tools.map((t) => t.id)).toEqual(['dbCopy', 'kml', 'userManager', 'assetCompare', 'supportSkills'])
     expect(experiences.map((e) => e.id)).toEqual(['migtra', 'nocheAustral', 'pervasive', 'edu'])
   })
 })
 
 describe('Tools', () => {
-  it('renders 3 tools with es texts', () => {
+  const ids = ['dbCopy', 'kml', 'userManager', 'assetCompare', 'supportSkills'] as const
+  const withShots = [
+    ['dbCopy', 'db-copy', 2],
+    ['kml', 'kml-tools', 2],
+    ['userManager', 'user-manager', 3],
+    ['assetCompare', 'asset-compare', 3],
+  ] as const
+
+  it('renders 5 tools with es texts', () => {
     render(<Tools />)
-    expect(screen.getAllByRole('listitem')).toHaveLength(3)
-    for (const id of ['dbCopy', 'kml', 'userManager'] as const) {
+    expect(screen.getAllByRole('listitem')).toHaveLength(5)
+    for (const id of ids) {
       expect(screen.getByText(es.tools.items[id].name)).toBeInTheDocument()
       expect(screen.getByText(es.tools.items[id].desc)).toBeInTheDocument()
       expect(screen.getByText(es.tools.items[id].stack)).toBeInTheDocument()
     }
+  })
+
+  it('each tool with screenshots is a button with thumbnail that opens the viewer', () => {
+    render(<Tools />)
+    expect(screen.getAllByRole('button')).toHaveLength(4)
+    for (const [id, slug, count] of withShots) {
+      const name = es.tools.items[id].name
+      const button = screen.getByRole('button', { name: new RegExp(name) })
+      expect(button.querySelector('img')).toHaveAttribute('src', `/shots/${slug}-1.webp`)
+      expect(es.tools.items[id].shots).toHaveLength(count)
+      expect(en.tools.items[id].shots).toHaveLength(count)
+      fireEvent.click(button)
+      const dialog = screen.getByRole('dialog')
+      expect(dialog).toHaveAccessibleName(name)
+      expect(dialog.querySelectorAll(`img[src^="/shots/${slug}-"]`).length).toBeGreaterThanOrEqual(1)
+      fireEvent.keyDown(document, { key: 'Escape' })
+      expect(screen.queryByRole('dialog')).toBeNull()
+    }
+  })
+
+  it('supportSkills is a text row with the measured count and no client name', () => {
+    render(<Tools />)
+    const row = screen.getByText(es.tools.items.supportSkills.name).closest('li')!
+    expect(row.querySelector('button, a, img')).toBeNull()
+    expect(es.tools.items.supportSkills.desc).toContain('16')
+    expect(en.tools.items.supportSkills.desc).toContain('16')
   })
 
   it('switches to en', async () => {

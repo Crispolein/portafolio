@@ -316,17 +316,45 @@
       "dbCopy": {
         "name": "Clonado de bases de datos",
         "desc": "CLI y GUI para copiar PostgreSQL entre entornos por túnel SSH, con filtro por fecha y modo dry-run.",
-        "stack": "Python · PostgreSQL"
+        "stack": "Python · PostgreSQL",
+        "shots": [
+          "Lista de clientes y configuración de destino y conexión de la herramienta.",
+          "Registro de un respaldo con rango de fechas, filtro por tabla y modo dry-run."
+        ]
       },
       "kml": {
         "name": "Validador de rutas KML",
         "desc": "5 herramientas para validar, comparar y depurar archivos KML con salidas visuales de diagnóstico.",
-        "stack": "Python"
+        "stack": "Python",
+        "shots": [
+          "Verificador de normalización con los errores de numeración y de trazas en rojo.",
+          "Comparador de dos archivos KML con la salida guardada en un tercero."
+        ]
       },
       "userManager": {
         "name": "Gestor de usuarios",
         "desc": "Gestión centralizada sobre Cognito, con la infraestructura como código en CDK sobre ECS Fargate y CloudFront.",
-        "stack": "FastAPI · Angular · CDK"
+        "stack": "FastAPI · Angular · CDK",
+        "shots": [
+          "Listado de usuarios con sus grupos, estado y fecha de creación.",
+          "Ficha de un usuario con la pestaña de grupos de Cognito.",
+          "Formulario para crear un usuario con contraseña autogenerada."
+        ]
+      },
+      "assetCompare": {
+        "name": "Comparador de archivos Excel",
+        "desc": "Compara dos archivos Excel entre producción y test por una columna clave, y muestra faltantes, cambios por campo y una vista lado a lado exportable.",
+        "stack": "Flask · pandas",
+        "shots": [
+          "Carga de dos archivos Excel con columna clave opcional.",
+          "Resumen de la comparación con totales, faltantes y cambios.",
+          "Vista lado a lado con las celdas distintas resaltadas."
+        ]
+      },
+      "supportSkills": {
+        "name": "Skills de soporte",
+        "desc": "16 skills de Claude Code con el conocimiento y los procedimientos del equipo de soporte, escritas en genérico e instalables desde el repositorio de utilidades.",
+        "stack": "Claude Code · Markdown"
       }
     }
   },

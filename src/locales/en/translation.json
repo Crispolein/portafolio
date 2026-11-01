@@ -214,17 +214,45 @@
       "dbCopy": {
         "name": "Database cloning",
         "desc": "CLI and GUI to copy PostgreSQL between environments over an SSH tunnel, with date filtering and a dry-run mode.",
-        "stack": "Python · PostgreSQL"
+        "stack": "Python · PostgreSQL",
+        "shots": [
+          "Client list and destination and connection settings of the tool.",
+          "Backup log with date range, table filter and dry-run mode."
+        ]
       },
       "kml": {
         "name": "KML route validator",
         "desc": "5 tools to validate, compare and debug KML files with visual diagnostic output.",
-        "stack": "Python"
+        "stack": "Python",
+        "shots": [
+          "Normalization checker with numbering and trace errors shown in red.",
+          "Comparison of two KML files with the result saved to a third one."
+        ]
       },
       "userManager": {
         "name": "User manager",
         "desc": "Centralized management on top of Cognito, with infrastructure as code in CDK on ECS Fargate and CloudFront.",
-        "stack": "FastAPI · Angular · CDK"
+        "stack": "FastAPI · Angular · CDK",
+        "shots": [
+          "User list with groups, status and creation date.",
+          "User detail with the Cognito groups tab.",
+          "Form to create a user with an auto-generated password."
+        ]
+      },
+      "assetCompare": {
+        "name": "Excel file comparator",
+        "desc": "Compares two Excel files between production and test by a key column, and shows missing rows, per-field changes and an exportable side-by-side view.",
+        "stack": "Flask · pandas",
+        "shots": [
+          "Upload of two Excel files with an optional key column.",
+          "Comparison summary with totals, missing rows and changes.",
+          "Side-by-side view with differing cells highlighted."
+        ]
+      },
+      "supportSkills": {
+        "name": "Support skills",
+        "desc": "16 Claude Code skills with the support team's knowledge and procedures, written generically and installable from the utilities repository.",
+        "stack": "Claude Code · Markdown"
       }
     }
   },

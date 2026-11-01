@@ -25,7 +25,7 @@ gps-analyzer 4, pokemontcgai 4, project-hub 4 (casos); astroapp 3, astroweb 3, p
 (cada tarea que cite una cifra la pega aquí con su comando)
 
 ### Cifras medidas el 2026-10-31
-- Skills de soporte: `ls /Users/christian/migtra/repos/migtra.it-support.utils/skills | wc -l` → 17.
+- Skills de soporte: `ls /Users/christian/migtra/repos/migtra.it-support.utils/skills | wc -l` → 17, pero incluye `README.md`; `ls -d skills/*/ | wc -l` en esa misma ruta → 16 skills. El portafolio usa 16.
 - pokemontcgai: `git -C /Users/christian/herrramientas_personales/pokemontcgai rev-list --count HEAD` → 951 commits; `find pokemontcgai -name 'test_*.py' (sin node_modules ni .venv) | wc -l` → 150 archivos de test.
 - project-hub: `git -C /Users/christian/herrramientas_personales/project-hub rev-list --count HEAD` → 373 commits; `frontend/e2e` trae 19 entradas entre specs y apoyo (a11y, portfolio, project, team, responsive, routes, write y otros).
 - GPS Analyzer: `git log --oneline -- gps_analyzer | wc -l` en migtra.it-support.utils → 919 commits que tocan el directorio. Estado según su README: fases 1, 1b, 2, 3 y 4 completas, fase 5 en curso; detección F01-F11 y scoring de 6 dimensiones; API FastAPI y Angular 22; criterio de éxito: un operador responde en menos de 1 minuto qué proveedores fallan. Retirado el 2026-10-28.
