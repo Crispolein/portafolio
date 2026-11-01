@@ -89,4 +89,40 @@ describe('Lightbox', () => {
     await user.click(screen.getByRole('button', { name: i18n.t('lightbox.close') }))
     expect(screen.queryByRole('dialog')).toBeNull()
   })
+
+  it('Esc, flechas y Tab siguen funcionando tras hacer clic en un área no enfocable', async () => {
+    const user = userEvent.setup()
+    render(<Harness />)
+    await user.click(screen.getByRole('button', { name: 'abrir' }))
+    const dialog = screen.getByRole('dialog')
+    await user.click(dialog)
+    await user.keyboard('{ArrowRight}')
+    expect(visible()).toEqual(['Pantalla 2'])
+    await user.click(dialog)
+    await user.tab()
+    expect(dialog.contains(document.activeElement)).toBe(true)
+    await user.click(dialog)
+    await user.keyboard('{Escape}')
+    expect(screen.queryByRole('dialog')).toBeNull()
+  })
+
+  it('clic en el fondo cierra; clic dentro del dialog no', async () => {
+    const user = userEvent.setup()
+    render(<Harness />)
+    await user.click(screen.getByRole('button', { name: 'abrir' }))
+    await user.click(screen.getByRole('dialog'))
+    expect(screen.getByRole('dialog')).toBeInTheDocument()
+    await user.click(screen.getByRole('dialog').parentElement as HTMLElement)
+    expect(screen.queryByRole('dialog')).toBeNull()
+  })
+
+  it('respeta reduced motion: sin transiciones en el fondo ni en el botón cerrar', async () => {
+    const user = userEvent.setup()
+    render(<Harness />)
+    await user.click(screen.getByRole('button', { name: 'abrir' }))
+    expect(screen.getByRole('dialog').parentElement?.className).toContain('motion-reduce:transition-none')
+    expect(screen.getByRole('button', { name: i18n.t('lightbox.close') }).className).toContain(
+      'motion-reduce:transition-none',
+    )
+  })
 })
