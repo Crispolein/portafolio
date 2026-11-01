@@ -52,9 +52,18 @@ test('every /shots/ image src responds 200', async ({ page, request }) => {
     const found = await page.locator('img[src^="/shots/"]').evaluateAll((els) => els.map((e) => e.getAttribute('src')!))
     found.forEach((s) => srcs.add(s))
   }
+  // images that only render inside the lightbox
+  await page.goto('/')
+  await page.locator('#projects li button').first().click()
+  const dialog = page.getByRole('dialog')
+  await expect(dialog).toBeVisible()
+  const inDialog = await dialog.locator('img[src^="/shots/"]').evaluateAll((els) => els.map((e) => e.getAttribute('src')!))
+  inDialog.forEach((s) => srcs.add(s))
   expect(srcs.size).toBeGreaterThan(0)
   for (const src of srcs) {
     const res = await request.get(src)
     expect(res.status(), src).toBe(200)
+    // vite preview falls back to index.html for missing files, so status alone proves nothing
+    expect(res.headers()['content-type'], src).toMatch(/^image\//)
   }
 })
