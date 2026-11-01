@@ -321,6 +321,144 @@
         ["scraping", "every 2 h"],
         ["boards", "3"]
       ]
+    },
+    "gpsAnalyzer": {
+      "tag": "Internal tool · retired",
+      "title": "GPS Analyzer",
+      "sub": "A GPS transmission health analyzer. It showed which providers and vehicles were failing, with the evidence one click away.",
+      "facts": [
+        ["role", "full design and development"],
+        ["stack", "FastAPI · Angular 22 · Postgres"],
+        ["engine", "detection F01 to F11"],
+        ["status", "retired on October 28, 2026"]
+      ],
+      "shotsLabel": "GPS Analyzer screenshots",
+      "shots": [
+        "Clients view with the critical and no-data vehicles. Fictional data.",
+        "Providers view with their score and the share of the fleet in good shape. Fictional data.",
+        "Vehicle detail with the score, last transmission and open failure. Fictional data.",
+        "Send frequency and offset between the GPS and the provider. Fictional data."
+      ],
+      "problem": [
+        "When a provider stopped transmitting properly, we found out from the client's complaint. By then it was late.",
+        "I wanted an operator to answer in under 1 minute which providers are failing and why, without reading raw data."
+      ],
+      "pipelineAria": "Raw provider data enters a batch engine that stores metrics, failures F01 to F11 are detected, a 6-dimension score is computed and the result goes to a dashboard.",
+      "nodes": [
+        ["providers", "raw data"],
+        ["engine", "batch metrics"],
+        ["detection", "F01 to F11"],
+        ["scoring", "6 dimensions"],
+        ["dashboard", "Angular"]
+      ],
+      "aiNodes": [],
+      "steps": [
+        ["Ingestion", "An incremental engine reads each provider's raw data and stores counters and histograms that can be re-aggregated."],
+        ["Detection and score", "The engine classifies the day's failures and computes a 0 to 100 score per vehicle. Thresholds are applied at query time."],
+        ["Dashboard", "The operator starts at the client, drills into the provider and reaches the vehicle with the evidence and what to do about each failure."]
+      ],
+      "decisions": [
+        ["Metrics, not verdicts", "Atomic metrics are stored and thresholds are applied at query time. Moving a threshold recomputes the score without rereading the source.", "configurable scoring"],
+        ["Client first", "The landing page sorts by affected client, because that is how a complaint gets handled.", "operator UX"],
+        ["Honest score", "If a dimension is missing, the score is computed on the measurable points and the screen says so.", "score transparency"]
+      ],
+      "result": "It was used for daily transmission follow-up until it was retired. I learned to design an engine where the rule moves and the data stays untouched.",
+      "resultLog": [
+        ["commits", "919 touching the directory"],
+        ["phases", "1 to 4 complete, 5 in progress"]
+      ]
+    },
+    "pokemonTcgai": {
+      "tag": "Personal project · private repo",
+      "title": "pokemontcgai",
+      "sub": "An agent that plays Pokémon TCG for the Kaggle Pokémon TCG AI Battle Challenge, with an interface so I can play against it myself.",
+      "facts": [
+        ["role", "full design and development"],
+        ["stack", "Python · pytest · web GUI"],
+        ["engine", "rules, search and evaluation"],
+        ["goal", "Kaggle TCG AI Battle Challenge"]
+      ],
+      "shotsLabel": "pokemontcgai screenshots",
+      "shots": [
+        "Start of a game against the model with the play log. Fictional data.",
+        "Turn 10 with the model's bench full and the attack option. Fictional data.",
+        "Turn 8 with the log of what the model would have played. Fictional data.",
+        "Finished game with the summary of the model's decisions. Fictional data."
+      ],
+      "problem": [
+        "A card-game agent can't be tested with metrics alone. I had to sit down and play against it to see where it went wrong.",
+        "I wanted a rules engine faithful to the game and a way to measure the model against my own decisions."
+      ],
+      "pipelineAria": "A rules engine simulates the game, the model searches and evaluates plays, a lab tests decks, the ladder validates and an interface lets me play against the model.",
+      "nodes": [
+        ["rules", "engine"],
+        ["model", "search and evaluation"],
+        ["decks", "lab"],
+        ["ladder", "validation"],
+        ["GUI", "you vs model"]
+      ],
+      "aiNodes": [1],
+      "steps": [
+        ["Engine", "A rules engine with the card to effect map simulates each turn just like the game."],
+        ["Search", "The model evaluates the possible plays and picks one. A lab compares decks before one is submitted."],
+        ["Playing against it", "A web interface lets me play the model, save the session and analyze where we agree and where we don't."]
+      ],
+      "decisions": [
+        ["Rules first", "Without a faithful engine, no model number is worth anything. That is why the engine has its own correctness tests.", "agent foundation"],
+        ["Play to measure", "The interface saves every session to compare my decisions with the model's.", "human evaluation"],
+        ["Decks as data", "Decks live in CSV and are tested in the lab, without touching the agent's code.", "configuration"]
+      ],
+      "result": "The agent already plays full games and I can face it myself. Each saved session tells me which play to fix first.",
+      "resultLog": [
+        ["commits", "951"],
+        ["tests", "150 files"]
+      ]
+    },
+    "projectHub": {
+      "tag": "Personal project · private repo",
+      "title": "Project Hub",
+      "sub": "A local dashboard that gathers the progress of all my projects and tells me what comes next.",
+      "facts": [
+        ["role", "full design and development"],
+        ["stack", "FastAPI · Angular · Postgres"],
+        ["deployment", "Docker, local only"],
+        ["sources", "repos and read-only Jira"]
+      ],
+      "shotsLabel": "Project Hub screenshots",
+      "shots": [
+        "Portfolio with global progress, alerts and what comes next. Fictional data.",
+        "Project detail with mandatory capabilities and their progress. Fictional data.",
+        "What's next list, with the next task and why it goes first. Fictional data.",
+        "Team view with the tickets in progress and the ones waiting for a reply. Fictional data."
+      ],
+      "problem": [
+        "With several projects at once, I lost track of which one was stalled and which task came next.",
+        "I wanted a single screen that said so, without opening every repo and every ticket."
+      ],
+      "pipelineAria": "A scanner reads the repos, each project has a YAML record, Jira is queried read-only, a FastAPI API joins it all and an Angular dashboard shows it.",
+      "nodes": [
+        ["repos", "scanner"],
+        ["YAML", "one record per project"],
+        ["Jira", "read-only"],
+        ["API", "FastAPI"],
+        ["dashboard", "Angular"]
+      ],
+      "aiNodes": [],
+      "steps": [
+        ["Record", "Each project is described in a YAML with its capabilities, mandatory or optional."],
+        ["Scan", "A scanner reads the repos and pulls the Jira tickets, always read-only."],
+        ["What's next", "The dashboard orders the tasks, mandatory first, and explains why one goes before another."]
+      ],
+      "decisions": [
+        ["Read-only", "Jira and the repos are only read. The dashboard never changes anything outside.", "safety"],
+        ["Explain the order", "Each task says why it goes first, so the order can be argued with.", "trust"],
+        ["All local", "It runs on 127.0.0.1 and never leaves my machine.", "privacy"]
+      ],
+      "result": "I open it every morning to decide what to work on. It warns me about what's stalled before I notice.",
+      "resultLog": [
+        ["commits", "373"],
+        ["e2e", "19 files"]
+      ]
     }
   },
   "carousel": {

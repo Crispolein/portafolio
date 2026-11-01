@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import es from './es/translation.json'
 import en from './en/translation.json'
+import { cases } from '../data/cases'
 
 type Json = unknown
 
@@ -43,5 +44,22 @@ describe('locales', () => {
   it('no string in any language contains a phone number', () => {
     const bad = [...esFlat.strings, ...enFlat.strings].filter(([, s]) => PHONE.test(s))
     expect(bad).toEqual([])
+  })
+
+  it('every case has complete copy in es and en with 4 shot alts', () => {
+    for (const lng of [es, en] as Record<string, any>[]) {
+      for (const c of Object.values(cases)) {
+        const node = c.keyPrefix.split('.').reduce((o, k) => o?.[k], lng as any)
+        expect(node, c.keyPrefix).toBeDefined()
+        expect(node.shots).toHaveLength(c.shots)
+        expect(node.facts).toHaveLength(4)
+        expect(node.nodes).toHaveLength(5)
+        expect(node.steps).toHaveLength(3)
+        expect(node.decisions).toHaveLength(3)
+        expect(node.resultLog.length).toBeGreaterThanOrEqual(2)
+        for (const k of ['tag', 'title', 'sub', 'shotsLabel', 'pipelineAria', 'result']) expect(node[k], k).toBeTruthy()
+        c.aiNodes.forEach((i) => expect(node.nodes[i]).toBeDefined())
+      }
+    }
   })
 })

@@ -538,6 +538,308 @@
           "3"
         ]
       ]
+    },
+    "gpsAnalyzer": {
+      "tag": "Herramienta interna · retirada",
+      "title": "GPS Analyzer",
+      "sub": "Un analizador de salud de transmisión GPS. Mostraba qué proveedores y qué móviles fallaban, con la evidencia a un clic.",
+      "facts": [
+        [
+          "rol",
+          "diseño y desarrollo completo"
+        ],
+        [
+          "stack",
+          "FastAPI · Angular 22 · Postgres"
+        ],
+        [
+          "motor",
+          "detección F01 a F11"
+        ],
+        [
+          "estado",
+          "retirado el 28 de octubre de 2026"
+        ]
+      ],
+      "shotsLabel": "Capturas de GPS Analyzer",
+      "shots": [
+        "Vista de clientes con los móviles críticos y sin datos. Datos ficticios.",
+        "Vista de proveedores con su nota y el porcentaje de flota en orden. Datos ficticios.",
+        "Ficha de un móvil con la nota, la última transmisión y la falla abierta. Datos ficticios.",
+        "Frecuencia de envío y desfase entre el GPS y el proveedor. Datos ficticios."
+      ],
+      "problem": [
+        "Cuando un proveedor dejaba de transmitir bien, nos enterábamos por el reclamo del cliente. Ya era tarde.",
+        "Quería que un operador respondiera en menos de 1 minuto qué proveedores fallan y por qué, sin leer datos crudos."
+      ],
+      "pipelineAria": "Los datos crudos de los proveedores entran a un motor por lotes que guarda métricas, se detectan las fallas F01 a F11, se calcula una nota en 6 dimensiones y el resultado va a un dashboard.",
+      "nodes": [
+        [
+          "proveedores",
+          "datos crudos"
+        ],
+        [
+          "motor",
+          "métricas por lote"
+        ],
+        [
+          "detección",
+          "F01 a F11"
+        ],
+        [
+          "scoring",
+          "6 dimensiones"
+        ],
+        [
+          "dashboard",
+          "Angular"
+        ]
+      ],
+      "aiNodes": [],
+      "steps": [
+        [
+          "Ingesta",
+          "Un motor incremental lee los datos crudos de cada proveedor y guarda contadores e histogramas que se pueden volver a agregar."
+        ],
+        [
+          "Detección y nota",
+          "El motor clasifica las fallas del día y calcula una nota de 0 a 100 por móvil. Los umbrales se aplican al consultar."
+        ],
+        [
+          "Dashboard",
+          "El operador parte por el cliente, baja al proveedor y llega al móvil con la evidencia y qué hacer con cada falla."
+        ]
+      ],
+      "decisions": [
+        [
+          "Métricas, no veredictos",
+          "Se guardan métricas atómicas y los umbrales se aplican al consultar. Mover un umbral recalcula la nota sin releer la fuente.",
+          "scoring configurable"
+        ],
+        [
+          "Cliente primero",
+          "La pantalla de inicio ordena por cliente afectado, porque así es como se atiende un reclamo.",
+          "UX del operador"
+        ],
+        [
+          "Nota honesta",
+          "Si falta una dimensión, la nota se calcula sobre los puntos medibles y lo dice en pantalla.",
+          "transparencia de la nota"
+        ]
+      ],
+      "result": "Se usó para el seguimiento diario de transmisión hasta que se retiró. Aprendí a diseñar un motor donde la regla se mueve y los datos no se tocan.",
+      "resultLog": [
+        [
+          "commits",
+          "919 que tocan el directorio"
+        ],
+        [
+          "fases",
+          "1 a 4 completas, la 5 en curso"
+        ]
+      ]
+    },
+    "pokemonTcgai": {
+      "tag": "Proyecto personal · repo privado",
+      "title": "pokemontcgai",
+      "sub": "Un agente que juega Pokémon TCG para el Kaggle Pokémon TCG AI Battle Challenge, con una interfaz para jugarle yo mismo.",
+      "facts": [
+        [
+          "rol",
+          "diseño y desarrollo completo"
+        ],
+        [
+          "stack",
+          "Python · pytest · GUI web"
+        ],
+        [
+          "motor",
+          "reglas, búsqueda y evaluación"
+        ],
+        [
+          "meta",
+          "Kaggle TCG AI Battle Challenge"
+        ]
+      ],
+      "shotsLabel": "Capturas de pokemontcgai",
+      "shots": [
+        "Inicio de una partida contra el modelo con el registro de jugadas. Datos ficticios.",
+        "Turno 10 con el banco del modelo lleno y la opción de atacar. Datos ficticios.",
+        "Turno 8 con el registro de lo que el modelo habría jugado. Datos ficticios.",
+        "Partida terminada con el resumen de decisiones del modelo. Datos ficticios."
+      ],
+      "problem": [
+        "Un agente de cartas no se puede probar solo con métricas. Había que sentarse a jugarle y ver dónde se equivocaba.",
+        "Quería un motor de reglas fiel al juego y una forma de medir al modelo contra mis propias decisiones."
+      ],
+      "pipelineAria": "Un motor de reglas simula la partida, el modelo busca y evalúa jugadas, un laboratorio prueba mazos, el ladder valida y una interfaz permite jugar contra el modelo.",
+      "nodes": [
+        [
+          "reglas",
+          "motor"
+        ],
+        [
+          "modelo",
+          "búsqueda y evaluación"
+        ],
+        [
+          "mazos",
+          "laboratorio"
+        ],
+        [
+          "ladder",
+          "validación"
+        ],
+        [
+          "GUI",
+          "vos vs modelo"
+        ]
+      ],
+      "aiNodes": [
+        1
+      ],
+      "steps": [
+        [
+          "Motor",
+          "Un motor de reglas con el mapa de carta a efecto simula cada turno igual que el juego."
+        ],
+        [
+          "Búsqueda",
+          "El modelo evalúa las jugadas posibles y elige. Un laboratorio compara mazos antes de entregar uno."
+        ],
+        [
+          "Jugar contra él",
+          "Una interfaz web me deja jugar contra el modelo, guardar la sesión y analizar dónde coincidimos y dónde no."
+        ]
+      ],
+      "decisions": [
+        [
+          "Reglas primero",
+          "Sin un motor fiel, cualquier número del modelo no vale. Por eso el motor tiene sus propios tests de correctitud.",
+          "base del agente"
+        ],
+        [
+          "Jugar para medir",
+          "La interfaz guarda cada sesión para comparar mis decisiones con las del modelo.",
+          "evaluación humana"
+        ],
+        [
+          "Mazos como datos",
+          "Los mazos viven en CSV y se prueban en el laboratorio, sin tocar el código del agente.",
+          "configuración"
+        ]
+      ],
+      "result": "El agente ya juega partidas completas y puedo enfrentarlo yo mismo. Cada sesión guardada me dice qué jugada corregir primero.",
+      "resultLog": [
+        [
+          "commits",
+          "951"
+        ],
+        [
+          "tests",
+          "150 archivos"
+        ]
+      ]
+    },
+    "projectHub": {
+      "tag": "Proyecto personal · repo privado",
+      "title": "Project Hub",
+      "sub": "Un tablero local que junta el avance de todos mis proyectos y me dice qué sigue.",
+      "facts": [
+        [
+          "rol",
+          "diseño y desarrollo completo"
+        ],
+        [
+          "stack",
+          "FastAPI · Angular · Postgres"
+        ],
+        [
+          "despliegue",
+          "Docker, solo en local"
+        ],
+        [
+          "fuentes",
+          "repos y Jira de solo lectura"
+        ]
+      ],
+      "shotsLabel": "Capturas de Project Hub",
+      "shots": [
+        "Portafolio con el avance global, las alertas y lo que sigue. Datos ficticios.",
+        "Ficha de un proyecto con capacidades obligatorias y su avance. Datos ficticios.",
+        "Lista de lo que sigue, con la tarea siguiente y por qué va primero. Datos ficticios.",
+        "Vista de equipo con los tickets en curso y los que esperan respuesta. Datos ficticios."
+      ],
+      "problem": [
+        "Con varios proyectos a la vez, perdía el hilo de cuál estaba estancado y qué tarea seguía.",
+        "Quería una sola pantalla que lo dijera, sin tener que abrir cada repo ni cada ticket."
+      ],
+      "pipelineAria": "Un escáner lee los repos, cada proyecto tiene un registro YAML, Jira se consulta solo para lectura, una API FastAPI lo junta y un dashboard Angular lo muestra.",
+      "nodes": [
+        [
+          "repos",
+          "escáner"
+        ],
+        [
+          "YAML",
+          "un registro por proyecto"
+        ],
+        [
+          "Jira",
+          "solo lectura"
+        ],
+        [
+          "API",
+          "FastAPI"
+        ],
+        [
+          "dashboard",
+          "Angular"
+        ]
+      ],
+      "aiNodes": [],
+      "steps": [
+        [
+          "Registro",
+          "Cada proyecto se describe en un YAML con sus capacidades, obligatorias u opcionales."
+        ],
+        [
+          "Escaneo",
+          "Un escáner lee los repos y trae los tickets de Jira, siempre en solo lectura."
+        ],
+        [
+          "Qué sigue",
+          "El tablero ordena las tareas, primero las obligatorias, y explica por qué una va antes que otra."
+        ]
+      ],
+      "decisions": [
+        [
+          "Solo lectura",
+          "Jira y los repos solo se leen. El tablero nunca cambia nada afuera.",
+          "seguridad"
+        ],
+        [
+          "Explicar el orden",
+          "Cada tarea dice por qué va primero, para que el orden se pueda discutir.",
+          "confianza"
+        ],
+        [
+          "Todo en local",
+          "Corre en 127.0.0.1 y no sale de mi máquina.",
+          "privacidad"
+        ]
+      ],
+      "result": "Lo abro cada mañana para decidir en qué trabajar. Me avisa de lo estancado antes de que yo lo note.",
+      "resultLog": [
+        [
+          "commits",
+          "373"
+        ],
+        [
+          "e2e",
+          "19 archivos"
+        ]
+      ]
     }
   },
   "carousel": {
