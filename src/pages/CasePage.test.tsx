@@ -11,7 +11,7 @@ afterEach(cleanup)
 describe('cases data', () => {
   it('maps slugs to keys, AI nodes and the other case', () => {
     expect(cases['cv-optimizer']).toMatchObject({ keyPrefix: 'case.cvOptimizer', aiNodes: [2], next: 'job-hunter' })
-    expect(cases['job-hunter']).toMatchObject({ keyPrefix: 'case.jobHunter', aiNodes: [3], next: 'cv-optimizer' })
+    expect(cases['job-hunter']).toMatchObject({ keyPrefix: 'case.jobHunter', aiNodes: [3], next: 'gps-analyzer' })
   })
 })
 

@@ -67,7 +67,7 @@ export default function CasePage({ slug }: { slug: string }) {
 
   return (
     <div className="pb-20" data-ac={accent}>
-      <nav aria-label={t('case.railLabel')} className="mt-8 flex gap-2 font-mono text-[13px]">
+      <nav aria-label={t('case.railLabel')} className="mt-8 flex flex-wrap gap-2 font-mono text-[13px]">
         {(Object.keys(cases) as CaseSlug[]).map((s) => {
           const c = cases[s]
           const here = s === slug
