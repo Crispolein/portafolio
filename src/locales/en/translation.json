@@ -420,7 +420,7 @@
       ],
       "shotsLabel": "GPS Analyzer screenshots",
       "shots": [
-        "Clients view with the critical and no-data vehicles. Fictional data.",
+        "Clients view with tiles for clients with critical status and no data. Fictional data.",
         "Providers view with their score and the share of the fleet in good shape. Fictional data.",
         "Vehicle detail with the score, last transmission and open failure. Fictional data.",
         "Send frequency and offset between the GPS and the provider. Fictional data."

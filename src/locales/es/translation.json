@@ -649,7 +649,7 @@
       ],
       "shotsLabel": "Capturas de GPS Analyzer",
       "shots": [
-        "Vista de clientes con los móviles críticos y sin datos. Datos ficticios.",
+        "Vista de clientes con las fichas de clientes en estado crítico y sin datos. Datos ficticios.",
         "Vista de proveedores con su nota y el porcentaje de flota en orden. Datos ficticios.",
         "Ficha de un móvil con la nota, la última transmisión y la falla abierta. Datos ficticios.",
         "Frecuencia de envío y desfase entre el GPS y el proveedor. Datos ficticios."
