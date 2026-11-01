@@ -67,3 +67,26 @@ test('every /shots/ image src responds 200', async ({ page, request }) => {
     expect(res.headers()['content-type'], src).toMatch(/^image\//)
   }
 })
+
+test.describe('case reveal (GSAP)', () => {
+  test('sections start hidden below the fold and reveal on scroll', async ({ page }) => {
+    await page.goto('/proyectos/cv-optimizer')
+    const last = page.locator('section[data-reveal]').last()
+    await expect(last).toHaveCSS('opacity', '0')
+    await last.scrollIntoViewIfNeeded()
+    await expect(last).toHaveCSS('opacity', '1')
+  })
+
+  test('reduced motion: nothing is hidden and the GSAP chunk is not requested', async ({ browser }) => {
+    const context = await browser.newContext({ reducedMotion: 'reduce' })
+    const page = await context.newPage()
+    const chunks: string[] = []
+    page.on('request', (r) => {
+      if (r.url().includes('RevealEffect')) chunks.push(r.url())
+    })
+    await page.goto('/proyectos/cv-optimizer')
+    await expect(page.locator('section[data-reveal]').last()).toHaveCSS('opacity', '1')
+    expect(chunks).toEqual([])
+    await context.close()
+  })
+})

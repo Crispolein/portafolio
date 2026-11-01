@@ -1,4 +1,4 @@
-import { cleanup, render, screen, within } from '@testing-library/react'
+import { cleanup, render, screen, waitFor, within } from '@testing-library/react'
 import { afterEach, describe, expect, it } from 'vitest'
 import CasePage from './CasePage'
 import { existsSync } from 'node:fs'
@@ -84,5 +84,56 @@ describe('CasePage screenshots', () => {
       expect(img.getAttribute('alt')).toBeTruthy()
     })
     expect(container.querySelector('.border-dashed')).toBeNull()
+  })
+})
+
+describe('CasePage reveal (GSAP)', () => {
+  const mockMotion = (noPreference: boolean) => {
+    window.matchMedia = ((query: string) => ({
+      matches: query.includes('no-preference') ? noPreference : false,
+      media: query,
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      addListener: () => {},
+      removeListener: () => {},
+      dispatchEvent: () => false,
+      onchange: null,
+    })) as unknown as typeof window.matchMedia
+  }
+  afterEach(() => {
+    // @ts-expect-error jsdom has no matchMedia by default
+    delete window.matchMedia
+  })
+
+  it('las 4 secciones usan data-reveal y no la clase CSS .rv (sin doble animación)', () => {
+    const { container } = render(<CasePage slug="cv-optimizer" />)
+    expect(container.querySelectorAll('section[data-reveal]')).toHaveLength(4)
+    expect(container.querySelector('section.rv')).toBeNull()
+  })
+
+  it('con prefers-reduced-motion: reduce no oculta ni anima nada', () => {
+    mockMotion(false)
+    const { container } = render(<CasePage slug="cv-optimizer" />)
+    const sections = container.querySelectorAll<HTMLElement>('section[data-reveal]')
+    expect(sections).toHaveLength(4)
+    sections.forEach((s) => expect(s.style.opacity).toBe(''))
+  })
+
+  it('sin preferencia de movimiento prepara las secciones ocultas para revelarlas al hacer scroll', async () => {
+    mockMotion(true)
+    const { container } = render(<CasePage slug="cv-optimizer" />)
+    const sections = container.querySelectorAll<HTMLElement>('section[data-reveal]')
+    expect(sections).toHaveLength(4)
+    await waitFor(() => sections.forEach((s) => expect(s.style.opacity).toBe('0')))
+  })
+
+  it('al desmontar revierte los estilos inline (cleanup)', async () => {
+    mockMotion(true)
+    const { container, unmount } = render(<CasePage slug="cv-optimizer" />)
+    const sections = Array.from(container.querySelectorAll<HTMLElement>('section[data-reveal]'))
+    expect(sections).toHaveLength(4)
+    await waitFor(() => expect(sections[0].style.opacity).toBe('0'))
+    unmount()
+    sections.forEach((s) => expect(s.style.opacity).toBe(''))
   })
 })

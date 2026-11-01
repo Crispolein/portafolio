@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Pipeline, { type Orientation } from '../components/Pipeline'
 import CardLink from '../components/ui/CardLink'
@@ -7,6 +7,10 @@ import { cases, isCaseSlug, shotSrc, type CaseSlug } from '../data/cases'
 import { linkClickHandler, navigate } from '../lib/route'
 
 const MOBILE_QUERY = '(max-width: 640px)'
+const MOTION_QUERY = '(prefers-reduced-motion: no-preference)'
+
+// GSAP weighs ~47 kB gzip: it loads only on case pages, and only when motion is allowed.
+const RevealEffect = lazy(() => import('../components/RevealEffect'))
 
 type Pair = [string, string]
 type Triple = [string, string, string]
@@ -50,6 +54,8 @@ function Log({ rows }: { rows: Pair[] }) {
 export default function CasePage({ slug }: { slug: string }) {
   const { t } = useTranslation()
   const orientation = useOrientation()
+  const scope = useRef<HTMLDivElement>(null)
+  const motionOk = window.matchMedia?.(MOTION_QUERY).matches ?? false
   if (!isCaseSlug(slug)) return null
 
   const { keyPrefix, aiNodes, next, accent, shots } = cases[slug]
@@ -66,7 +72,12 @@ export default function CasePage({ slug }: { slug: string }) {
   const nextPath = `/proyectos/${next}`
 
   return (
-    <div className="pb-20" data-ac={accent}>
+    <div ref={scope} className="pb-20" data-ac={accent}>
+      {motionOk && (
+        <Suspense fallback={null}>
+          <RevealEffect scope={scope} slug={slug} />
+        </Suspense>
+      )}
       <nav aria-label={t('case.railLabel')} className="mt-8 flex flex-wrap gap-2 font-mono text-[13px]">
         {(Object.keys(cases) as CaseSlug[]).map((s) => {
           const c = cases[s]
@@ -121,7 +132,7 @@ export default function CasePage({ slug }: { slug: string }) {
 
       <Carousel label={t(`${keyPrefix}.shotsLabel`)} slides={slides} />
 
-      <section className="rv mt-[72px] sm:mt-[120px]">
+      <section data-reveal className="mt-[72px] sm:mt-[120px]">
         <SectionHead title={t('case.sections.problem')} n="01" />
         <div className="space-y-4 pt-7">
           {problem.map((p) => (
@@ -132,7 +143,7 @@ export default function CasePage({ slug }: { slug: string }) {
         </div>
       </section>
 
-      <section className="rv mt-[72px] sm:mt-[120px]">
+      <section data-reveal className="mt-[72px] sm:mt-[120px]">
         <SectionHead title={t('case.sections.how')} n="02" />
         <div className="mt-7 overflow-hidden rounded-lg border border-line bg-term px-7 pb-3 pt-7 font-mono">
           <Pipeline
@@ -153,7 +164,7 @@ export default function CasePage({ slug }: { slug: string }) {
         </ol>
       </section>
 
-      <section className="rv mt-[72px] sm:mt-[120px]">
+      <section data-reveal className="mt-[72px] sm:mt-[120px]">
         <SectionHead title={t('case.sections.decisions')} n="03" />
         <ul>
           {decisions.map(([name, text, stack]) => (
@@ -169,7 +180,7 @@ export default function CasePage({ slug }: { slug: string }) {
         </ul>
       </section>
 
-      <section className="rv mt-[72px] sm:mt-[120px]">
+      <section data-reveal className="mt-[72px] sm:mt-[120px]">
         <SectionHead title={t('case.sections.result')} n="04" />
         <div className="grid gap-8 pt-7 lg:grid-cols-[1fr_340px] lg:gap-14">
           <p className="max-w-[60ch] text-lg leading-[1.65] text-txt">{t(`${keyPrefix}.result`)}</p>
